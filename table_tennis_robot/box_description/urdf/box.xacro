@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="$(arg box_name)">
+
+    <!--<xacro:include filename="$(find box_description)/urdf/box.gazebo.xacro" />-->
+    <xacro:property name="scale_size" value="1.0" />
+
+    <link name="box_link">
+        <visual name="tabletennis_table">
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://box_description/models/box/meshes/box.dae" scale="${scale_size*1} ${scale_size*1} ${scale_size*1}" />
+            </geometry>
+            <!--<cast_shadows>1</cast_shadows>
+            <transparency>0</transparency>-->
+        </visual>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="150" />
+            <inertia ixx="38" ixy="0" ixz="0" iyy="38" iyz="0" izz="38" />
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+               <mesh filename="package://box_description/models/box/meshes/box.dae" scale="${scale_size*1} ${scale_size*1} ${scale_size*1}" />
+            </geometry>
+        </collision>
+    </link>
+
+    
+
+    <link name="world"/>
+	<joint name="world_joint" type="fixed">
+		<parent link="world"/>
+		<child link="box_link"/>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	</joint>
+
+    <gazebo reference="box_link">
+         <gravity>1</gravity>
+         <dampingFactor>0.0</dampingFactor>
+         <maxVel>1</maxVel>
+         <minDepth>0.0</minDepth>
+         <mu1>0.5</mu1>
+         <mu2>0.5</mu2>
+         <fdir1>0 0 0</fdir1>
+         <kp>1e+10</kp>
+         <kd>1.0</kd>
+         <selfCollide>0</selfCollide>
+         <maxContacts>3</maxContacts>  <!-- set this to 1 and ball stops sliding with high angle -->
+         <material>Gazebo/Green</material> <!-- caution this overrwrites (dae) everything!!! -->
+    </gazebo>
+</robot>

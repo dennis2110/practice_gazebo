@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+   <xacro:macro name="tabletennis_table_gazebo" params="prefix">
+      <gazebo reference="tabletennis_table_link">
+         <gravity>1</gravity>
+         <dampingFactor>0.0</dampingFactor>
+         <maxVel>1</maxVel>
+         <minDepth>0.0</minDepth>
+         <mu1>0.5</mu1>
+         <mu2>0.5</mu2>
+         <fdir1>0 0 0</fdir1>
+         <kp>1e+10</kp>
+         <kd>1.0</kd>
+         <selfCollide>0</selfCollide>
+         <maxContacts>3</maxContacts>  <!-- set this to 1 and ball stops sliding with high angle -->
+         <material>Gazebo/Red</material> <!-- caution this overrwrites (dae) everything!!! -->
+      </gazebo>
+   </xacro:macro>
+<!-- p3d plugin (3D Position Interface for Ground Truth)
+     This is required only for rviz that the balllink tf is known! -->
+   <!--<gazebo>
+      <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
+         <frameName>world</frameName>
+         <bodyName>tabletennis_table_footprint</bodyName>
+         <topicName>/gazebo/$(arg tabletennis_table_name)/odom</topicName>
+         <updateRate>$(arg tabletennis_table_gz_update_rate)</updateRate>
+      </plugin>
+   </gazebo>-->
+
+</robot>

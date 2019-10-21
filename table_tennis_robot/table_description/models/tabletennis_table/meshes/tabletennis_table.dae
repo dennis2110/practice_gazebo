@@ -1,0 +1,1455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.80.75 commit date:2019-07-29, commit time:14:47, hash:f6cb5f54494e</authoring_tool>
+    </contributor>
+    <created>2019-10-21T20:13:05</created>
+    <modified>2019-10-21T20:13:05</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_cameras>
+    <camera id="Camera_001-camera" name="Camera.001">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov sid="xfov">49.13434</xfov>
+            <aspect_ratio>1.777778</aspect_ratio>
+            <znear sid="znear">0.1</znear>
+            <zfar sid="zfar">100</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+      <extra>
+        <technique profile="blender">
+          <shiftx sid="shiftx" type="float">0</shiftx>
+          <shifty sid="shifty" type="float">0</shifty>
+          <dof_distance sid="dof_distance" type="float">0</dof_distance>
+        </technique>
+      </extra>
+    </camera>
+  </library_cameras>
+  <library_effects>
+    <effect id="Leg_001-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Net_Metal_001-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Screw1_001-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Screw2_001-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Net_Bottom_001-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Net_Top_001-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Net_001-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Metal_001-effect">
+      <profile_COMMON>
+        <newparam sid="tabletennis_1_png-surface">
+          <surface type="2D">
+            <init_from>tabletennis_1_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="tabletennis_1_png-sampler">
+          <sampler2D>
+            <source>tabletennis_1_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="tabletennis_1_png-sampler" texcoord="Cube_001-mesh-map-0"/>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Board_001-effect">
+      <profile_COMMON>
+        <newparam sid="tabletennis_1_png-surface">
+          <surface type="2D">
+            <init_from>tabletennis_1_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="tabletennis_1_png-sampler">
+          <sampler2D>
+            <source>tabletennis_1_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="tabletennis_1_png-sampler" texcoord="Cube_001-mesh-map-0"/>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Screw1-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="tabletennis_1_png" name="tabletennis_1_png">
+      <init_from>tabletennis_1.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="Leg_001-material" name="Leg.001">
+      <instance_effect url="#Leg_001-effect"/>
+    </material>
+    <material id="Net_Metal_001-material" name="Net_Metal.001">
+      <instance_effect url="#Net_Metal_001-effect"/>
+    </material>
+    <material id="Screw1_001-material" name="Screw1.001">
+      <instance_effect url="#Screw1_001-effect"/>
+    </material>
+    <material id="Screw2_001-material" name="Screw2.001">
+      <instance_effect url="#Screw2_001-effect"/>
+    </material>
+    <material id="Net_Bottom_001-material" name="Net_Bottom.001">
+      <instance_effect url="#Net_Bottom_001-effect"/>
+    </material>
+    <material id="Net_Top_001-material" name="Net_Top.001">
+      <instance_effect url="#Net_Top_001-effect"/>
+    </material>
+    <material id="Net_001-material" name="Net.001">
+      <instance_effect url="#Net_001-effect"/>
+    </material>
+    <material id="Metal_001-material" name="Metal.001">
+      <instance_effect url="#Metal_001-effect"/>
+    </material>
+    <material id="Board_001-material" name="Board.001">
+      <instance_effect url="#Board_001-effect"/>
+    </material>
+    <material id="Screw1-material" name="Screw1">
+      <instance_effect url="#Screw1-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Cube_020-mesh" name="Cube.020">
+      <mesh>
+        <source id="Cube_020-mesh-positions">
+          <float_array id="Cube_020-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_020-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_020-mesh-normals">
+          <float_array id="Cube_020-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_020-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_020-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_020-mesh-positions"/>
+        </vertices>
+        <triangles material="Leg_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_020-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_020-mesh-normals" offset="1"/>
+          <p>5 0 0 0 4 0 6 1 1 1 5 1 7 2 2 2 6 2 4 3 3 3 7 3 1 4 3 4 0 4 6 5 4 5 7 5 5 0 1 0 0 0 6 1 2 1 1 1 7 2 3 2 2 2 4 3 0 3 3 3 1 4 2 4 3 4 6 5 5 5 4 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_016-mesh" name="Cube.016">
+      <mesh>
+        <source id="Cube_016-mesh-positions">
+          <float_array id="Cube_016-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_016-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_016-mesh-normals">
+          <float_array id="Cube_016-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_016-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_016-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_016-mesh-positions"/>
+        </vertices>
+        <triangles material="Leg_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_016-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_016-mesh-normals" offset="1"/>
+          <p>5 0 0 0 4 0 6 1 1 1 5 1 7 2 2 2 6 2 4 3 3 3 7 3 1 4 3 4 0 4 6 5 4 5 7 5 5 0 1 0 0 0 6 1 2 1 1 1 7 2 3 2 2 2 4 3 0 3 3 3 1 4 2 4 3 4 6 5 5 5 4 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_015-mesh" name="Cube.015">
+      <mesh>
+        <source id="Cube_015-mesh-positions">
+          <float_array id="Cube_015-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_015-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_015-mesh-normals">
+          <float_array id="Cube_015-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_015-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_015-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_015-mesh-positions"/>
+        </vertices>
+        <triangles material="Leg_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_015-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_015-mesh-normals" offset="1"/>
+          <p>5 0 0 0 4 0 6 1 1 1 5 1 7 2 2 2 6 2 4 3 3 3 7 3 1 4 3 4 0 4 6 5 4 5 7 5 5 0 1 0 0 0 6 1 2 1 1 1 7 2 3 2 2 2 4 3 0 3 3 3 1 4 2 4 3 4 6 5 5 5 4 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_005-mesh" name="Cube.005">
+      <mesh>
+        <source id="Cube_005-mesh-positions">
+          <float_array id="Cube_005-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_005-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_005-mesh-normals">
+          <float_array id="Cube_005-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_005-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_005-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_005-mesh-positions"/>
+        </vertices>
+        <triangles material="Leg_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_005-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_005-mesh-normals" offset="1"/>
+          <p>5 0 0 0 4 0 6 1 1 1 5 1 7 2 2 2 6 2 4 3 3 3 7 3 1 4 3 4 0 4 6 5 4 5 7 5 5 0 1 0 0 0 6 1 2 1 1 1 7 2 3 2 2 2 4 3 0 3 3 3 1 4 2 4 3 4 6 5 5 5 4 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_013-mesh" name="Cube.013">
+      <mesh>
+        <source id="Cube_013-mesh-positions">
+          <float_array id="Cube_013-mesh-positions-array" count="60">-1 -1 -1 -1 2.47531 -1 1 2.47531 -1 1 -1 -1 -1 -1 4.155627 -1 2.47531 1 1 2.47531 1 1 -1 4.155627 -1 -0.3333333 2.136021 -1 0.4872322 1 -0.9106369 2.47531 -0.5760725 0.8946006 2.47531 -0.5760725 1 0.4872322 1 1 -0.3333333 2.136021 0.8946006 -1 -0.5760725 -0.9106369 -1 -0.5760725 0.8946006 -0.3333333 -0.5760725 -0.9106369 -0.3333333 -0.5760725 0.8946006 0.4872322 -0.5760725 -0.9106369 0.4872322 -0.5760725</float_array>
+          <technique_common>
+            <accessor source="#Cube_013-mesh-positions-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_013-mesh-normals">
+          <float_array id="Cube_013-mesh-normals-array" count="51">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0.9983965 0 0.05660891 0.99819 0.05710977 0.01885181 0.9984205 0.04554492 0.03289777 -0.9974846 0.06731069 0.02221912 0 0 1 -0.9978048 0.053685 0.03877741 -0.9977715 0 0.06672567 0.9983965 0 0.05660891 0.9994576 0 0.03293198 -0.9992458 0 0.03883337 -0.9977714 0 0.06672561 -0.9977715 0 0.06672561</float_array>
+          <technique_common>
+            <accessor source="#Cube_013-mesh-normals-array" count="17" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_013-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_013-mesh-positions"/>
+        </vertices>
+        <triangles material="Net_Metal_001-material" count="36">
+          <input semantic="VERTEX" source="#Cube_013-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_013-mesh-normals" offset="1"/>
+          <p>9 0 1 0 0 0 11 1 2 1 1 1 12 2 13 2 3 2 14 3 15 3 0 3 1 4 3 4 0 4 10 5 9 5 19 5 15 6 8 6 4 6 17 7 9 7 8 7 13 8 14 8 7 8 16 9 15 9 14 9 12 10 16 10 13 10 18 9 17 9 16 9 6 11 18 11 12 11 11 9 19 9 18 9 0 0 4 0 8 0 9 0 5 0 1 0 0 0 8 0 9 0 1 1 5 1 10 1 11 1 6 1 2 1 1 1 10 1 11 1 2 2 6 2 12 2 13 2 7 2 3 2 3 2 2 2 12 2 3 3 7 3 14 3 15 3 4 3 0 3 3 3 14 3 0 3 1 4 2 4 3 4 10 12 5 12 9 12 15 13 17 13 8 13 17 5 19 5 9 5 13 14 16 14 14 14 16 9 17 9 15 9 12 15 18 15 16 15 18 9 19 9 17 9 6 16 11 16 18 16 11 9 10 9 19 9</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_012-mesh" name="Cube.012">
+      <mesh>
+        <source id="Cube_012-mesh-positions">
+          <float_array id="Cube_012-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_012-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_012-mesh-normals">
+          <float_array id="Cube_012-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_012-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_012-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_012-mesh-positions"/>
+        </vertices>
+        <triangles material="Net_Metal_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_012-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_012-mesh-normals" offset="1"/>
+          <p>5 0 0 0 4 0 6 1 1 1 5 1 7 2 2 2 6 2 4 3 3 3 7 3 1 4 3 4 0 4 6 5 4 5 7 5 5 0 1 0 0 0 6 1 2 1 1 1 7 2 3 2 2 2 4 3 0 3 3 3 1 4 2 4 3 4 6 5 5 5 4 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_011-mesh" name="Cube.011">
+      <mesh>
+        <source id="Cube_011-mesh-positions">
+          <float_array id="Cube_011-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_011-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_011-mesh-normals">
+          <float_array id="Cube_011-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_011-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_011-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_011-mesh-positions"/>
+        </vertices>
+        <triangles material="Net_Metal_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_011-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_011-mesh-normals" offset="1"/>
+          <p>5 0 0 0 4 0 6 1 1 1 5 1 7 2 2 2 6 2 4 3 3 3 7 3 1 4 3 4 0 4 6 5 4 5 7 5 5 0 1 0 0 0 6 1 2 1 1 1 7 2 3 2 2 2 4 3 0 3 3 3 1 4 2 4 3 4 6 5 5 5 4 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Circle_007-mesh" name="Circle.007">
+      <mesh>
+        <source id="Circle_007-mesh-positions">
+          <float_array id="Circle_007-mesh-positions-array" count="27">0 1 0 -0.7071068 0.7071068 0 -1 0 0 -0.7071068 -0.7071068 0 0 -1 0 0.7071069 -0.7071067 0 1 0 0 0.7071069 0.7071067 0 2.36023e-7 0 0.8147554</float_array>
+          <technique_common>
+            <accessor source="#Circle_007-mesh-positions-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Circle_007-mesh-normals">
+          <float_array id="Circle_007-mesh-normals-array" count="27">0 0 1 -0.6110764 0.253116 -0.7500119 0.6110762 -0.253116 -0.7500121 -0.2531161 0.6110764 -0.7500119 -0.2531161 -0.6110764 -0.750012 0.253116 -0.6110762 -0.750012 0.253116 0.6110762 -0.750012 -0.6110764 -0.253116 -0.7500119 0.6110762 0.253116 -0.7500121</float_array>
+          <technique_common>
+            <accessor source="#Circle_007-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Circle_007-mesh-vertices">
+          <input semantic="POSITION" source="#Circle_007-mesh-positions"/>
+        </vertices>
+        <triangles material="Screw1_001-material" count="14">
+          <input semantic="VERTEX" source="#Circle_007-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Circle_007-mesh-normals" offset="1"/>
+          <p>5 0 7 0 1 0 6 1 5 1 8 1 2 2 1 2 8 2 5 3 4 3 8 3 8 4 0 4 7 4 1 5 0 5 8 5 4 6 3 6 8 6 7 7 6 7 8 7 3 8 2 8 8 8 1 0 2 0 3 0 3 0 4 0 1 0 4 0 5 0 1 0 5 0 6 0 7 0 7 0 0 0 1 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Circle_006-mesh" name="Circle.006">
+      <mesh>
+        <source id="Circle_006-mesh-positions">
+          <float_array id="Circle_006-mesh-positions-array" count="27">0 1 0 -0.7071068 0.7071068 0 -1 0 0 -0.7071068 -0.7071068 0 0 -1 0 0.7071069 -0.7071067 0 1 0 0 0.7071069 0.7071067 0 2.36023e-7 0 0.8147554</float_array>
+          <technique_common>
+            <accessor source="#Circle_006-mesh-positions-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Circle_006-mesh-normals">
+          <float_array id="Circle_006-mesh-normals-array" count="27">0 0 1 -0.6110764 0.253116 -0.7500119 0.6110762 -0.253116 -0.7500121 -0.2531161 0.6110764 -0.7500119 -0.2531161 -0.6110764 -0.750012 0.253116 -0.6110762 -0.750012 0.253116 0.6110762 -0.750012 -0.6110764 -0.253116 -0.7500119 0.6110762 0.253116 -0.7500121</float_array>
+          <technique_common>
+            <accessor source="#Circle_006-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Circle_006-mesh-vertices">
+          <input semantic="POSITION" source="#Circle_006-mesh-positions"/>
+        </vertices>
+        <triangles material="Screw1_001-material" count="14">
+          <input semantic="VERTEX" source="#Circle_006-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Circle_006-mesh-normals" offset="1"/>
+          <p>5 0 7 0 1 0 6 1 5 1 8 1 2 2 1 2 8 2 5 3 4 3 8 3 8 4 0 4 7 4 1 5 0 5 8 5 4 6 3 6 8 6 7 7 6 7 8 7 3 8 2 8 8 8 1 0 2 0 3 0 3 0 4 0 1 0 4 0 5 0 1 0 5 0 6 0 7 0 7 0 0 0 1 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cylinder_001-mesh" name="Cylinder.001">
+      <mesh>
+        <source id="Cylinder_001-mesh-positions">
+          <float_array id="Cylinder_001-mesh-positions-array" count="1152">0 0.08546859 -0.66701 0 0.3079987 1 0.0600875 0.08110636 -0.6661276 0.0600875 0.3020805 1 0.1178659 0.06818723 -0.6635146 0.1178659 0.2845537 1 0.1711148 0.04720777 -0.6592712 0.1711148 0.2560915 1 0.2177878 0.01897412 -0.6535606 0.2177878 0.2177879 1 0.2560913 -0.01542854 -0.6466022 0.2560914 0.1711149 1 0.2845534 -0.05467844 -0.6386635 0.2845534 0.117866 1 0.3020803 -0.09726703 -0.6300495 0.3020803 0.06008774 1 0.3079984 -0.1415576 -0.6210911 0.3079984 2.43664e-7 1 0.3020803 -0.1858482 -0.6121329 0.3020803 -0.0600872 1 0.2845534 -0.2284368 -0.6035187 0.2845535 -0.1178656 1 0.2560913 -0.2676867 -0.5955801 0.2560914 -0.1711145 1 0.2177878 -0.3020895 -0.5886217 0.2177878 -0.2177875 1 0.1711147 -0.3303232 -0.582911 0.1711147 -0.2560911 1 0.1178658 -0.3513026 -0.5786677 0.1178658 -0.2845532 1 0.06008744 -0.3642217 -0.5760546 0.06008744 -0.3020801 1 0 -0.368584 -0.5751724 0 -0.3079982 1 -0.06008756 -0.3642217 -0.5760546 -0.06008756 -0.30208 1 -0.117866 -0.3513026 -0.5786677 -0.1178659 -0.2845531 1 -0.1711148 -0.3303231 -0.5829111 -0.1711148 -0.256091 1 -0.2177878 -0.3020893 -0.5886217 -0.2177878 -0.2177873 1 -0.2560914 -0.2676866 -0.5955801 -0.2560914 -0.1711143 1 -0.2845535 -0.2284367 -0.6035189 -0.2845535 -0.1178654 1 -0.3020803 -0.1858481 -0.6121329 -0.3020803 -0.06008702 1 -0.3079983 -0.1415573 -0.6210912 -0.3079983 5.17814e-7 1 -0.3020802 -0.09726679 -0.6300495 -0.3020802 0.06008797 1 -0.2845532 -0.0546782 -0.6386636 -0.2845532 0.1178664 1 -0.2560911 -0.0154283 -0.6466023 -0.2560911 0.1711152 1 -0.2177874 0.0189743 -0.6535606 -0.2177874 0.2177882 1 -0.1711143 0.04720795 -0.6592713 -0.1711143 0.2560918 1 -0.1178655 0.06818741 -0.6635146 -0.1178654 0.2845538 1 -0.0600869 0.08110636 -0.6661277 -0.0600869 0.3020806 1 0 0.3079987 -0.5470086 0.0600875 0.3020805 -0.5470086 0.1178659 0.2845537 -0.5470086 0.1711148 0.2560915 -0.5470086 0.2177878 0.2177879 -0.5470086 0.2560914 0.1711149 -0.5470086 0.2845534 0.117866 -0.5470086 0.3020803 0.06008774 -0.5470086 0.3079984 2.43664e-7 -0.5470086 0.3020803 -0.0600872 -0.5470086 0.2845535 -0.1178656 -0.5470086 0.2560914 -0.1711145 -0.5470086 0.2177878 -0.2177875 -0.5470086 0.1711147 -0.2560911 -0.5470086 0.1178658 -0.2845532 -0.5470086 0.06008744 -0.3020801 -0.5470086 0 -0.3079982 -0.5470086 -0.06008756 -0.30208 -0.5470086 -0.1178659 -0.2845531 -0.5470086 -0.1711148 -0.256091 -0.5470086 -0.2177878 -0.2177873 -0.5470086 -0.2560914 -0.1711143 -0.5470086 -0.2845535 -0.1178654 -0.5470086 -0.3020803 -0.06008702 -0.5470086 -0.3079983 5.17814e-7 -0.5470086 -0.3020802 0.06008797 -0.5470086 -0.2845532 0.1178664 -0.5470086 -0.2560911 0.1711152 -0.5470086 -0.2177874 0.2177882 -0.5470086 -0.1711143 0.2560918 -0.5470086 -0.1178654 0.2845538 -0.5470086 -0.0600869 0.3020806 -0.5470086 -0.0600869 -1.443633 -0.9974018 -0.1178655 -1.456552 -0.9947887 -0.1711143 -1.477531 -0.9905454 -0.2177874 -1.505765 -0.9848347 0.3079984 -1.875913 -1.055628 0.3020803 -1.935999 -1.055529 0.2845534 -1.993776 -1.055433 0.2560913 -2.047023 -1.055344 0.1711148 -1.477532 -0.9905453 0.1178659 -1.456552 -0.9947887 0.0600875 -1.443633 -0.9974017 0 -1.439271 -0.9982841 0.2177878 -1.658132 -1.05599 0.2560913 -1.704804 -1.055913 0.2845534 -1.758051 -1.055824 0.3020803 -1.815827 -1.055728 -0.1711148 -1.855062 -0.9141852 -0.117866 -1.876042 -0.9099418 -0.06008756 -1.888961 -0.9073287 0 -1.893323 -0.9064465 -0.2560911 -1.540168 -0.9778764 -0.2845532 -1.579418 -0.9699377 -0.3020802 -1.622006 -0.9613236 -0.3079983 -1.666297 -0.9523653 0 -2.183903 -1.055117 -0.06008756 -2.177985 -1.055127 -0.1178659 -2.160459 -1.055156 -0.1711148 -2.131997 -1.055203 -0.3079983 -1.875913 -1.055628 -0.3020802 -1.815827 -1.055728 -0.2845532 -1.75805 -1.055824 -0.2560911 -1.704803 -1.055913 0.2560913 -1.792426 -0.9268541 0.2845534 -1.753176 -0.9347928 0.3020803 -1.710588 -0.9434069 0.3079984 -1.666297 -0.9523652 0.06008744 -1.888961 -0.9073287 0.1178658 -1.876042 -0.9099418 0.1711147 -1.855062 -0.9141851 0.2177878 -1.826829 -0.9198958 -0.2177874 -1.658132 -1.05599 -0.1711143 -1.619829 -1.056054 -0.1178654 -1.591368 -1.056101 -0.0600869 -1.573841 -1.05613 0 -1.567923 -1.05614 0.0600875 -1.573842 -1.05613 0.1178659 -1.591368 -1.056101 0.1711148 -1.619829 -1.056054 0.2177878 -2.093695 -1.055267 0.1711147 -2.131997 -1.055203 0.1178658 -2.160459 -1.055156 0.06008744 -2.177985 -1.055127 0.3020803 -1.622006 -0.9613236 0.2845534 -1.579418 -0.9699376 0.2560913 -1.540168 -0.9778763 0.2177878 -1.505765 -0.9848347 -0.2177878 -2.093695 -1.055267 -0.2560914 -2.047023 -1.055344 -0.2845535 -1.993776 -1.055433 -0.3020803 -1.935999 -1.055529 -0.3020803 -1.710587 -0.9434069 -0.2845535 -1.753176 -0.9347929 -0.2560914 -1.792426 -0.9268541 -0.2177878 -1.826829 -0.9198958 0.3079984 -1.680048 -1.152695 0.3020803 -1.719156 -1.162759 0.2845534 -1.756761 -1.172437 0.2560913 -1.791419 -1.181355 0.2177878 -1.5383 -1.116217 0.2560913 -1.568677 -1.124035 0.2845534 -1.603334 -1.132953 0.3020803 -1.640939 -1.142631 0 -1.88051 -1.204282 -0.06008756 -1.876658 -1.203291 -0.1178659 -1.86525 -1.200355 -0.1711148 -1.846726 -1.195588 -0.3079983 -1.680048 -1.152695 -0.3020802 -1.64094 -1.142631 -0.2845532 -1.603334 -1.132953 -0.2560911 -1.568677 -1.124035 -0.2177874 -1.5383 -1.116217 -0.1711143 -1.51337 -1.109802 -0.1178654 -1.494845 -1.105035 -0.0600869 -1.483437 -1.102099 0 -1.479585 -1.101108 0.0600875 -1.483438 -1.102099 0.1178659 -1.494845 -1.105035 0.1711148 -1.51337 -1.109802 0.2177878 -1.821796 -1.189173 0.1711147 -1.846726 -1.195588 0.1178658 -1.86525 -1.200355 0.06008744 -1.876658 -1.203291 -0.2177878 -1.821796 -1.189173 -0.2560914 -1.791419 -1.181355 -0.2845535 -1.756761 -1.172436 -0.3020803 -1.719156 -1.162759 0.3079984 -1.245018 -1.19242 0.3020803 -1.244554 -1.205676 0.2845534 -1.244108 -1.218423 0.2560913 -1.243697 -1.23017 0.2177878 -1.2467 -1.144374 0.2560913 -1.24634 -1.154671 0.2845534 -1.245929 -1.166418 0.3020803 -1.245482 -1.179164 0 -1.242639 -1.260367 -0.06008756 -1.242685 -1.259062 -0.117866 -1.24282 -1.255195 -0.1711148 -1.24304 -1.248916 -0.3079983 -1.245018 -1.19242 -0.3020802 -1.245483 -1.179164 -0.2845532 -1.245929 -1.166418 -0.2560911 -1.24634 -1.154671 -0.2177874 -1.2467 -1.144374 -0.1711143 -1.246996 -1.135924 -0.1178655 -1.247216 -1.129645 -0.0600869 -1.247351 -1.125779 0 -1.247397 -1.124473 0.0600875 -1.247352 -1.125779 0.1178659 -1.247216 -1.129645 0.1711148 -1.246996 -1.135924 0.2177878 -1.243336 -1.240466 0.1711147 -1.24304 -1.248916 0.1178658 -1.24282 -1.255195 0.06008744 -1.242685 -1.259062 -0.2177878 -1.243336 -1.240466 -0.2560914 -1.243697 -1.23017 -0.2845535 -1.244108 -1.218422 -0.3020803 -1.244554 -1.205676 0.3079984 1.400781 -1.196331 0.3020803 1.401245 -1.209587 0.2845534 1.401692 -1.222334 0.2560913 1.402102 -1.234081 0.2177878 1.399099 -1.148285 0.2560913 1.399459 -1.158582 0.2845534 1.399871 -1.170329 0.3020803 1.400317 -1.183075 0 1.40316 -1.264278 -0.06008756 1.403114 -1.262973 -0.117866 1.402979 -1.259106 -0.1711148 1.402759 -1.252827 -0.3079983 1.400781 -1.196331 -0.3020802 1.400317 -1.183075 -0.2845532 1.39987 -1.170329 -0.2560911 1.399459 -1.158582 -0.2177874 1.399099 -1.148285 -0.1711143 1.398803 -1.139835 -0.1178655 1.398583 -1.133556 -0.0600869 1.398448 -1.12969 0 1.398402 -1.128384 0.0600875 1.398448 -1.12969 0.1178659 1.398583 -1.133556 0.1711148 1.398803 -1.139835 0.2177878 1.402463 -1.244377 0.1711147 1.402759 -1.252827 0.1178658 1.402979 -1.259106 0.06008744 1.403114 -1.262973 -0.2177878 1.402463 -1.244377 -0.2560914 1.402103 -1.234081 -0.2845535 1.401691 -1.222333 -0.3020803 1.401245 -1.209587 0.3079984 1.900801 -1.147547 0.3020803 1.942407 -1.157111 0.2845534 1.982414 -1.166308 0.2560913 2.019284 -1.174783 0.2177878 1.749999 -1.112881 0.2560913 1.782317 -1.12031 0.2845534 1.819188 -1.128786 0.3020803 1.859195 -1.137982 0 2.114066 -1.196571 -0.06008756 2.109968 -1.195629 -0.117866 2.097832 -1.192839 -0.1711148 2.078124 -1.188309 -0.3079983 1.900801 -1.147547 -0.3020802 1.859194 -1.137982 -0.2845532 1.819187 -1.128786 -0.2560911 1.782317 -1.12031 -0.2177874 1.749999 -1.112881 -0.1711143 1.723477 -1.106784 -0.1178655 1.70377 -1.102253 -0.0600869 1.691633 -1.099464 0 1.687536 -1.098522 0.0600875 1.691633 -1.099464 0.1178659 1.70377 -1.102253 0.1711148 1.723477 -1.106784 0.2177878 2.051602 -1.182212 0.1711147 2.078124 -1.188309 0.1178658 2.097832 -1.192839 0.06008744 2.109968 -1.195629 -0.2177878 2.051602 -1.182212 -0.2560914 2.019284 -1.174783 -0.2845535 1.982414 -1.166307 -0.3020803 1.942407 -1.157111 0.3079984 2.094715 -1.051483 0.3020803 2.154767 -1.051942 0.2845534 2.212511 -1.052385 0.2560913 2.265727 -1.052792 0.2177878 1.877058 -1.049817 0.2560913 1.923703 -1.050174 0.2845534 1.976921 -1.050581 0.3020803 2.034664 -1.051023 0 2.402529 -1.053839 -0.06008756 2.396615 -1.053794 -0.117866 2.379097 -1.05366 -0.1711148 2.350652 -1.053442 -0.3079983 2.094715 -1.051483 -0.3020802 2.034664 -1.051023 -0.2845532 1.97692 -1.050581 -0.2560911 1.923703 -1.050174 -0.2177874 1.877058 -1.049817 -0.1711143 1.838778 -1.049524 -0.1178655 1.810333 -1.049306 -0.0600869 1.792816 -1.049172 0 1.786902 -1.049127 0.0600875 1.792817 -1.049172 0.1178659 1.810333 -1.049306 0.1711148 1.838778 -1.049524 0.2177878 2.312372 -1.053149 0.1711147 2.350652 -1.053442 0.1178658 2.379097 -1.05366 0.06008744 2.396615 -1.053794 -0.2177878 2.312372 -1.053149 -0.2560914 2.265727 -1.052792 -0.2845535 2.21251 -1.052384 -0.3020803 2.154767 -1.051942 0.3079984 1.922312 -0.9674739 0.3020803 1.954686 -0.9563062 0.2845534 1.985816 -0.9455676 0.2560913 2.014505 -0.935671 0.2177878 1.804972 -1.007951 0.2560913 1.830119 -0.9992767 0.2845534 1.858809 -0.98938 0.3020803 1.889938 -0.9786415 0 2.088255 -0.9102302 -0.06008756 2.085067 -0.9113301 -0.117866 2.075622 -0.9145876 -0.1711148 2.060288 -0.9198776 -0.3079983 1.922312 -0.9674739 -0.3020802 1.889938 -0.9786417 -0.2845532 1.858809 -0.9893801 -0.2560911 1.830119 -0.9992769 -0.2177874 1.804972 -1.007951 -0.1711143 1.784336 -1.01507 -0.1178655 1.769001 -1.02036 -0.0600869 1.759557 -1.023618 0 1.756369 -1.024717 0.0600875 1.759559 -1.023618 0.1178659 1.769001 -1.02036 0.1711148 1.784336 -1.01507 0.2177878 2.039651 -0.9269965 0.1711147 2.060288 -0.9198776 0.1178658 2.075622 -0.9145876 0.06008744 2.085067 -0.9113301 -0.2177878 2.039651 -0.9269965 -0.2560914 2.014505 -0.935671 -0.2845535 1.985815 -0.9455677 -0.3020803 1.954686 -0.9563062 0.3079959 0.2171667 -0.603873 0.3020778 0.2417069 -0.5917727 0.2845509 0.2653053 -0.5801374 0.2560888 0.2870529 -0.5694144 0.2177852 0.1282178 -0.6477305 0.2560888 0.1472802 -0.6383315 0.2845509 0.1690282 -0.6276084 0.3020778 0.1926257 -0.6159731 -2.56112e-6 0.3429587 -0.5418491 -0.06009006 0.340542 -0.5430409 -0.1178684 0.3333823 -0.5465705 -0.1711173 0.3217585 -0.5523022 -0.3080008 0.2171667 -0.603873 -0.3020827 0.1926261 -0.6159733 -0.2845557 0.1690285 -0.6276084 -0.2560936 0.1472799 -0.6383317 -0.2177899 0.1282178 -0.6477305 -0.1711168 0.1125751 -0.6554439 -0.1178679 0.1009497 -0.6611754 -0.0600894 0.09379106 -0.664705 -2.46076e-6 0.09137445 -0.6658965 0.06008493 0.09379249 -0.6647049 0.1178634 0.1009497 -0.6611754 0.1711122 0.1125751 -0.6554439 0.2177852 0.3061144 -0.5600155 0.1711122 0.3217585 -0.5523022 0.1178633 0.3333823 -0.5465705 0.06008487 0.340542 -0.5430409 -0.2177903 0.3061144 -0.5600155 -0.2560939 0.2870529 -0.5694144 -0.284556 0.2653046 -0.5801375 -0.3020828 0.2417069 -0.5917727</float_array>
+          <technique_common>
+            <accessor source="#Cylinder_001-mesh-positions-array" count="384" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cylinder_001-mesh-normals">
+          <float_array id="Cylinder_001-mesh-normals-array" count="1152">0 0.727881 0.6857035 0.1667581 0.852194 -0.4959408 0 0.8666461 -0.4989235 0.1420046 0.7138987 0.6856992 0.3292092 0.8092437 -0.4865656 0.2785453 0.6724823 0.6856969 0.4832797 0.7389738 -0.4694237 0.4043767 0.6052222 0.6857008 0.6255108 0.6432116 -0.4416052 0.5146825 0.5146825 0.6857143 0.7531897 0.5238969 -0.3977906 0.6052222 0.4043767 0.6857008 0.8635901 0.3822783 -0.3287484 0.6724823 0.2785453 0.6856969 0.9506022 0.2184541 -0.2205294 0.7138987 0.1420046 0.6856992 0.9974421 0.03338742 -0.06320416 0.727881 0 0.6857035 0.9794965 -0.1607723 0.1214032 0.7138987 -0.1420046 0.6856992 0.8972637 -0.3405329 0.28099 0.6724823 -0.2785453 0.6856969 0.7776231 -0.4923319 0.3910394 0.6052222 -0.4043767 0.6857008 0.6394757 -0.6152432 0.461028 0.5147049 -0.5146744 0.6857035 0.4897742 -0.7106121 0.5051254 0.4043767 -0.6052222 0.6857008 0.3315034 -0.7787675 0.5325663 0.2785453 -0.6724823 0.6856969 0.1673657 -0.8195856 0.5479673 0.1420046 -0.7138987 0.6856992 0 -0.8331381 0.5530652 0 -0.727881 0.6857035 -0.1673657 -0.8195856 0.5479673 -0.1420046 -0.7138987 0.6856992 -0.3315034 -0.7787675 0.5325663 -0.2785453 -0.6724823 0.6856969 -0.4897742 -0.7106121 0.5051254 -0.4043767 -0.6052222 0.6857008 -0.6394757 -0.6152432 0.461028 -0.5146825 -0.5146825 0.6857143 -0.7776231 -0.4923319 0.3910394 -0.6052222 -0.4043767 0.6857008 -0.8972637 -0.3405329 0.28099 -0.6724823 -0.2785453 0.6856969 -0.9794965 -0.1607723 0.1214032 -0.7138987 -0.1420046 0.6856992 -0.9974421 0.03338742 -0.06320416 -0.727881 0 0.6857035 -0.9506022 0.2184541 -0.2205294 -0.7138987 0.1420046 0.6856992 -0.8635824 0.3822884 -0.3287571 -0.6724823 0.2785453 0.6856969 -0.7531897 0.5238969 -0.3977906 -0.6052222 0.4043767 0.6857008 -0.6255108 0.6432116 -0.4416052 -0.5146825 0.5146825 0.6857143 -0.4832797 0.7389738 -0.4694237 -0.4043767 0.6052222 0.6857008 -0.3292092 0.8092437 -0.4865656 -0.1420046 0.7138987 0.6856992 -0.1667581 0.852194 -0.4959408 -0.2785453 0.6724823 0.6856969 -0.6867167 -0.2366473 0.687327 -0.8780174 -0.1380705 0.4582818 -0.6832136 -0.2323158 0.6922779 0 0.3520364 -0.9359865 0.08008146 0.3506311 -0.9330835 0.1650144 0.3461427 -0.9235559 0.2603872 0.3372948 -0.9046716 0.3736812 0.3211876 -0.870173 0.5141327 0.2917366 -0.8065714 0.6885132 0.2371037 -0.6853697 0.8796179 0.1402041 -0.4545496 0.9981527 -0.002594053 -0.06070214 0.9051235 -0.1472576 0.3988317 0.6867167 -0.2366473 0.687327 0.4971019 -0.2797113 0.8213717 0.3543858 -0.2999401 0.8856899 0.2438502 -0.3091619 0.9192149 0.1532059 -0.3129431 0.9373338 0.07409924 -0.3142504 0.9464439 0 -0.3145884 0.9492282 -0.07409924 -0.3142504 0.9464439 -0.1532059 -0.3129431 0.9373338 -0.2438502 -0.3091619 0.9192149 -0.3543858 -0.2999401 0.8856899 -0.4971247 -0.2797071 0.8213592 -0.9051235 -0.1472576 0.3988317 -0.9981527 -0.002594053 -0.06070214 -0.8796179 0.1402041 -0.4545496 -0.6885132 0.2371037 -0.6853697 -0.5141327 0.2917366 -0.8065714 -0.3736812 0.3211876 -0.870173 -0.2603872 0.3372948 -0.9046716 -0.1650144 0.3461427 -0.9235559 -0.08008146 0.3506311 -0.9330835 0.9016715 0.1450292 -0.4073758 0.9465761 0.3224633 -0.003357052 0.6803928 0.2314263 -0.6953471 0 -0.341476 0.9398905 0.1851879 -0.9826743 -0.007538139 0.07861602 -0.3401609 0.9370753 0.8616111 0.5074997 -0.008392691 0.4909337 0.2724459 -0.8275007 0.367849 -0.3123039 0.875873 0.8780174 -0.1380705 0.4582818 0.9976243 -0.06888055 -0.001159667 0.9983732 0.002807736 0.05694872 -0.2559353 -0.3274726 0.9095377 -0.1620554 -0.3358606 0.9278663 -0.2408593 0.3014099 -0.922572 -0.4055379 0.9138336 -0.02114969 -0.5854795 0.8104973 -0.0175485 0.1620256 -0.3358622 0.9278708 -0.9661152 -0.2580702 -0.00463891 -0.9002895 -0.4352361 -0.006958365 0.07339763 0.3081786 -0.948493 -0.5076324 -0.2844731 0.8132555 0.3496926 0.2919192 -0.8902238 0.5854795 0.8104973 -0.0175485 0.2408593 0.3014099 -0.922572 0.8032338 -0.5956119 -0.007873892 0.5076324 -0.2844731 0.8132555 0.7396581 0.672852 -0.01327574 -0.07861602 -0.3401609 0.9370753 -0.3497194 0.291916 -0.8902143 -0.7396442 0.6728671 -0.01327604 -0.9016715 0.1450292 -0.4073758 -0.9983732 0.002807736 0.05694872 0.8796585 0.1283032 0.457973 0.6289214 0.195937 0.7523739 -0.9918886 0.1271104 -6.10374e-5 -0.9976243 -0.06888055 -0.001159667 -0.4909337 0.2724459 -0.8275007 -0.8616111 0.5074997 -0.008392691 -0.3640594 -0.9313438 -0.007721245 -0.1851879 -0.9826743 -0.007538139 0.1515904 0.3060192 -0.9398791 0.207533 0.9779383 -0.02380526 0.9918886 0.1271104 -6.10374e-5 -0.6803928 0.2314263 -0.6953471 -0.9465761 0.3224633 -0.003357052 0.2559353 -0.3274726 0.9095377 0.9002895 -0.4352361 -0.006958365 0.6832136 -0.2323158 0.6922779 0 0.9996907 -0.02487319 0 0.308857 -0.9511085 -0.1515904 0.3060192 -0.9398791 -0.07339763 0.3081786 -0.948493 -0.207533 0.9779383 -0.02380526 0.4055124 0.913845 -0.02114999 0.9661152 -0.2580702 -0.00463891 -0.367849 -0.3123039 0.875873 0 -0.9999721 -0.007477045 0.3640594 -0.9313438 -0.007721245 0.5304211 -0.8476972 -0.007934927 -0.8032338 -0.5956119 -0.007873892 -0.5304211 -0.8476972 -0.007934927 -0.6784963 -0.7345595 -0.008087456 0.6784963 -0.7345595 -0.008087456 0.4586108 -0.2350888 -0.8569769 0.2183307 -0.0438553 -0.974889 0.3199912 -0.04278755 -0.9464539 0 -0.27537 -0.9613383 -0.06735563 0.2737869 0.959429 -0.4586108 -0.2350888 -0.8569769 0.1389257 0.2696417 0.9528868 0.06735563 0.2737869 0.959429 0.6317496 -0.1919969 -0.7510191 0.8394255 -0.109136 -0.5324043 0.4459475 0.2307866 0.8647938 -0.3175215 0.2503793 0.9145985 -0.8394255 -0.109136 -0.5324043 -0.6289214 0.195937 0.7523739 0.06860768 -0.2746139 -0.9591038 0.1418842 -0.2720184 -0.9517746 0.3175215 0.2503793 0.9145985 0.2196769 0.2622817 0.9396544 0.3272302 -0.2561197 -0.9095731 0.9944168 0.01306229 -0.1047124 -0.3272302 -0.2561197 -0.9095731 -0.1418842 -0.2720184 -0.9517746 -0.8796585 0.1283032 0.457973 0.2254152 -0.2666468 -0.9370632 0 0.2751283 0.9614076 -0.06860768 -0.2746139 -0.9591038 -0.1389257 0.2696417 0.9528868 -0.4459475 0.2307866 0.8647938 -0.2254152 -0.2666468 -0.9370632 -0.2196769 0.2622817 0.9396544 -0.6317496 -0.1919969 -0.7510191 -0.9944168 0.01306229 -0.1047124 -0.1475908 0.04938006 0.9878151 -0.09216862 -0.05023497 0.9944755 -0.1480161 -0.04959303 0.9877408 -0.0441305 -0.04452723 -0.9980331 0.7799886 0.02942085 0.6251018 0.4888832 0.04181092 0.8713467 -0.9999304 -0.00137335 -0.01171934 -0.7727466 -0.02932894 -0.6340367 0.09170913 -0.04446595 -0.9947926 0.1472532 -0.04428273 -0.9881071 0.1475908 0.04938006 0.9878151 0.09189337 0.05026513 0.9944994 0.7727466 -0.02932894 -0.6340367 0.9999304 -0.00137335 -0.01171934 -0.1472532 -0.04428273 -0.9881071 0.3211802 0.04599183 0.9459007 -0.2183307 -0.0438553 -0.974889 0 -0.04452717 -0.9990082 0.0441305 -0.04452723 -0.9980331 0.04419171 0.05075335 0.997733 -0.09189337 0.05026513 0.9944994 -0.4888832 0.04181092 0.8713467 0.2189411 0.04806691 0.9745535 0.4860107 -0.03973537 -0.8730491 -0.7799886 0.02942085 0.6251018 -0.4860107 -0.03973537 -0.8730491 0 0.05090564 0.9987035 -0.04419171 0.05075335 0.997733 -0.09170913 -0.04446595 -0.9947926 -0.3211802 0.04599183 0.9459007 -0.3200187 -0.04278713 -0.9464447 -0.2189411 0.04806691 0.9745535 0.9999176 7.01932e-4 -0.01281785 0.8815925 -0.1283004 0.4542397 0.7811781 -0.03024482 0.6235752 0.4869589 0.04141408 -0.8724426 0.2195854 -0.04852545 0.9743857 -0.4901674 -0.0425741 0.8705881 -0.7811781 -0.03024482 0.6235752 -0.7732087 0.0302447 -0.63343 -0.4869589 0.04141408 -0.8724426 0 -0.05069255 0.9987143 -0.0443139 -0.05060088 0.9977354 0.7732211 0.03024399 -0.6334151 -0.1476494 0.04638838 -0.9879513 -0.09195345 0.04660236 -0.9946722 -0.2195854 -0.04852545 0.9743857 -0.3221298 -0.04666376 0.9455447 -0.3208147 0.04471015 -0.9460862 0.09195345 0.04660236 -0.9946722 0.3208147 0.04471015 -0.9460862 -0.04425197 0.0466935 -0.9979287 0.4901674 -0.0425741 0.8705881 -0.9999176 7.01932e-4 -0.01281785 0.1476494 0.04638838 -0.9879513 0.09216862 -0.05023497 0.9944755 -0.2189441 0.04587024 -0.9746586 0.3221298 -0.04666376 0.9455447 0.04425197 0.0466935 -0.9979287 0.0443139 -0.05060088 0.9977354 0 0.04672414 -0.9989079 0.2189441 0.04587024 -0.9746586 0.1480161 -0.04959303 0.9877408 -0.07001125 0.2795567 -0.9575733 -0.3633026 0.9315428 0.0154733 -0.1848255 0.982664 0.0145272 -0.448238 -0.2309095 0.8635761 -0.6316833 -0.1964816 0.7499141 0.3326623 0.2593851 -0.9066726 0.2205025 -0.2605745 0.9399359 -0.1392897 -0.2670128 0.9535735 -0.2205025 -0.2605745 0.9399359 0.6365359 0.1927583 -0.7467707 0.3189851 -0.2496458 0.9142897 -0.8815925 -0.1283004 0.4542397 -0.8408757 0.1096569 -0.5300032 -0.6365504 0.1927627 -0.7467572 0 -0.271616 0.9624058 -0.06753915 -0.2704923 0.9603501 0.8408848 0.1096541 -0.5299896 -0.2296249 0.2707645 -0.9348579 -0.1446919 0.2766878 -0.9500043 -0.3189851 -0.2496458 0.9142897 -0.4645649 0.237135 -0.8531978 0.1446919 0.2766878 -0.9500043 0.4645649 0.237135 -0.8531978 0.6316833 -0.1964816 0.7499141 -0.9942041 -0.01193273 -0.1068456 0.2296249 0.2707645 -0.9348579 0.1392897 -0.2670128 0.9535735 0.9942041 -0.01193273 -0.1068456 -0.3326623 0.2593851 -0.9066726 0.448238 -0.2309095 0.8635761 0.07001125 0.2795567 -0.9575733 0.06753915 -0.2704923 0.9603501 0 0.2804078 -0.959881 0.8994964 0.4364265 0.02093625 0.4702161 0.280506 0.8367875 0.6525353 0.2373799 0.719617 0.9457733 -0.3248102 -0.003357052 -0.9917886 -0.1278152 -0.004333734 -0.9975747 0.06930863 0.006408989 -0.9656945 0.2591096 0.01721292 0.5293248 0.8482503 0.01693814 0.3895429 -0.9183436 0.0700103 0.9975747 0.06930863 0.006408989 -0.6773465 0.7354248 0.01876938 -0.5293468 0.8482366 0.01693785 0.8588917 -0.5121061 0.007232964 -0.802195 0.5967098 0.02050882 0.1848255 0.982664 0.0145272 0.1938582 -0.9763408 0.09579986 -0.1938582 -0.9763408 0.09579986 -0.3895429 -0.9183436 0.0700103 0 0.9998989 0.0142219 0.9917886 -0.1278152 -0.004333734 -0.8588917 -0.5121061 0.007232964 -0.9457733 -0.3248102 -0.003357052 0.6773465 0.7354248 0.01876938 0.5733911 -0.8180925 0.04413044 -0.5733911 -0.8180925 0.04413044 0.7330434 -0.6797873 0.02316415 -0.8994958 0.4364262 0.02096676 0 -0.9941601 0.1079156 0.9656945 0.2591096 0.01721292 -0.7330282 -0.6798037 0.02316367 0.3633026 0.9315428 0.0154733 0.8021805 0.5967295 0.02050846 0.8914076 -0.1557704 -0.4255916 0.7913561 -0.3524937 0.4995034 0.7866289 -0.5762304 0.2217515 0.4849227 -0.3000056 -0.8214905 0.3532286 -0.334795 -0.8735799 -0.8914118 -0.1557407 -0.4255936 -0.6525353 0.2373799 0.719617 0.08057099 -0.4148797 -0.906302 0 -0.4236088 -0.9058453 -0.08057099 -0.4148797 -0.906302 0.8670293 0.1454255 0.4765625 -0.1440809 0.3134317 0.9386167 -0.4849227 -0.3000056 -0.8214905 -0.4702398 0.280502 0.8367754 0.06964504 0.3154782 0.9463737 0.1440809 0.3134317 0.9386167 -0.3532286 -0.334795 -0.8735799 0.3337922 0.299885 0.8936732 -0.06964504 0.3154782 0.9463737 0.6666098 -0.2486434 -0.7027146 -0.998714 -0.004730463 0.05047893 -0.8670293 0.1454255 0.4765625 0.2292873 0.3090022 0.9230087 0.2512321 -0.364488 -0.8966777 0.1636453 -0.3924803 -0.9050853 0.998714 -0.004730463 0.05047893 -0.2292873 0.3090022 0.9230087 -0.3337922 0.299885 0.8936732 0 0.3160263 0.9487504 -0.1636453 -0.3924803 -0.9050853 -0.6666098 -0.2486434 -0.7027146 -0.2512321 -0.364488 -0.8966777 -0.2700052 -0.9569665 -0.1063601 -0.1726478 -0.9775033 -0.1211616 -0.1057779 -0.1156049 0.987647 -0.65855 -0.7504137 0.05649161 0.1057779 -0.1156049 0.987647 0.1587893 -0.1159715 0.9804778 0.3816443 -0.92086 -0.07977753 0.2700334 -0.9569586 -0.1063593 0.2370736 -0.1185978 0.9642255 0.3678135 -0.1313837 0.9205714 0.512171 -0.8582878 -0.03198397 -0.7866341 -0.5762343 0.2217224 -0.3678135 -0.1313837 0.9205714 0.0841729 -0.9881008 -0.1287314 0 -0.9913761 -0.1310482 -0.0841729 -0.9881008 -0.1287314 0.5867402 -0.1874822 0.7877731 -0.06537121 -0.1157271 0.9911276 -0.512171 -0.8582878 -0.03198397 -0.2371024 -0.118597 0.9642185 0.03134346 -0.1158825 0.9927683 0.06537121 -0.1157271 0.9911276 -0.3816443 -0.92086 -0.07977753 -0.03134346 -0.1158825 0.9927683 0.6585349 -0.7504271 0.0564903 -0.7913447 -0.3525023 0.4995155 -0.5867402 -0.1874822 0.7877731 0.1726478 -0.9775033 -0.1211616 -0.1587893 -0.1159715 0.9804778 0 -0.1159735 0.9932524</float_array>
+          <technique_common>
+            <accessor source="#Cylinder_001-mesh-normals-array" count="384" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cylinder_001-mesh-vertices">
+          <input semantic="POSITION" source="#Cylinder_001-mesh-positions"/>
+        </vertices>
+        <triangles material="Screw2_001-material" count="764">
+          <input semantic="VERTEX" source="#Cylinder_001-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cylinder_001-mesh-normals" offset="1"/>
+          <p>1 0 65 1 64 2 3 3 66 4 65 1 5 5 67 6 66 4 7 7 68 8 67 6 9 9 69 10 68 8 11 11 70 12 69 10 13 13 71 14 70 12 15 15 72 16 71 14 17 17 73 18 72 16 19 19 74 20 73 18 21 21 75 22 74 20 23 23 76 24 75 22 25 25 77 26 76 24 27 27 78 28 77 26 29 29 79 30 78 28 31 31 80 32 79 30 33 33 81 34 80 32 35 35 82 36 81 34 37 37 83 38 82 36 39 39 84 40 83 38 41 41 85 42 84 40 43 43 86 44 85 42 45 45 87 46 86 44 47 47 88 48 87 46 49 49 89 50 88 48 51 51 90 52 89 50 53 53 91 54 90 52 55 55 92 56 91 54 57 57 93 58 92 56 59 59 94 60 93 58 5 5 53 53 37 37 63 61 64 2 95 62 61 63 95 62 94 60 44 64 156 65 157 66 0 67 65 1 2 68 2 68 66 4 4 69 4 69 67 6 6 70 6 70 68 8 8 71 8 71 69 10 10 72 10 72 70 12 12 73 12 73 71 14 14 74 14 74 72 16 16 75 16 75 73 18 18 76 18 76 74 20 20 77 20 77 75 22 22 78 22 78 76 24 24 79 24 79 77 26 26 80 26 80 78 28 28 81 28 81 79 30 30 82 30 82 80 32 32 83 80 32 34 84 32 83 81 34 36 85 34 84 82 36 38 86 36 85 83 38 40 87 38 86 84 40 42 88 40 87 85 42 44 64 42 88 86 44 46 89 44 64 87 46 48 90 46 89 88 48 50 91 48 90 89 50 52 92 50 91 90 52 54 93 52 92 91 54 56 94 54 93 92 56 58 95 56 94 93 58 60 96 58 95 95 62 0 67 62 97 94 60 62 97 60 96 148 98 110 99 149 100 115 101 147 102 132 103 149 100 109 104 150 105 26 80 135 106 24 79 130 107 100 108 131 109 36 85 112 110 113 111 98 112 138 113 137 114 30 82 133 115 28 81 157 66 155 116 154 117 4 69 106 118 2 68 42 88 157 66 158 119 151 120 143 121 104 122 18 76 131 109 16 75 135 106 103 123 128 124 150 105 108 125 151 120 34 84 113 111 114 126 99 127 137 114 136 128 10 72 151 120 8 71 48 90 118 129 119 130 110 99 167 131 166 132 24 79 128 124 22 78 119 130 125 133 124 134 116 135 136 128 127 136 114 126 122 137 121 138 105 139 141 140 106 118 16 75 148 98 14 74 131 109 111 141 148 98 50 91 117 142 118 129 52 92 116 135 117 142 118 129 126 143 125 133 28 81 134 144 26 80 117 142 127 136 126 143 128 124 102 145 129 146 22 78 129 146 20 77 106 118 140 147 107 148 56 94 98 112 99 127 58 95 97 149 98 112 32 83 132 103 30 82 32 83 114 126 115 101 96 150 140 147 139 151 8 71 104 122 6 70 104 122 142 152 105 139 156 65 124 134 155 116 62 97 107 148 96 150 129 146 101 153 130 107 60 96 96 150 97 149 38 86 159 154 112 110 115 101 121 138 120 155 14 74 149 100 12 73 132 103 146 156 133 115 133 115 145 157 134 144 97 149 139 151 138 113 158 119 154 117 153 158 6 70 105 139 4 69 2 68 107 148 0 67 40 87 158 119 159 154 20 77 130 107 18 76 113 111 123 159 122 137 54 93 99 127 116 135 112 110 152 160 123 159 134 144 144 161 135 106 12 73 150 105 10 72 159 154 153 158 152 160 46 89 119 130 156 65 163 162 216 163 195 164 121 138 168 165 120 155 140 147 179 166 139 151 154 117 189 167 153 158 141 140 182 168 181 169 101 153 162 170 161 171 109 104 166 132 165 172 137 114 176 173 136 128 124 134 191 174 155 116 127 136 174 175 126 143 146 156 187 176 186 177 143 121 164 178 183 179 103 123 184 180 163 162 111 141 160 181 167 131 153 158 188 182 152 160 123 159 170 183 122 137 126 143 173 184 125 133 145 157 186 177 185 185 140 147 181 169 180 186 100 108 161 171 160 181 108 125 165 172 164 178 122 137 169 187 121 138 139 151 178 188 138 113 136 128 175 189 127 136 147 102 168 165 187 176 152 160 171 190 123 159 138 113 177 191 137 114 155 116 190 192 154 117 125 133 172 193 124 134 144 161 185 185 184 180 142 152 183 179 182 168 102 145 163 162 162 170 209 194 242 195 241 196 170 183 201 197 169 187 166 132 199 198 198 199 173 184 204 200 172 193 172 193 223 201 191 174 185 185 218 202 217 203 182 168 215 204 214 205 160 181 193 206 192 207 188 182 203 208 171 190 165 172 198 199 197 209 189 167 220 210 188 182 187 176 200 211 219 212 181 169 214 205 213 213 179 166 210 214 178 188 169 187 200 211 168 165 167 131 192 207 199 198 175 189 206 215 174 175 184 180 217 203 216 163 183 179 196 216 215 204 178 188 209 194 177 191 162 170 195 164 194 217 164 178 197 209 196 216 174 175 205 218 173 184 191 174 222 219 190 192 180 186 213 213 212 220 180 186 211 221 179 166 161 171 194 217 193 206 171 190 202 222 170 183 176 173 207 223 175 189 190 192 221 224 189 167 186 177 219 212 218 202 177 191 208 225 176 173 224 226 263 227 231 228 195 164 226 229 194 217 197 209 228 230 196 216 205 218 238 231 237 232 222 219 255 233 254 234 213 213 244 235 212 220 211 221 244 235 243 236 194 217 225 237 193 206 202 222 235 238 234 239 207 223 240 240 239 241 221 224 254 234 253 242 219 212 250 243 218 202 208 225 241 196 240 240 216 163 227 244 195 164 201 197 234 239 233 245 199 198 230 246 198 199 204 200 237 232 236 247 223 201 236 247 255 233 218 202 249 248 217 203 215 204 246 249 214 205 193 206 224 226 192 207 203 208 252 250 235 238 198 199 229 251 197 209 220 210 253 242 252 250 200 211 251 252 219 212 214 205 245 253 213 213 210 214 243 236 242 195 200 211 233 245 232 254 192 207 231 228 199 198 206 215 239 241 238 231 217 203 248 255 216 163 196 216 247 256 215 204 265 257 298 258 297 259 238 231 271 260 270 261 249 248 280 262 248 255 228 230 279 263 247 256 241 196 274 264 273 265 227 244 258 266 226 229 229 251 260 267 228 230 237 232 270 261 269 268 254 234 287 269 286 270 245 253 276 271 244 235 243 236 276 271 275 272 226 229 257 273 225 237 234 239 267 274 266 275 239 241 272 276 271 260 253 242 286 270 285 277 251 252 282 278 250 243 240 240 273 265 272 276 248 255 259 279 227 244 233 245 266 275 265 257 231 228 262 280 230 246 236 247 269 268 268 281 255 233 268 281 287 269 250 243 281 282 249 248 247 256 278 283 246 249 225 237 256 284 224 226 235 238 284 285 267 274 230 246 261 286 229 251 252 250 285 277 284 285 232 254 283 287 251 252 246 249 277 288 245 253 242 195 275 272 274 264 232 254 265 257 264 289 290 290 323 291 322 292 263 227 294 293 262 280 268 281 301 294 300 295 287 269 300 295 319 296 282 278 313 297 281 282 279 263 310 298 278 283 257 273 288 299 256 284 267 274 316 300 299 301 262 280 293 302 261 286 284 285 317 303 316 300 264 289 315 304 283 287 278 283 309 305 277 288 274 264 307 306 306 307 264 289 297 259 296 308 256 284 295 309 263 227 270 261 303 310 302 311 281 282 312 312 280 262 260 267 311 313 279 263 273 265 306 307 305 314 259 279 290 290 258 266 261 286 292 315 260 267 269 268 302 311 301 294 286 270 319 296 318 316 277 288 308 317 276 271 275 272 308 317 307 306 258 266 289 318 257 273 266 275 299 301 298 258 271 260 304 319 303 310 285 277 318 316 317 303 283 287 314 320 282 278 272 276 305 314 304 319 280 262 291 321 259 279 327 322 352 323 359 324 292 315 325 325 324 326 302 311 333 327 301 294 319 296 350 328 318 316 308 317 341 329 340 330 308 317 339 331 307 306 289 318 322 292 321 332 299 301 330 333 298 258 304 319 335 334 303 310 318 316 349 335 317 303 314 320 347 336 346 337 305 314 336 338 304 319 291 321 344 339 323 291 298 258 329 340 297 259 294 293 327 322 326 341 301 294 332 342 300 295 300 295 351 343 319 296 313 297 346 337 345 344 310 298 343 345 342 346 288 299 321 332 320 347 316 300 331 348 299 301 293 302 326 341 325 325 317 303 348 349 316 300 315 304 328 350 347 336 309 305 342 346 341 329 307 306 338 351 306 307 297 259 328 350 296 308 295 309 320 347 327 322 303 310 334 352 302 311 312 312 345 344 344 339 311 313 324 326 343 345 306 307 337 353 305 314 369 354 370 355 363 356 335 334 366 357 334 352 344 339 377 358 376 359 343 345 356 360 375 361 338 351 369 354 337 353 322 292 355 362 354 363 324 326 357 364 356 360 334 352 365 365 333 327 351 343 382 366 350 328 340 330 373 367 372 368 340 330 371 369 339 331 321 332 354 363 353 370 331 348 362 371 330 333 336 338 367 372 335 334 350 328 381 373 349 335 346 337 379 374 378 375 337 353 368 376 336 338 323 291 376 359 355 362 330 333 361 377 329 340 326 341 359 324 358 378 333 327 364 379 332 342 332 342 383 380 351 343 345 344 378 375 377 358 342 346 375 361 374 381 320 347 353 370 352 323 348 349 363 356 331 348 325 325 358 378 357 364 349 335 380 382 348 349 347 336 360 383 379 374 341 329 374 381 373 367 339 331 370 355 338 351 329 340 360 383 328 350 1 0 3 3 65 1 3 3 5 5 66 4 5 5 7 7 67 6 7 7 9 9 68 8 9 9 11 11 69 10 11 11 13 13 70 12 13 13 15 15 71 14 15 15 17 17 72 16 17 17 19 19 73 18 19 19 21 21 74 20 21 21 23 23 75 22 23 23 25 25 76 24 25 25 27 27 77 26 27 27 29 29 78 28 29 29 31 31 79 30 31 31 33 33 80 32 33 33 35 35 81 34 35 35 37 37 82 36 37 37 39 39 83 38 39 39 41 41 84 40 41 41 43 43 85 42 43 43 45 45 86 44 45 45 47 47 87 46 47 47 49 49 88 48 49 49 51 51 89 50 51 51 53 53 90 52 53 53 55 55 91 54 55 55 57 57 92 56 57 57 59 59 93 58 59 59 61 63 94 60 5 5 3 3 1 0 1 0 63 61 5 5 63 61 61 63 5 5 61 63 59 59 57 57 57 57 55 55 53 53 53 53 51 51 49 49 49 49 47 47 45 45 45 45 43 43 37 37 43 43 41 41 37 37 41 41 39 39 37 37 37 37 35 35 29 29 35 35 33 33 29 29 33 33 31 31 29 29 29 29 27 27 25 25 25 25 23 23 21 21 21 21 19 19 13 13 19 19 17 17 13 13 17 17 15 15 13 13 13 13 11 11 5 5 11 11 9 9 5 5 9 9 7 7 5 5 61 63 57 57 53 53 53 53 49 49 37 37 49 49 45 45 37 37 29 29 25 25 21 21 5 5 61 63 53 53 37 37 29 29 21 21 21 21 13 13 37 37 13 13 5 5 37 37 63 61 1 0 64 2 61 63 63 61 95 62 44 64 46 89 156 65 0 67 64 2 65 1 2 68 65 1 66 4 4 69 66 4 67 6 6 70 67 6 68 8 8 71 68 8 69 10 10 72 69 10 70 12 12 73 70 12 71 14 14 74 71 14 72 16 16 75 72 16 73 18 18 76 73 18 74 20 20 77 74 20 75 22 22 78 75 22 76 24 24 79 76 24 77 26 26 80 77 26 78 28 28 81 78 28 79 30 30 82 79 30 80 32 80 32 81 34 34 84 81 34 82 36 36 85 82 36 83 38 38 86 83 38 84 40 40 87 84 40 85 42 42 88 85 42 86 44 44 64 86 44 87 46 46 89 87 46 88 48 48 90 88 48 89 50 50 91 89 50 90 52 52 92 90 52 91 54 54 93 91 54 92 56 56 94 92 56 93 58 58 95 93 58 94 60 60 96 95 62 64 2 0 67 94 60 95 62 62 97 148 98 111 141 110 99 115 101 120 155 147 102 149 100 110 99 109 104 26 80 134 144 135 106 130 107 101 153 100 108 36 85 38 86 112 110 98 112 97 149 138 113 30 82 132 103 133 115 157 66 156 65 155 116 4 69 105 139 106 118 42 88 44 64 157 66 151 120 108 125 143 121 18 76 130 107 131 109 135 106 144 161 103 123 150 105 109 104 108 125 34 84 36 85 113 111 99 127 98 112 137 114 10 72 150 105 151 120 48 90 50 91 118 129 110 99 111 141 167 131 24 79 135 106 128 124 119 130 118 129 125 133 116 135 99 127 136 128 114 126 113 111 122 137 105 139 142 152 141 140 16 75 131 109 148 98 131 109 100 108 111 141 50 91 52 92 117 142 52 92 54 93 116 135 118 129 117 142 126 143 28 81 133 115 134 144 117 142 116 135 127 136 128 124 103 123 102 145 22 78 128 124 129 146 106 118 141 140 140 147 56 94 58 95 98 112 58 95 60 96 97 149 32 83 115 101 132 103 32 83 34 84 114 126 96 150 107 148 140 147 8 71 151 120 104 122 104 122 143 121 142 152 156 65 119 130 124 134 62 97 0 67 107 148 129 146 102 145 101 153 60 96 62 97 96 150 38 86 40 87 159 154 115 101 114 126 121 138 14 74 148 98 149 100 132 103 147 102 146 156 133 115 146 156 145 157 97 149 96 150 139 151 158 119 157 66 154 117 6 70 104 122 105 139 2 68 106 118 107 148 40 87 42 88 158 119 20 77 129 146 130 107 113 111 112 110 123 159 54 93 56 94 99 127 112 110 159 154 152 160 134 144 145 157 144 161 12 73 149 100 150 105 159 154 158 119 153 158 46 89 48 90 119 130 163 162 184 180 216 163 121 138 169 187 168 165 140 147 180 186 179 166 154 117 190 192 189 167 141 140 142 152 182 168 101 153 102 145 162 170 109 104 110 99 166 132 137 114 177 191 176 173 124 134 172 193 191 174 127 136 175 189 174 175 146 156 147 102 187 176 143 121 108 125 164 178 103 123 144 161 184 180 111 141 100 108 160 181 153 158 189 167 188 182 123 159 171 190 170 183 126 143 174 175 173 184 145 157 146 156 186 177 140 147 141 140 181 169 100 108 101 153 161 171 108 125 109 104 165 172 122 137 170 183 169 187 139 151 179 166 178 188 136 128 176 173 175 189 147 102 120 155 168 165 152 160 188 182 171 190 138 113 178 188 177 191 155 116 191 174 190 192 125 133 173 184 172 193 144 161 145 157 185 185 142 152 143 121 183 179 102 145 103 123 163 162 209 194 210 214 242 195 170 183 202 222 201 197 166 132 167 131 199 198 173 184 205 218 204 200 172 193 204 200 223 201 185 185 186 177 218 202 182 168 183 179 215 204 160 181 161 171 193 206 188 182 220 210 203 208 165 172 166 132 198 199 189 167 221 224 220 210 187 176 168 165 200 211 181 169 182 168 214 205 179 166 211 221 210 214 169 187 201 197 200 211 167 131 160 181 192 207 175 189 207 223 206 215 184 180 185 185 217 203 183 179 164 178 196 216 178 188 210 214 209 194 162 170 163 162 195 164 164 178 165 172 197 209 174 175 206 215 205 218 191 174 223 201 222 219 180 186 181 169 213 213 180 186 212 220 211 221 161 171 162 170 194 217 171 190 203 208 202 222 176 173 208 225 207 223 190 192 222 219 221 224 186 177 187 176 219 212 177 191 209 194 208 225 224 226 256 284 263 227 195 164 227 244 226 229 197 209 229 251 228 230 205 218 206 215 238 231 222 219 223 201 255 233 213 213 245 253 244 235 211 221 212 220 244 235 194 217 226 229 225 237 202 222 203 208 235 238 207 223 208 225 240 240 221 224 222 219 254 234 219 212 251 252 250 243 208 225 209 194 241 196 216 163 248 255 227 244 201 197 202 222 234 239 199 198 231 228 230 246 204 200 205 218 237 232 223 201 204 200 236 247 218 202 250 243 249 248 215 204 247 256 246 249 193 206 225 237 224 226 203 208 220 210 252 250 198 199 230 246 229 251 220 210 221 224 253 242 200 211 232 254 251 252 214 205 246 249 245 253 210 214 211 221 243 236 200 211 201 197 233 245 192 207 224 226 231 228 206 215 207 223 239 241 217 203 249 248 248 255 196 216 228 230 247 256 265 257 266 275 298 258 238 231 239 241 271 260 249 248 281 282 280 262 228 230 260 267 279 263 241 196 242 195 274 264 227 244 259 279 258 266 229 251 261 286 260 267 237 232 238 231 270 261 254 234 255 233 287 269 245 253 277 288 276 271 243 236 244 235 276 271 226 229 258 266 257 273 234 239 235 238 267 274 239 241 240 240 272 276 253 242 254 234 286 270 251 252 283 287 282 278 240 240 241 196 273 265 248 255 280 262 259 279 233 245 234 239 266 275 231 228 263 227 262 280 236 247 237 232 269 268 255 233 236 247 268 281 250 243 282 278 281 282 247 256 279 263 278 283 225 237 257 273 256 284 235 238 252 250 284 285 230 246 262 280 261 286 252 250 253 242 285 277 232 254 264 289 283 287 246 249 278 283 277 288 242 195 243 236 275 272 232 254 233 245 265 257 290 290 291 321 323 291 263 227 295 309 294 293 268 281 269 268 301 294 287 269 268 281 300 295 282 278 314 320 313 297 279 263 311 313 310 298 257 273 289 318 288 299 267 274 284 285 316 300 262 280 294 293 293 302 284 285 285 277 317 303 264 289 296 308 315 304 278 283 310 298 309 305 274 264 275 272 307 306 264 289 265 257 297 259 256 284 288 299 295 309 270 261 271 260 303 310 281 282 313 297 312 312 260 267 292 315 311 313 273 265 274 264 306 307 259 279 291 321 290 290 261 286 293 302 292 315 269 268 270 261 302 311 286 270 287 269 319 296 277 288 309 305 308 317 275 272 276 271 308 317 258 266 290 290 289 318 266 275 267 274 299 301 271 260 272 276 304 319 285 277 286 270 318 316 283 287 315 304 314 320 272 276 273 265 305 314 280 262 312 312 291 321 327 322 320 347 352 323 292 315 293 302 325 325 302 311 334 352 333 327 319 296 351 343 350 328 308 317 309 305 341 329 308 317 340 330 339 331 289 318 290 290 322 292 299 301 331 348 330 333 304 319 336 338 335 334 318 316 350 328 349 335 314 320 315 304 347 336 305 314 337 353 336 338 291 321 312 312 344 339 298 258 330 333 329 340 294 293 295 309 327 322 301 294 333 327 332 342 300 295 332 342 351 343 313 297 314 320 346 337 310 298 311 313 343 345 288 299 289 318 321 332 316 300 348 349 331 348 293 302 294 293 326 341 317 303 349 335 348 349 315 304 296 308 328 350 309 305 310 298 342 346 307 306 339 331 338 351 297 259 329 340 328 350 295 309 288 299 320 347 303 310 335 334 334 352 312 312 313 297 345 344 311 313 292 315 324 326 306 307 338 351 337 353 371 369 372 368 360 383 372 368 373 367 379 374 373 367 374 381 379 374 374 381 375 361 378 375 379 374 374 381 378 375 375 361 356 360 376 359 356 360 357 364 355 362 357 364 358 378 355 362 358 378 359 324 354 363 355 362 358 378 354 363 359 324 352 323 353 370 353 370 354 363 359 324 355 362 376 359 356 360 376 359 377 358 375 361 377 358 378 375 375 361 379 374 360 383 372 368 360 383 361 377 371 369 361 377 362 371 371 369 362 371 363 356 370 355 371 369 362 371 370 355 363 356 380 382 368 376 380 382 381 373 367 372 381 373 382 366 367 372 382 366 383 380 366 357 367 372 382 366 366 357 383 380 364 379 365 365 365 365 366 357 383 380 367 372 368 376 380 382 368 376 369 354 363 356 335 334 367 372 366 357 344 339 345 344 377 358 343 345 324 326 356 360 338 351 370 355 369 354 322 292 323 291 355 362 324 326 325 325 357 364 334 352 366 357 365 365 351 343 383 380 382 366 340 330 341 329 373 367 340 330 372 368 371 369 321 332 322 292 354 363 331 348 363 356 362 371 336 338 368 376 367 372 350 328 382 366 381 373 346 337 347 336 379 374 337 353 369 354 368 376 323 291 344 339 376 359 330 333 362 371 361 377 326 341 327 322 359 324 333 327 365 365 364 379 332 342 364 379 383 380 345 344 346 337 378 375 342 346 343 345 375 361 320 347 321 332 353 370 348 349 380 382 363 356 325 325 326 341 358 378 349 335 381 373 380 382 347 336 328 350 360 383 341 329 342 346 374 381 339 331 371 369 370 355 329 340 361 377 360 383</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cylinder-mesh" name="Cylinder">
+      <mesh>
+        <source id="Cylinder-mesh-positions">
+          <float_array id="Cylinder-mesh-positions-array" count="1152">0 0.08546859 -0.66701 0 0.3079987 1 0.0600875 0.08110636 -0.6661276 0.0600875 0.3020805 1 0.1178659 0.06818723 -0.6635146 0.1178659 0.2845537 1 0.1711148 0.04720777 -0.6592712 0.1711148 0.2560915 1 0.2177878 0.01897412 -0.6535606 0.2177878 0.2177879 1 0.2560913 -0.01542854 -0.6466022 0.2560914 0.1711149 1 0.2845534 -0.05467844 -0.6386635 0.2845534 0.117866 1 0.3020803 -0.09726703 -0.6300495 0.3020803 0.06008774 1 0.3079984 -0.1415576 -0.6210911 0.3079984 2.43664e-7 1 0.3020803 -0.1858482 -0.6121329 0.3020803 -0.0600872 1 0.2845534 -0.2284368 -0.6035187 0.2845535 -0.1178656 1 0.2560913 -0.2676867 -0.5955801 0.2560914 -0.1711145 1 0.2177878 -0.3020895 -0.5886217 0.2177878 -0.2177875 1 0.1711147 -0.3303232 -0.582911 0.1711147 -0.2560911 1 0.1178658 -0.3513026 -0.5786677 0.1178658 -0.2845532 1 0.06008744 -0.3642217 -0.5760546 0.06008744 -0.3020801 1 0 -0.368584 -0.5751724 0 -0.3079982 1 -0.06008756 -0.3642217 -0.5760546 -0.06008756 -0.30208 1 -0.117866 -0.3513026 -0.5786677 -0.1178659 -0.2845531 1 -0.1711148 -0.3303231 -0.5829111 -0.1711148 -0.256091 1 -0.2177878 -0.3020893 -0.5886217 -0.2177878 -0.2177873 1 -0.2560914 -0.2676866 -0.5955801 -0.2560914 -0.1711143 1 -0.2845535 -0.2284367 -0.6035189 -0.2845535 -0.1178654 1 -0.3020803 -0.1858481 -0.6121329 -0.3020803 -0.06008702 1 -0.3079983 -0.1415573 -0.6210912 -0.3079983 5.17814e-7 1 -0.3020802 -0.09726679 -0.6300495 -0.3020802 0.06008797 1 -0.2845532 -0.0546782 -0.6386636 -0.2845532 0.1178664 1 -0.2560911 -0.0154283 -0.6466023 -0.2560911 0.1711152 1 -0.2177874 0.0189743 -0.6535606 -0.2177874 0.2177882 1 -0.1711143 0.04720795 -0.6592713 -0.1711143 0.2560918 1 -0.1178655 0.06818741 -0.6635146 -0.1178654 0.2845538 1 -0.0600869 0.08110636 -0.6661277 -0.0600869 0.3020806 1 0 0.3079987 -0.5470086 0.0600875 0.3020805 -0.5470086 0.1178659 0.2845537 -0.5470086 0.1711148 0.2560915 -0.5470086 0.2177878 0.2177879 -0.5470086 0.2560914 0.1711149 -0.5470086 0.2845534 0.117866 -0.5470086 0.3020803 0.06008774 -0.5470086 0.3079984 2.43664e-7 -0.5470086 0.3020803 -0.0600872 -0.5470086 0.2845535 -0.1178656 -0.5470086 0.2560914 -0.1711145 -0.5470086 0.2177878 -0.2177875 -0.5470086 0.1711147 -0.2560911 -0.5470086 0.1178658 -0.2845532 -0.5470086 0.06008744 -0.3020801 -0.5470086 0 -0.3079982 -0.5470086 -0.06008756 -0.30208 -0.5470086 -0.1178659 -0.2845531 -0.5470086 -0.1711148 -0.256091 -0.5470086 -0.2177878 -0.2177873 -0.5470086 -0.2560914 -0.1711143 -0.5470086 -0.2845535 -0.1178654 -0.5470086 -0.3020803 -0.06008702 -0.5470086 -0.3079983 5.17814e-7 -0.5470086 -0.3020802 0.06008797 -0.5470086 -0.2845532 0.1178664 -0.5470086 -0.2560911 0.1711152 -0.5470086 -0.2177874 0.2177882 -0.5470086 -0.1711143 0.2560918 -0.5470086 -0.1178654 0.2845538 -0.5470086 -0.0600869 0.3020806 -0.5470086 -0.0600869 -1.443633 -0.9974018 -0.1178655 -1.456552 -0.9947887 -0.1711143 -1.477531 -0.9905454 -0.2177874 -1.505765 -0.9848347 0.3079984 -1.875913 -1.055628 0.3020803 -1.935999 -1.055529 0.2845534 -1.993776 -1.055433 0.2560913 -2.047023 -1.055344 0.1711148 -1.477532 -0.9905453 0.1178659 -1.456552 -0.9947887 0.0600875 -1.443633 -0.9974017 0 -1.439271 -0.9982841 0.2177878 -1.658132 -1.05599 0.2560913 -1.704804 -1.055913 0.2845534 -1.758051 -1.055824 0.3020803 -1.815827 -1.055728 -0.1711148 -1.855062 -0.9141852 -0.117866 -1.876042 -0.9099418 -0.06008756 -1.888961 -0.9073287 0 -1.893323 -0.9064465 -0.2560911 -1.540168 -0.9778764 -0.2845532 -1.579418 -0.9699377 -0.3020802 -1.622006 -0.9613236 -0.3079983 -1.666297 -0.9523653 0 -2.183903 -1.055117 -0.06008756 -2.177985 -1.055127 -0.1178659 -2.160459 -1.055156 -0.1711148 -2.131997 -1.055203 -0.3079983 -1.875913 -1.055628 -0.3020802 -1.815827 -1.055728 -0.2845532 -1.75805 -1.055824 -0.2560911 -1.704803 -1.055913 0.2560913 -1.792426 -0.9268541 0.2845534 -1.753176 -0.9347928 0.3020803 -1.710588 -0.9434069 0.3079984 -1.666297 -0.9523652 0.06008744 -1.888961 -0.9073287 0.1178658 -1.876042 -0.9099418 0.1711147 -1.855062 -0.9141851 0.2177878 -1.826829 -0.9198958 -0.2177874 -1.658132 -1.05599 -0.1711143 -1.619829 -1.056054 -0.1178654 -1.591368 -1.056101 -0.0600869 -1.573841 -1.05613 0 -1.567923 -1.05614 0.0600875 -1.573842 -1.05613 0.1178659 -1.591368 -1.056101 0.1711148 -1.619829 -1.056054 0.2177878 -2.093695 -1.055267 0.1711147 -2.131997 -1.055203 0.1178658 -2.160459 -1.055156 0.06008744 -2.177985 -1.055127 0.3020803 -1.622006 -0.9613236 0.2845534 -1.579418 -0.9699376 0.2560913 -1.540168 -0.9778763 0.2177878 -1.505765 -0.9848347 -0.2177878 -2.093695 -1.055267 -0.2560914 -2.047023 -1.055344 -0.2845535 -1.993776 -1.055433 -0.3020803 -1.935999 -1.055529 -0.3020803 -1.710587 -0.9434069 -0.2845535 -1.753176 -0.9347929 -0.2560914 -1.792426 -0.9268541 -0.2177878 -1.826829 -0.9198958 0.3079984 -1.680048 -1.152695 0.3020803 -1.719156 -1.162759 0.2845534 -1.756761 -1.172437 0.2560913 -1.791419 -1.181355 0.2177878 -1.5383 -1.116217 0.2560913 -1.568677 -1.124035 0.2845534 -1.603334 -1.132953 0.3020803 -1.640939 -1.142631 0 -1.88051 -1.204282 -0.06008756 -1.876658 -1.203291 -0.1178659 -1.86525 -1.200355 -0.1711148 -1.846726 -1.195588 -0.3079983 -1.680048 -1.152695 -0.3020802 -1.64094 -1.142631 -0.2845532 -1.603334 -1.132953 -0.2560911 -1.568677 -1.124035 -0.2177874 -1.5383 -1.116217 -0.1711143 -1.51337 -1.109802 -0.1178654 -1.494845 -1.105035 -0.0600869 -1.483437 -1.102099 0 -1.479585 -1.101108 0.0600875 -1.483438 -1.102099 0.1178659 -1.494845 -1.105035 0.1711148 -1.51337 -1.109802 0.2177878 -1.821796 -1.189173 0.1711147 -1.846726 -1.195588 0.1178658 -1.86525 -1.200355 0.06008744 -1.876658 -1.203291 -0.2177878 -1.821796 -1.189173 -0.2560914 -1.791419 -1.181355 -0.2845535 -1.756761 -1.172436 -0.3020803 -1.719156 -1.162759 0.3079984 -1.245018 -1.19242 0.3020803 -1.244554 -1.205676 0.2845534 -1.244108 -1.218423 0.2560913 -1.243697 -1.23017 0.2177878 -1.2467 -1.144374 0.2560913 -1.24634 -1.154671 0.2845534 -1.245929 -1.166418 0.3020803 -1.245482 -1.179164 0 -1.242639 -1.260367 -0.06008756 -1.242685 -1.259062 -0.117866 -1.24282 -1.255195 -0.1711148 -1.24304 -1.248916 -0.3079983 -1.245018 -1.19242 -0.3020802 -1.245483 -1.179164 -0.2845532 -1.245929 -1.166418 -0.2560911 -1.24634 -1.154671 -0.2177874 -1.2467 -1.144374 -0.1711143 -1.246996 -1.135924 -0.1178655 -1.247216 -1.129645 -0.0600869 -1.247351 -1.125779 0 -1.247397 -1.124473 0.0600875 -1.247352 -1.125779 0.1178659 -1.247216 -1.129645 0.1711148 -1.246996 -1.135924 0.2177878 -1.243336 -1.240466 0.1711147 -1.24304 -1.248916 0.1178658 -1.24282 -1.255195 0.06008744 -1.242685 -1.259062 -0.2177878 -1.243336 -1.240466 -0.2560914 -1.243697 -1.23017 -0.2845535 -1.244108 -1.218422 -0.3020803 -1.244554 -1.205676 0.3079984 1.400781 -1.196331 0.3020803 1.401245 -1.209587 0.2845534 1.401692 -1.222334 0.2560913 1.402102 -1.234081 0.2177878 1.399099 -1.148285 0.2560913 1.399459 -1.158582 0.2845534 1.399871 -1.170329 0.3020803 1.400317 -1.183075 0 1.40316 -1.264278 -0.06008756 1.403114 -1.262973 -0.117866 1.402979 -1.259106 -0.1711148 1.402759 -1.252827 -0.3079983 1.400781 -1.196331 -0.3020802 1.400317 -1.183075 -0.2845532 1.39987 -1.170329 -0.2560911 1.399459 -1.158582 -0.2177874 1.399099 -1.148285 -0.1711143 1.398803 -1.139835 -0.1178655 1.398583 -1.133556 -0.0600869 1.398448 -1.12969 0 1.398402 -1.128384 0.0600875 1.398448 -1.12969 0.1178659 1.398583 -1.133556 0.1711148 1.398803 -1.139835 0.2177878 1.402463 -1.244377 0.1711147 1.402759 -1.252827 0.1178658 1.402979 -1.259106 0.06008744 1.403114 -1.262973 -0.2177878 1.402463 -1.244377 -0.2560914 1.402103 -1.234081 -0.2845535 1.401691 -1.222333 -0.3020803 1.401245 -1.209587 0.3079984 1.900801 -1.147547 0.3020803 1.942407 -1.157111 0.2845534 1.982414 -1.166308 0.2560913 2.019284 -1.174783 0.2177878 1.749999 -1.112881 0.2560913 1.782317 -1.12031 0.2845534 1.819188 -1.128786 0.3020803 1.859195 -1.137982 0 2.114066 -1.196571 -0.06008756 2.109968 -1.195629 -0.117866 2.097832 -1.192839 -0.1711148 2.078124 -1.188309 -0.3079983 1.900801 -1.147547 -0.3020802 1.859194 -1.137982 -0.2845532 1.819187 -1.128786 -0.2560911 1.782317 -1.12031 -0.2177874 1.749999 -1.112881 -0.1711143 1.723477 -1.106784 -0.1178655 1.70377 -1.102253 -0.0600869 1.691633 -1.099464 0 1.687536 -1.098522 0.0600875 1.691633 -1.099464 0.1178659 1.70377 -1.102253 0.1711148 1.723477 -1.106784 0.2177878 2.051602 -1.182212 0.1711147 2.078124 -1.188309 0.1178658 2.097832 -1.192839 0.06008744 2.109968 -1.195629 -0.2177878 2.051602 -1.182212 -0.2560914 2.019284 -1.174783 -0.2845535 1.982414 -1.166307 -0.3020803 1.942407 -1.157111 0.3079984 2.094715 -1.051483 0.3020803 2.154767 -1.051942 0.2845534 2.212511 -1.052385 0.2560913 2.265727 -1.052792 0.2177878 1.877058 -1.049817 0.2560913 1.923703 -1.050174 0.2845534 1.976921 -1.050581 0.3020803 2.034664 -1.051023 0 2.402529 -1.053839 -0.06008756 2.396615 -1.053794 -0.117866 2.379097 -1.05366 -0.1711148 2.350652 -1.053442 -0.3079983 2.094715 -1.051483 -0.3020802 2.034664 -1.051023 -0.2845532 1.97692 -1.050581 -0.2560911 1.923703 -1.050174 -0.2177874 1.877058 -1.049817 -0.1711143 1.838778 -1.049524 -0.1178655 1.810333 -1.049306 -0.0600869 1.792816 -1.049172 0 1.786902 -1.049127 0.0600875 1.792817 -1.049172 0.1178659 1.810333 -1.049306 0.1711148 1.838778 -1.049524 0.2177878 2.312372 -1.053149 0.1711147 2.350652 -1.053442 0.1178658 2.379097 -1.05366 0.06008744 2.396615 -1.053794 -0.2177878 2.312372 -1.053149 -0.2560914 2.265727 -1.052792 -0.2845535 2.21251 -1.052384 -0.3020803 2.154767 -1.051942 0.3079984 1.922312 -0.9674739 0.3020803 1.954686 -0.9563062 0.2845534 1.985816 -0.9455676 0.2560913 2.014505 -0.935671 0.2177878 1.804972 -1.007951 0.2560913 1.830119 -0.9992767 0.2845534 1.858809 -0.98938 0.3020803 1.889938 -0.9786415 0 2.088255 -0.9102302 -0.06008756 2.085067 -0.9113301 -0.117866 2.075622 -0.9145876 -0.1711148 2.060288 -0.9198776 -0.3079983 1.922312 -0.9674739 -0.3020802 1.889938 -0.9786417 -0.2845532 1.858809 -0.9893801 -0.2560911 1.830119 -0.9992769 -0.2177874 1.804972 -1.007951 -0.1711143 1.784336 -1.01507 -0.1178655 1.769001 -1.02036 -0.0600869 1.759557 -1.023618 0 1.756369 -1.024717 0.0600875 1.759559 -1.023618 0.1178659 1.769001 -1.02036 0.1711148 1.784336 -1.01507 0.2177878 2.039651 -0.9269965 0.1711147 2.060288 -0.9198776 0.1178658 2.075622 -0.9145876 0.06008744 2.085067 -0.9113301 -0.2177878 2.039651 -0.9269965 -0.2560914 2.014505 -0.935671 -0.2845535 1.985815 -0.9455677 -0.3020803 1.954686 -0.9563062 0.3079959 0.2171667 -0.603873 0.3020778 0.2417069 -0.5917727 0.2845509 0.2653053 -0.5801374 0.2560888 0.2870529 -0.5694144 0.2177852 0.1282178 -0.6477305 0.2560888 0.1472802 -0.6383315 0.2845509 0.1690282 -0.6276084 0.3020778 0.1926257 -0.6159731 -2.56112e-6 0.3429587 -0.5418491 -0.06009006 0.340542 -0.5430409 -0.1178684 0.3333823 -0.5465705 -0.1711173 0.3217585 -0.5523022 -0.3080008 0.2171667 -0.603873 -0.3020827 0.1926261 -0.6159733 -0.2845557 0.1690285 -0.6276084 -0.2560936 0.1472799 -0.6383317 -0.2177899 0.1282178 -0.6477305 -0.1711168 0.1125751 -0.6554439 -0.1178679 0.1009497 -0.6611754 -0.0600894 0.09379106 -0.664705 -2.46076e-6 0.09137445 -0.6658965 0.06008493 0.09379249 -0.6647049 0.1178634 0.1009497 -0.6611754 0.1711122 0.1125751 -0.6554439 0.2177852 0.3061144 -0.5600155 0.1711122 0.3217585 -0.5523022 0.1178633 0.3333823 -0.5465705 0.06008487 0.340542 -0.5430409 -0.2177903 0.3061144 -0.5600155 -0.2560939 0.2870529 -0.5694144 -0.284556 0.2653046 -0.5801375 -0.3020828 0.2417069 -0.5917727</float_array>
+          <technique_common>
+            <accessor source="#Cylinder-mesh-positions-array" count="384" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cylinder-mesh-normals">
+          <float_array id="Cylinder-mesh-normals-array" count="1152">0 0.727881 0.6857035 0.1667581 0.852194 -0.4959408 0 0.8666461 -0.4989235 0.1420046 0.7138987 0.6856992 0.3292092 0.8092437 -0.4865656 0.2785453 0.6724823 0.6856969 0.4832797 0.7389738 -0.4694237 0.4043767 0.6052222 0.6857008 0.6255108 0.6432116 -0.4416052 0.5146825 0.5146825 0.6857143 0.7531897 0.5238969 -0.3977906 0.6052222 0.4043767 0.6857008 0.8635901 0.3822783 -0.3287484 0.6724823 0.2785453 0.6856969 0.9506022 0.2184541 -0.2205294 0.7138987 0.1420046 0.6856992 0.9974421 0.03338742 -0.06320416 0.727881 0 0.6857035 0.9794965 -0.1607723 0.1214032 0.7138987 -0.1420046 0.6856992 0.8972637 -0.3405329 0.28099 0.6724823 -0.2785453 0.6856969 0.7776231 -0.4923319 0.3910394 0.6052222 -0.4043767 0.6857008 0.6394757 -0.6152432 0.461028 0.5147049 -0.5146744 0.6857035 0.4897742 -0.7106121 0.5051254 0.4043767 -0.6052222 0.6857008 0.3315034 -0.7787675 0.5325663 0.2785453 -0.6724823 0.6856969 0.1673657 -0.8195856 0.5479673 0.1420046 -0.7138987 0.6856992 0 -0.8331381 0.5530652 0 -0.727881 0.6857035 -0.1673657 -0.8195856 0.5479673 -0.1420046 -0.7138987 0.6856992 -0.3315034 -0.7787675 0.5325663 -0.2785453 -0.6724823 0.6856969 -0.4897742 -0.7106121 0.5051254 -0.4043767 -0.6052222 0.6857008 -0.6394757 -0.6152432 0.461028 -0.5146825 -0.5146825 0.6857143 -0.7776231 -0.4923319 0.3910394 -0.6052222 -0.4043767 0.6857008 -0.8972637 -0.3405329 0.28099 -0.6724823 -0.2785453 0.6856969 -0.9794965 -0.1607723 0.1214032 -0.7138987 -0.1420046 0.6856992 -0.9974421 0.03338742 -0.06320416 -0.727881 0 0.6857035 -0.9506022 0.2184541 -0.2205294 -0.7138987 0.1420046 0.6856992 -0.8635824 0.3822884 -0.3287571 -0.6724823 0.2785453 0.6856969 -0.7531897 0.5238969 -0.3977906 -0.6052222 0.4043767 0.6857008 -0.6255108 0.6432116 -0.4416052 -0.5146825 0.5146825 0.6857143 -0.4832797 0.7389738 -0.4694237 -0.4043767 0.6052222 0.6857008 -0.3292092 0.8092437 -0.4865656 -0.1420046 0.7138987 0.6856992 -0.1667581 0.852194 -0.4959408 -0.2785453 0.6724823 0.6856969 -0.6867167 -0.2366473 0.687327 -0.8780174 -0.1380705 0.4582818 -0.6832136 -0.2323158 0.6922779 0 0.3520364 -0.9359865 0.08008146 0.3506311 -0.9330835 0.1650144 0.3461427 -0.9235559 0.2603872 0.3372948 -0.9046716 0.3736812 0.3211876 -0.870173 0.5141327 0.2917366 -0.8065714 0.6885132 0.2371037 -0.6853697 0.8796179 0.1402041 -0.4545496 0.9981527 -0.002594053 -0.06070214 0.9051235 -0.1472576 0.3988317 0.6867167 -0.2366473 0.687327 0.4971019 -0.2797113 0.8213717 0.3543858 -0.2999401 0.8856899 0.2438502 -0.3091619 0.9192149 0.1532059 -0.3129431 0.9373338 0.07409924 -0.3142504 0.9464439 0 -0.3145884 0.9492282 -0.07409924 -0.3142504 0.9464439 -0.1532059 -0.3129431 0.9373338 -0.2438502 -0.3091619 0.9192149 -0.3543858 -0.2999401 0.8856899 -0.4971247 -0.2797071 0.8213592 -0.9051235 -0.1472576 0.3988317 -0.9981527 -0.002594053 -0.06070214 -0.8796179 0.1402041 -0.4545496 -0.6885132 0.2371037 -0.6853697 -0.5141327 0.2917366 -0.8065714 -0.3736812 0.3211876 -0.870173 -0.2603872 0.3372948 -0.9046716 -0.1650144 0.3461427 -0.9235559 -0.08008146 0.3506311 -0.9330835 0.9016715 0.1450292 -0.4073758 0.9465761 0.3224633 -0.003357052 0.6803928 0.2314263 -0.6953471 0 -0.341476 0.9398905 0.1851879 -0.9826743 -0.007538139 0.07861602 -0.3401609 0.9370753 0.8616111 0.5074997 -0.008392691 0.4909337 0.2724459 -0.8275007 0.367849 -0.3123039 0.875873 0.8780174 -0.1380705 0.4582818 0.9976243 -0.06888055 -0.001159667 0.9983732 0.002807736 0.05694872 -0.2559353 -0.3274726 0.9095377 -0.1620554 -0.3358606 0.9278663 -0.2408593 0.3014099 -0.922572 -0.4055379 0.9138336 -0.02114969 -0.5854795 0.8104973 -0.0175485 0.1620256 -0.3358622 0.9278708 -0.9661152 -0.2580702 -0.00463891 -0.9002895 -0.4352361 -0.006958365 0.07339763 0.3081786 -0.948493 -0.5076324 -0.2844731 0.8132555 0.3496926 0.2919192 -0.8902238 0.5854795 0.8104973 -0.0175485 0.2408593 0.3014099 -0.922572 0.8032338 -0.5956119 -0.007873892 0.5076324 -0.2844731 0.8132555 0.7396581 0.672852 -0.01327574 -0.07861602 -0.3401609 0.9370753 -0.3497194 0.291916 -0.8902143 -0.7396442 0.6728671 -0.01327604 -0.9016715 0.1450292 -0.4073758 -0.9983732 0.002807736 0.05694872 0.8796585 0.1283032 0.457973 0.6289214 0.195937 0.7523739 -0.9918886 0.1271104 -6.10374e-5 -0.9976243 -0.06888055 -0.001159667 -0.4909337 0.2724459 -0.8275007 -0.8616111 0.5074997 -0.008392691 -0.3640594 -0.9313438 -0.007721245 -0.1851879 -0.9826743 -0.007538139 0.1515904 0.3060192 -0.9398791 0.207533 0.9779383 -0.02380526 0.9918886 0.1271104 -6.10374e-5 -0.6803928 0.2314263 -0.6953471 -0.9465761 0.3224633 -0.003357052 0.2559353 -0.3274726 0.9095377 0.9002895 -0.4352361 -0.006958365 0.6832136 -0.2323158 0.6922779 0 0.9996907 -0.02487319 0 0.308857 -0.9511085 -0.1515904 0.3060192 -0.9398791 -0.07339763 0.3081786 -0.948493 -0.207533 0.9779383 -0.02380526 0.4055124 0.913845 -0.02114999 0.9661152 -0.2580702 -0.00463891 -0.367849 -0.3123039 0.875873 0 -0.9999721 -0.007477045 0.3640594 -0.9313438 -0.007721245 0.5304211 -0.8476972 -0.007934927 -0.8032338 -0.5956119 -0.007873892 -0.5304211 -0.8476972 -0.007934927 -0.6784963 -0.7345595 -0.008087456 0.6784963 -0.7345595 -0.008087456 0.4586108 -0.2350888 -0.8569769 0.2183307 -0.0438553 -0.974889 0.3199912 -0.04278755 -0.9464539 0 -0.27537 -0.9613383 -0.06735563 0.2737869 0.959429 -0.4586108 -0.2350888 -0.8569769 0.1389257 0.2696417 0.9528868 0.06735563 0.2737869 0.959429 0.6317496 -0.1919969 -0.7510191 0.8394255 -0.109136 -0.5324043 0.4459475 0.2307866 0.8647938 -0.3175215 0.2503793 0.9145985 -0.8394255 -0.109136 -0.5324043 -0.6289214 0.195937 0.7523739 0.06860768 -0.2746139 -0.9591038 0.1418842 -0.2720184 -0.9517746 0.3175215 0.2503793 0.9145985 0.2196769 0.2622817 0.9396544 0.3272302 -0.2561197 -0.9095731 0.9944168 0.01306229 -0.1047124 -0.3272302 -0.2561197 -0.9095731 -0.1418842 -0.2720184 -0.9517746 -0.8796585 0.1283032 0.457973 0.2254152 -0.2666468 -0.9370632 0 0.2751283 0.9614076 -0.06860768 -0.2746139 -0.9591038 -0.1389257 0.2696417 0.9528868 -0.4459475 0.2307866 0.8647938 -0.2254152 -0.2666468 -0.9370632 -0.2196769 0.2622817 0.9396544 -0.6317496 -0.1919969 -0.7510191 -0.9944168 0.01306229 -0.1047124 -0.1475908 0.04938006 0.9878151 -0.09216862 -0.05023497 0.9944755 -0.1480161 -0.04959303 0.9877408 -0.0441305 -0.04452723 -0.9980331 0.7799886 0.02942085 0.6251018 0.4888832 0.04181092 0.8713467 -0.9999304 -0.00137335 -0.01171934 -0.7727466 -0.02932894 -0.6340367 0.09170913 -0.04446595 -0.9947926 0.1472532 -0.04428273 -0.9881071 0.1475908 0.04938006 0.9878151 0.09189337 0.05026513 0.9944994 0.7727466 -0.02932894 -0.6340367 0.9999304 -0.00137335 -0.01171934 -0.1472532 -0.04428273 -0.9881071 0.3211802 0.04599183 0.9459007 -0.2183307 -0.0438553 -0.974889 0 -0.04452717 -0.9990082 0.0441305 -0.04452723 -0.9980331 0.04419171 0.05075335 0.997733 -0.09189337 0.05026513 0.9944994 -0.4888832 0.04181092 0.8713467 0.2189411 0.04806691 0.9745535 0.4860107 -0.03973537 -0.8730491 -0.7799886 0.02942085 0.6251018 -0.4860107 -0.03973537 -0.8730491 0 0.05090564 0.9987035 -0.04419171 0.05075335 0.997733 -0.09170913 -0.04446595 -0.9947926 -0.3211802 0.04599183 0.9459007 -0.3200187 -0.04278713 -0.9464447 -0.2189411 0.04806691 0.9745535 0.9999176 7.01932e-4 -0.01281785 0.8815925 -0.1283004 0.4542397 0.7811781 -0.03024482 0.6235752 0.4869589 0.04141408 -0.8724426 0.2195854 -0.04852545 0.9743857 -0.4901674 -0.0425741 0.8705881 -0.7811781 -0.03024482 0.6235752 -0.7732087 0.0302447 -0.63343 -0.4869589 0.04141408 -0.8724426 0 -0.05069255 0.9987143 -0.0443139 -0.05060088 0.9977354 0.7732211 0.03024399 -0.6334151 -0.1476494 0.04638838 -0.9879513 -0.09195345 0.04660236 -0.9946722 -0.2195854 -0.04852545 0.9743857 -0.3221298 -0.04666376 0.9455447 -0.3208147 0.04471015 -0.9460862 0.09195345 0.04660236 -0.9946722 0.3208147 0.04471015 -0.9460862 -0.04425197 0.0466935 -0.9979287 0.4901674 -0.0425741 0.8705881 -0.9999176 7.01932e-4 -0.01281785 0.1476494 0.04638838 -0.9879513 0.09216862 -0.05023497 0.9944755 -0.2189441 0.04587024 -0.9746586 0.3221298 -0.04666376 0.9455447 0.04425197 0.0466935 -0.9979287 0.0443139 -0.05060088 0.9977354 0 0.04672414 -0.9989079 0.2189441 0.04587024 -0.9746586 0.1480161 -0.04959303 0.9877408 -0.07001125 0.2795567 -0.9575733 -0.3633026 0.9315428 0.0154733 -0.1848255 0.982664 0.0145272 -0.448238 -0.2309095 0.8635761 -0.6316833 -0.1964816 0.7499141 0.3326623 0.2593851 -0.9066726 0.2205025 -0.2605745 0.9399359 -0.1392897 -0.2670128 0.9535735 -0.2205025 -0.2605745 0.9399359 0.6365359 0.1927583 -0.7467707 0.3189851 -0.2496458 0.9142897 -0.8815925 -0.1283004 0.4542397 -0.8408757 0.1096569 -0.5300032 -0.6365504 0.1927627 -0.7467572 0 -0.271616 0.9624058 -0.06753915 -0.2704923 0.9603501 0.8408848 0.1096541 -0.5299896 -0.2296249 0.2707645 -0.9348579 -0.1446919 0.2766878 -0.9500043 -0.3189851 -0.2496458 0.9142897 -0.4645649 0.237135 -0.8531978 0.1446919 0.2766878 -0.9500043 0.4645649 0.237135 -0.8531978 0.6316833 -0.1964816 0.7499141 -0.9942041 -0.01193273 -0.1068456 0.2296249 0.2707645 -0.9348579 0.1392897 -0.2670128 0.9535735 0.9942041 -0.01193273 -0.1068456 -0.3326623 0.2593851 -0.9066726 0.448238 -0.2309095 0.8635761 0.07001125 0.2795567 -0.9575733 0.06753915 -0.2704923 0.9603501 0 0.2804078 -0.959881 0.8994964 0.4364265 0.02093625 0.4702161 0.280506 0.8367875 0.6525353 0.2373799 0.719617 0.9457733 -0.3248102 -0.003357052 -0.9917886 -0.1278152 -0.004333734 -0.9975747 0.06930863 0.006408989 -0.9656945 0.2591096 0.01721292 0.5293248 0.8482503 0.01693814 0.3895429 -0.9183436 0.0700103 0.9975747 0.06930863 0.006408989 -0.6773465 0.7354248 0.01876938 -0.5293468 0.8482366 0.01693785 0.8588917 -0.5121061 0.007232964 -0.802195 0.5967098 0.02050882 0.1848255 0.982664 0.0145272 0.1938582 -0.9763408 0.09579986 -0.1938582 -0.9763408 0.09579986 -0.3895429 -0.9183436 0.0700103 0 0.9998989 0.0142219 0.9917886 -0.1278152 -0.004333734 -0.8588917 -0.5121061 0.007232964 -0.9457733 -0.3248102 -0.003357052 0.6773465 0.7354248 0.01876938 0.5733911 -0.8180925 0.04413044 -0.5733911 -0.8180925 0.04413044 0.7330434 -0.6797873 0.02316415 -0.8994958 0.4364262 0.02096676 0 -0.9941601 0.1079156 0.9656945 0.2591096 0.01721292 -0.7330282 -0.6798037 0.02316367 0.3633026 0.9315428 0.0154733 0.8021805 0.5967295 0.02050846 0.8914076 -0.1557704 -0.4255916 0.7913561 -0.3524937 0.4995034 0.7866289 -0.5762304 0.2217515 0.4849227 -0.3000056 -0.8214905 0.3532286 -0.334795 -0.8735799 -0.8914118 -0.1557407 -0.4255936 -0.6525353 0.2373799 0.719617 0.08057099 -0.4148797 -0.906302 0 -0.4236088 -0.9058453 -0.08057099 -0.4148797 -0.906302 0.8670293 0.1454255 0.4765625 -0.1440809 0.3134317 0.9386167 -0.4849227 -0.3000056 -0.8214905 -0.4702398 0.280502 0.8367754 0.06964504 0.3154782 0.9463737 0.1440809 0.3134317 0.9386167 -0.3532286 -0.334795 -0.8735799 0.3337922 0.299885 0.8936732 -0.06964504 0.3154782 0.9463737 0.6666098 -0.2486434 -0.7027146 -0.998714 -0.004730463 0.05047893 -0.8670293 0.1454255 0.4765625 0.2292873 0.3090022 0.9230087 0.2512321 -0.364488 -0.8966777 0.1636453 -0.3924803 -0.9050853 0.998714 -0.004730463 0.05047893 -0.2292873 0.3090022 0.9230087 -0.3337922 0.299885 0.8936732 0 0.3160263 0.9487504 -0.1636453 -0.3924803 -0.9050853 -0.6666098 -0.2486434 -0.7027146 -0.2512321 -0.364488 -0.8966777 -0.2700052 -0.9569665 -0.1063601 -0.1726478 -0.9775033 -0.1211616 -0.1057779 -0.1156049 0.987647 -0.65855 -0.7504137 0.05649161 0.1057779 -0.1156049 0.987647 0.1587893 -0.1159715 0.9804778 0.3816443 -0.92086 -0.07977753 0.2700334 -0.9569586 -0.1063593 0.2370736 -0.1185978 0.9642255 0.3678135 -0.1313837 0.9205714 0.512171 -0.8582878 -0.03198397 -0.7866341 -0.5762343 0.2217224 -0.3678135 -0.1313837 0.9205714 0.0841729 -0.9881008 -0.1287314 0 -0.9913761 -0.1310482 -0.0841729 -0.9881008 -0.1287314 0.5867402 -0.1874822 0.7877731 -0.06537121 -0.1157271 0.9911276 -0.512171 -0.8582878 -0.03198397 -0.2371024 -0.118597 0.9642185 0.03134346 -0.1158825 0.9927683 0.06537121 -0.1157271 0.9911276 -0.3816443 -0.92086 -0.07977753 -0.03134346 -0.1158825 0.9927683 0.6585349 -0.7504271 0.0564903 -0.7913447 -0.3525023 0.4995155 -0.5867402 -0.1874822 0.7877731 0.1726478 -0.9775033 -0.1211616 -0.1587893 -0.1159715 0.9804778 0 -0.1159735 0.9932524</float_array>
+          <technique_common>
+            <accessor source="#Cylinder-mesh-normals-array" count="384" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cylinder-mesh-vertices">
+          <input semantic="POSITION" source="#Cylinder-mesh-positions"/>
+        </vertices>
+        <triangles material="Screw2_001-material" count="764">
+          <input semantic="VERTEX" source="#Cylinder-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cylinder-mesh-normals" offset="1"/>
+          <p>1 0 65 1 64 2 3 3 66 4 65 1 5 5 67 6 66 4 7 7 68 8 67 6 9 9 69 10 68 8 11 11 70 12 69 10 13 13 71 14 70 12 15 15 72 16 71 14 17 17 73 18 72 16 19 19 74 20 73 18 21 21 75 22 74 20 23 23 76 24 75 22 25 25 77 26 76 24 27 27 78 28 77 26 29 29 79 30 78 28 31 31 80 32 79 30 33 33 81 34 80 32 35 35 82 36 81 34 37 37 83 38 82 36 39 39 84 40 83 38 41 41 85 42 84 40 43 43 86 44 85 42 45 45 87 46 86 44 47 47 88 48 87 46 49 49 89 50 88 48 51 51 90 52 89 50 53 53 91 54 90 52 55 55 92 56 91 54 57 57 93 58 92 56 59 59 94 60 93 58 5 5 53 53 37 37 63 61 64 2 95 62 61 63 95 62 94 60 44 64 156 65 157 66 0 67 65 1 2 68 2 68 66 4 4 69 4 69 67 6 6 70 6 70 68 8 8 71 8 71 69 10 10 72 10 72 70 12 12 73 12 73 71 14 14 74 14 74 72 16 16 75 16 75 73 18 18 76 18 76 74 20 20 77 20 77 75 22 22 78 22 78 76 24 24 79 24 79 77 26 26 80 26 80 78 28 28 81 28 81 79 30 30 82 30 82 80 32 32 83 80 32 34 84 32 83 81 34 36 85 34 84 82 36 38 86 36 85 83 38 40 87 38 86 84 40 42 88 40 87 85 42 44 64 42 88 86 44 46 89 44 64 87 46 48 90 46 89 88 48 50 91 48 90 89 50 52 92 50 91 90 52 54 93 52 92 91 54 56 94 54 93 92 56 58 95 56 94 93 58 60 96 58 95 95 62 0 67 62 97 94 60 62 97 60 96 148 98 110 99 149 100 115 101 147 102 132 103 149 100 109 104 150 105 26 80 135 106 24 79 130 107 100 108 131 109 36 85 112 110 113 111 98 112 138 113 137 114 30 82 133 115 28 81 157 66 155 116 154 117 4 69 106 118 2 68 42 88 157 66 158 119 151 120 143 121 104 122 18 76 131 109 16 75 135 106 103 123 128 124 150 105 108 125 151 120 34 84 113 111 114 126 99 127 137 114 136 128 10 72 151 120 8 71 48 90 118 129 119 130 110 99 167 131 166 132 24 79 128 124 22 78 119 130 125 133 124 134 116 135 136 128 127 136 114 126 122 137 121 138 105 139 141 140 106 118 16 75 148 98 14 74 131 109 111 141 148 98 50 91 117 142 118 129 52 92 116 135 117 142 118 129 126 143 125 133 28 81 134 144 26 80 117 142 127 136 126 143 128 124 102 145 129 146 22 78 129 146 20 77 106 118 140 147 107 148 56 94 98 112 99 127 58 95 97 149 98 112 32 83 132 103 30 82 32 83 114 126 115 101 96 150 140 147 139 151 8 71 104 122 6 70 104 122 142 152 105 139 156 65 124 134 155 116 62 97 107 148 96 150 129 146 101 153 130 107 60 96 96 150 97 149 38 86 159 154 112 110 115 101 121 138 120 155 14 74 149 100 12 73 132 103 146 156 133 115 133 115 145 157 134 144 97 149 139 151 138 113 158 119 154 117 153 158 6 70 105 139 4 69 2 68 107 148 0 67 40 87 158 119 159 154 20 77 130 107 18 76 113 111 123 159 122 137 54 93 99 127 116 135 112 110 152 160 123 159 134 144 144 161 135 106 12 73 150 105 10 72 159 154 153 158 152 160 46 89 119 130 156 65 163 162 216 163 195 164 121 138 168 165 120 155 140 147 179 166 139 151 154 117 189 167 153 158 141 140 182 168 181 169 101 153 162 170 161 171 109 104 166 132 165 172 137 114 176 173 136 128 124 134 191 174 155 116 127 136 174 175 126 143 146 156 187 176 186 177 143 121 164 178 183 179 103 123 184 180 163 162 111 141 160 181 167 131 153 158 188 182 152 160 123 159 170 183 122 137 126 143 173 184 125 133 145 157 186 177 185 185 140 147 181 169 180 186 100 108 161 171 160 181 108 125 165 172 164 178 122 137 169 187 121 138 139 151 178 188 138 113 136 128 175 189 127 136 147 102 168 165 187 176 152 160 171 190 123 159 138 113 177 191 137 114 155 116 190 192 154 117 125 133 172 193 124 134 144 161 185 185 184 180 142 152 183 179 182 168 102 145 163 162 162 170 209 194 242 195 241 196 170 183 201 197 169 187 166 132 199 198 198 199 173 184 204 200 172 193 172 193 223 201 191 174 185 185 218 202 217 203 182 168 215 204 214 205 160 181 193 206 192 207 188 182 203 208 171 190 165 172 198 199 197 209 189 167 220 210 188 182 187 176 200 211 219 212 181 169 214 205 213 213 179 166 210 214 178 188 169 187 200 211 168 165 167 131 192 207 199 198 175 189 206 215 174 175 184 180 217 203 216 163 183 179 196 216 215 204 178 188 209 194 177 191 162 170 195 164 194 217 164 178 197 209 196 216 174 175 205 218 173 184 191 174 222 219 190 192 180 186 213 213 212 220 180 186 211 221 179 166 161 171 194 217 193 206 171 190 202 222 170 183 176 173 207 223 175 189 190 192 221 224 189 167 186 177 219 212 218 202 177 191 208 225 176 173 224 226 263 227 231 228 195 164 226 229 194 217 197 209 228 230 196 216 205 218 238 231 237 232 222 219 255 233 254 234 213 213 244 235 212 220 211 221 244 235 243 236 194 217 225 237 193 206 202 222 235 238 234 239 207 223 240 240 239 241 221 224 254 234 253 242 219 212 250 243 218 202 208 225 241 196 240 240 216 163 227 244 195 164 201 197 234 239 233 245 199 198 230 246 198 199 204 200 237 232 236 247 223 201 236 247 255 233 218 202 249 248 217 203 215 204 246 249 214 205 193 206 224 226 192 207 203 208 252 250 235 238 198 199 229 251 197 209 220 210 253 242 252 250 200 211 251 252 219 212 214 205 245 253 213 213 210 214 243 236 242 195 200 211 233 245 232 254 192 207 231 228 199 198 206 215 239 241 238 231 217 203 248 255 216 163 196 216 247 256 215 204 265 257 298 258 297 259 238 231 271 260 270 261 249 248 280 262 248 255 228 230 279 263 247 256 241 196 274 264 273 265 227 244 258 266 226 229 229 251 260 267 228 230 237 232 270 261 269 268 254 234 287 269 286 270 245 253 276 271 244 235 243 236 276 271 275 272 226 229 257 273 225 237 234 239 267 274 266 275 239 241 272 276 271 260 253 242 286 270 285 277 251 252 282 278 250 243 240 240 273 265 272 276 248 255 259 279 227 244 233 245 266 275 265 257 231 228 262 280 230 246 236 247 269 268 268 281 255 233 268 281 287 269 250 243 281 282 249 248 247 256 278 283 246 249 225 237 256 284 224 226 235 238 284 285 267 274 230 246 261 286 229 251 252 250 285 277 284 285 232 254 283 287 251 252 246 249 277 288 245 253 242 195 275 272 274 264 232 254 265 257 264 289 290 290 323 291 322 292 263 227 294 293 262 280 268 281 301 294 300 295 287 269 300 295 319 296 282 278 313 297 281 282 279 263 310 298 278 283 257 273 288 299 256 284 267 274 316 300 299 301 262 280 293 302 261 286 284 285 317 303 316 300 264 289 315 304 283 287 278 283 309 305 277 288 274 264 307 306 306 307 264 289 297 259 296 308 256 284 295 309 263 227 270 261 303 310 302 311 281 282 312 312 280 262 260 267 311 313 279 263 273 265 306 307 305 314 259 279 290 290 258 266 261 286 292 315 260 267 269 268 302 311 301 294 286 270 319 296 318 316 277 288 308 317 276 271 275 272 308 317 307 306 258 266 289 318 257 273 266 275 299 301 298 258 271 260 304 319 303 310 285 277 318 316 317 303 283 287 314 320 282 278 272 276 305 314 304 319 280 262 291 321 259 279 327 322 352 323 359 324 292 315 325 325 324 326 302 311 333 327 301 294 319 296 350 328 318 316 308 317 341 329 340 330 308 317 339 331 307 306 289 318 322 292 321 332 299 301 330 333 298 258 304 319 335 334 303 310 318 316 349 335 317 303 314 320 347 336 346 337 305 314 336 338 304 319 291 321 344 339 323 291 298 258 329 340 297 259 294 293 327 322 326 341 301 294 332 342 300 295 300 295 351 343 319 296 313 297 346 337 345 344 310 298 343 345 342 346 288 299 321 332 320 347 316 300 331 348 299 301 293 302 326 341 325 325 317 303 348 349 316 300 315 304 328 350 347 336 309 305 342 346 341 329 307 306 338 351 306 307 297 259 328 350 296 308 295 309 320 347 327 322 303 310 334 352 302 311 312 312 345 344 344 339 311 313 324 326 343 345 306 307 337 353 305 314 369 354 370 355 363 356 335 334 366 357 334 352 344 339 377 358 376 359 343 345 356 360 375 361 338 351 369 354 337 353 322 292 355 362 354 363 324 326 357 364 356 360 334 352 365 365 333 327 351 343 382 366 350 328 340 330 373 367 372 368 340 330 371 369 339 331 321 332 354 363 353 370 331 348 362 371 330 333 336 338 367 372 335 334 350 328 381 373 349 335 346 337 379 374 378 375 337 353 368 376 336 338 323 291 376 359 355 362 330 333 361 377 329 340 326 341 359 324 358 378 333 327 364 379 332 342 332 342 383 380 351 343 345 344 378 375 377 358 342 346 375 361 374 381 320 347 353 370 352 323 348 349 363 356 331 348 325 325 358 378 357 364 349 335 380 382 348 349 347 336 360 383 379 374 341 329 374 381 373 367 339 331 370 355 338 351 329 340 360 383 328 350 1 0 3 3 65 1 3 3 5 5 66 4 5 5 7 7 67 6 7 7 9 9 68 8 9 9 11 11 69 10 11 11 13 13 70 12 13 13 15 15 71 14 15 15 17 17 72 16 17 17 19 19 73 18 19 19 21 21 74 20 21 21 23 23 75 22 23 23 25 25 76 24 25 25 27 27 77 26 27 27 29 29 78 28 29 29 31 31 79 30 31 31 33 33 80 32 33 33 35 35 81 34 35 35 37 37 82 36 37 37 39 39 83 38 39 39 41 41 84 40 41 41 43 43 85 42 43 43 45 45 86 44 45 45 47 47 87 46 47 47 49 49 88 48 49 49 51 51 89 50 51 51 53 53 90 52 53 53 55 55 91 54 55 55 57 57 92 56 57 57 59 59 93 58 59 59 61 63 94 60 5 5 3 3 1 0 1 0 63 61 5 5 63 61 61 63 5 5 61 63 59 59 57 57 57 57 55 55 53 53 53 53 51 51 49 49 49 49 47 47 45 45 45 45 43 43 37 37 43 43 41 41 37 37 41 41 39 39 37 37 37 37 35 35 29 29 35 35 33 33 29 29 33 33 31 31 29 29 29 29 27 27 25 25 25 25 23 23 21 21 21 21 19 19 13 13 19 19 17 17 13 13 17 17 15 15 13 13 13 13 11 11 5 5 11 11 9 9 5 5 9 9 7 7 5 5 61 63 57 57 53 53 53 53 49 49 37 37 49 49 45 45 37 37 29 29 25 25 21 21 5 5 61 63 53 53 37 37 29 29 21 21 21 21 13 13 37 37 13 13 5 5 37 37 63 61 1 0 64 2 61 63 63 61 95 62 44 64 46 89 156 65 0 67 64 2 65 1 2 68 65 1 66 4 4 69 66 4 67 6 6 70 67 6 68 8 8 71 68 8 69 10 10 72 69 10 70 12 12 73 70 12 71 14 14 74 71 14 72 16 16 75 72 16 73 18 18 76 73 18 74 20 20 77 74 20 75 22 22 78 75 22 76 24 24 79 76 24 77 26 26 80 77 26 78 28 28 81 78 28 79 30 30 82 79 30 80 32 80 32 81 34 34 84 81 34 82 36 36 85 82 36 83 38 38 86 83 38 84 40 40 87 84 40 85 42 42 88 85 42 86 44 44 64 86 44 87 46 46 89 87 46 88 48 48 90 88 48 89 50 50 91 89 50 90 52 52 92 90 52 91 54 54 93 91 54 92 56 56 94 92 56 93 58 58 95 93 58 94 60 60 96 95 62 64 2 0 67 94 60 95 62 62 97 148 98 111 141 110 99 115 101 120 155 147 102 149 100 110 99 109 104 26 80 134 144 135 106 130 107 101 153 100 108 36 85 38 86 112 110 98 112 97 149 138 113 30 82 132 103 133 115 157 66 156 65 155 116 4 69 105 139 106 118 42 88 44 64 157 66 151 120 108 125 143 121 18 76 130 107 131 109 135 106 144 161 103 123 150 105 109 104 108 125 34 84 36 85 113 111 99 127 98 112 137 114 10 72 150 105 151 120 48 90 50 91 118 129 110 99 111 141 167 131 24 79 135 106 128 124 119 130 118 129 125 133 116 135 99 127 136 128 114 126 113 111 122 137 105 139 142 152 141 140 16 75 131 109 148 98 131 109 100 108 111 141 50 91 52 92 117 142 52 92 54 93 116 135 118 129 117 142 126 143 28 81 133 115 134 144 117 142 116 135 127 136 128 124 103 123 102 145 22 78 128 124 129 146 106 118 141 140 140 147 56 94 58 95 98 112 58 95 60 96 97 149 32 83 115 101 132 103 32 83 34 84 114 126 96 150 107 148 140 147 8 71 151 120 104 122 104 122 143 121 142 152 156 65 119 130 124 134 62 97 0 67 107 148 129 146 102 145 101 153 60 96 62 97 96 150 38 86 40 87 159 154 115 101 114 126 121 138 14 74 148 98 149 100 132 103 147 102 146 156 133 115 146 156 145 157 97 149 96 150 139 151 158 119 157 66 154 117 6 70 104 122 105 139 2 68 106 118 107 148 40 87 42 88 158 119 20 77 129 146 130 107 113 111 112 110 123 159 54 93 56 94 99 127 112 110 159 154 152 160 134 144 145 157 144 161 12 73 149 100 150 105 159 154 158 119 153 158 46 89 48 90 119 130 163 162 184 180 216 163 121 138 169 187 168 165 140 147 180 186 179 166 154 117 190 192 189 167 141 140 142 152 182 168 101 153 102 145 162 170 109 104 110 99 166 132 137 114 177 191 176 173 124 134 172 193 191 174 127 136 175 189 174 175 146 156 147 102 187 176 143 121 108 125 164 178 103 123 144 161 184 180 111 141 100 108 160 181 153 158 189 167 188 182 123 159 171 190 170 183 126 143 174 175 173 184 145 157 146 156 186 177 140 147 141 140 181 169 100 108 101 153 161 171 108 125 109 104 165 172 122 137 170 183 169 187 139 151 179 166 178 188 136 128 176 173 175 189 147 102 120 155 168 165 152 160 188 182 171 190 138 113 178 188 177 191 155 116 191 174 190 192 125 133 173 184 172 193 144 161 145 157 185 185 142 152 143 121 183 179 102 145 103 123 163 162 209 194 210 214 242 195 170 183 202 222 201 197 166 132 167 131 199 198 173 184 205 218 204 200 172 193 204 200 223 201 185 185 186 177 218 202 182 168 183 179 215 204 160 181 161 171 193 206 188 182 220 210 203 208 165 172 166 132 198 199 189 167 221 224 220 210 187 176 168 165 200 211 181 169 182 168 214 205 179 166 211 221 210 214 169 187 201 197 200 211 167 131 160 181 192 207 175 189 207 223 206 215 184 180 185 185 217 203 183 179 164 178 196 216 178 188 210 214 209 194 162 170 163 162 195 164 164 178 165 172 197 209 174 175 206 215 205 218 191 174 223 201 222 219 180 186 181 169 213 213 180 186 212 220 211 221 161 171 162 170 194 217 171 190 203 208 202 222 176 173 208 225 207 223 190 192 222 219 221 224 186 177 187 176 219 212 177 191 209 194 208 225 224 226 256 284 263 227 195 164 227 244 226 229 197 209 229 251 228 230 205 218 206 215 238 231 222 219 223 201 255 233 213 213 245 253 244 235 211 221 212 220 244 235 194 217 226 229 225 237 202 222 203 208 235 238 207 223 208 225 240 240 221 224 222 219 254 234 219 212 251 252 250 243 208 225 209 194 241 196 216 163 248 255 227 244 201 197 202 222 234 239 199 198 231 228 230 246 204 200 205 218 237 232 223 201 204 200 236 247 218 202 250 243 249 248 215 204 247 256 246 249 193 206 225 237 224 226 203 208 220 210 252 250 198 199 230 246 229 251 220 210 221 224 253 242 200 211 232 254 251 252 214 205 246 249 245 253 210 214 211 221 243 236 200 211 201 197 233 245 192 207 224 226 231 228 206 215 207 223 239 241 217 203 249 248 248 255 196 216 228 230 247 256 265 257 266 275 298 258 238 231 239 241 271 260 249 248 281 282 280 262 228 230 260 267 279 263 241 196 242 195 274 264 227 244 259 279 258 266 229 251 261 286 260 267 237 232 238 231 270 261 254 234 255 233 287 269 245 253 277 288 276 271 243 236 244 235 276 271 226 229 258 266 257 273 234 239 235 238 267 274 239 241 240 240 272 276 253 242 254 234 286 270 251 252 283 287 282 278 240 240 241 196 273 265 248 255 280 262 259 279 233 245 234 239 266 275 231 228 263 227 262 280 236 247 237 232 269 268 255 233 236 247 268 281 250 243 282 278 281 282 247 256 279 263 278 283 225 237 257 273 256 284 235 238 252 250 284 285 230 246 262 280 261 286 252 250 253 242 285 277 232 254 264 289 283 287 246 249 278 283 277 288 242 195 243 236 275 272 232 254 233 245 265 257 290 290 291 321 323 291 263 227 295 309 294 293 268 281 269 268 301 294 287 269 268 281 300 295 282 278 314 320 313 297 279 263 311 313 310 298 257 273 289 318 288 299 267 274 284 285 316 300 262 280 294 293 293 302 284 285 285 277 317 303 264 289 296 308 315 304 278 283 310 298 309 305 274 264 275 272 307 306 264 289 265 257 297 259 256 284 288 299 295 309 270 261 271 260 303 310 281 282 313 297 312 312 260 267 292 315 311 313 273 265 274 264 306 307 259 279 291 321 290 290 261 286 293 302 292 315 269 268 270 261 302 311 286 270 287 269 319 296 277 288 309 305 308 317 275 272 276 271 308 317 258 266 290 290 289 318 266 275 267 274 299 301 271 260 272 276 304 319 285 277 286 270 318 316 283 287 315 304 314 320 272 276 273 265 305 314 280 262 312 312 291 321 327 322 320 347 352 323 292 315 293 302 325 325 302 311 334 352 333 327 319 296 351 343 350 328 308 317 309 305 341 329 308 317 340 330 339 331 289 318 290 290 322 292 299 301 331 348 330 333 304 319 336 338 335 334 318 316 350 328 349 335 314 320 315 304 347 336 305 314 337 353 336 338 291 321 312 312 344 339 298 258 330 333 329 340 294 293 295 309 327 322 301 294 333 327 332 342 300 295 332 342 351 343 313 297 314 320 346 337 310 298 311 313 343 345 288 299 289 318 321 332 316 300 348 349 331 348 293 302 294 293 326 341 317 303 349 335 348 349 315 304 296 308 328 350 309 305 310 298 342 346 307 306 339 331 338 351 297 259 329 340 328 350 295 309 288 299 320 347 303 310 335 334 334 352 312 312 313 297 345 344 311 313 292 315 324 326 306 307 338 351 337 353 371 369 372 368 360 383 372 368 373 367 379 374 373 367 374 381 379 374 374 381 375 361 378 375 379 374 374 381 378 375 375 361 356 360 376 359 356 360 357 364 355 362 357 364 358 378 355 362 358 378 359 324 354 363 355 362 358 378 354 363 359 324 352 323 353 370 353 370 354 363 359 324 355 362 376 359 356 360 376 359 377 358 375 361 377 358 378 375 375 361 379 374 360 383 372 368 360 383 361 377 371 369 361 377 362 371 371 369 362 371 363 356 370 355 371 369 362 371 370 355 363 356 380 382 368 376 380 382 381 373 367 372 381 373 382 366 367 372 382 366 383 380 366 357 367 372 382 366 366 357 383 380 364 379 365 365 365 365 366 357 383 380 367 372 368 376 380 382 368 376 369 354 363 356 335 334 367 372 366 357 344 339 345 344 377 358 343 345 324 326 356 360 338 351 370 355 369 354 322 292 323 291 355 362 324 326 325 325 357 364 334 352 366 357 365 365 351 343 383 380 382 366 340 330 341 329 373 367 340 330 372 368 371 369 321 332 322 292 354 363 331 348 363 356 362 371 336 338 368 376 367 372 350 328 382 366 381 373 346 337 347 336 379 374 337 353 369 354 368 376 323 291 344 339 376 359 330 333 362 371 361 377 326 341 327 322 359 324 333 327 365 365 364 379 332 342 364 379 383 380 345 344 346 337 378 375 342 346 343 345 375 361 320 347 321 332 353 370 348 349 380 382 363 356 325 325 326 341 358 378 349 335 381 373 380 382 347 336 328 350 360 383 341 329 342 346 374 381 339 331 371 369 370 355 329 340 361 377 360 383</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Circle_002-mesh" name="Circle.002">
+      <mesh>
+        <source id="Circle_002-mesh-positions">
+          <float_array id="Circle_002-mesh-positions-array" count="27">0 1 0 -0.7071068 0.7071068 0 -1 0 0 -0.7071068 -0.7071068 0 0 -1 0 0.7071069 -0.7071067 0 1 0 0 0.7071069 0.7071067 0 2.36023e-7 0 0.8147554</float_array>
+          <technique_common>
+            <accessor source="#Circle_002-mesh-positions-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Circle_002-mesh-normals">
+          <float_array id="Circle_002-mesh-normals-array" count="27">0 0 1 -0.6110764 0.253116 -0.7500119 0.6110762 -0.253116 -0.7500121 -0.2531161 0.6110764 -0.7500119 -0.2531161 -0.6110764 -0.750012 0.253116 -0.6110762 -0.750012 0.253116 0.6110762 -0.750012 -0.6110764 -0.253116 -0.7500119 0.6110762 0.253116 -0.7500121</float_array>
+          <technique_common>
+            <accessor source="#Circle_002-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Circle_002-mesh-vertices">
+          <input semantic="POSITION" source="#Circle_002-mesh-positions"/>
+        </vertices>
+        <triangles material="Screw1_001-material" count="14">
+          <input semantic="VERTEX" source="#Circle_002-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Circle_002-mesh-normals" offset="1"/>
+          <p>5 0 7 0 1 0 6 1 5 1 8 1 2 2 1 2 8 2 5 3 4 3 8 3 8 4 0 4 7 4 1 5 0 5 8 5 4 6 3 6 8 6 7 7 6 7 8 7 3 8 2 8 8 8 1 0 2 0 3 0 3 0 4 0 1 0 4 0 5 0 1 0 5 0 6 0 7 0 7 0 0 0 1 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Circle_000-mesh" name="Circle.000">
+      <mesh>
+        <source id="Circle_000-mesh-positions">
+          <float_array id="Circle_000-mesh-positions-array" count="27">0 1 0 -0.7071068 0.7071068 0 -1 0 0 -0.7071068 -0.7071068 0 0 -1 0 0.7071069 -0.7071067 0 1 0 0 0.7071069 0.7071067 0 2.36023e-7 0 0.8147554</float_array>
+          <technique_common>
+            <accessor source="#Circle_000-mesh-positions-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Circle_000-mesh-normals">
+          <float_array id="Circle_000-mesh-normals-array" count="27">0 0 1 -0.6110764 0.253116 -0.7500119 0.6110762 -0.253116 -0.7500121 -0.2531161 0.6110764 -0.7500119 -0.2531161 -0.6110764 -0.750012 0.253116 -0.6110762 -0.750012 0.253116 0.6110762 -0.750012 -0.6110764 -0.253116 -0.7500119 0.6110762 0.253116 -0.7500121</float_array>
+          <technique_common>
+            <accessor source="#Circle_000-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Circle_000-mesh-vertices">
+          <input semantic="POSITION" source="#Circle_000-mesh-positions"/>
+        </vertices>
+        <triangles material="Screw1_001-material" count="14">
+          <input semantic="VERTEX" source="#Circle_000-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Circle_000-mesh-normals" offset="1"/>
+          <p>5 0 7 0 1 0 6 1 5 1 8 1 2 2 1 2 8 2 5 3 4 3 8 3 8 4 0 4 7 4 1 5 0 5 8 5 4 6 3 6 8 6 7 7 6 7 8 7 3 8 2 8 8 8 1 0 2 0 3 0 3 0 4 0 1 0 4 0 5 0 1 0 5 0 6 0 7 0 7 0 0 0 1 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_010-mesh" name="Cube.010">
+      <mesh>
+        <source id="Cube_010-mesh-positions">
+          <float_array id="Cube_010-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_010-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_010-mesh-normals">
+          <float_array id="Cube_010-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_010-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_010-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_010-mesh-positions"/>
+        </vertices>
+        <triangles material="Net_Metal_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_010-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_010-mesh-normals" offset="1"/>
+          <p>5 0 0 0 4 0 6 1 1 1 5 1 7 2 2 2 6 2 4 3 3 3 7 3 1 4 3 4 0 4 6 5 4 5 7 5 5 0 1 0 0 0 6 1 2 1 1 1 7 2 3 2 2 2 4 3 0 3 3 3 1 4 2 4 3 4 6 5 5 5 4 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_009-mesh" name="Cube.009">
+      <mesh>
+        <source id="Cube_009-mesh-positions">
+          <float_array id="Cube_009-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_009-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_009-mesh-normals">
+          <float_array id="Cube_009-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_009-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_009-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_009-mesh-positions"/>
+        </vertices>
+        <triangles material="Net_Metal_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_009-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_009-mesh-normals" offset="1"/>
+          <p>5 0 0 0 4 0 6 1 1 1 5 1 7 2 2 2 6 2 4 3 3 3 7 3 1 4 3 4 0 4 6 5 4 5 7 5 5 0 1 0 0 0 6 1 2 1 1 1 7 2 3 2 2 2 4 3 0 3 3 3 1 4 2 4 3 4 6 5 5 5 4 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_008-mesh" name="Cube.008">
+      <mesh>
+        <source id="Cube_008-mesh-positions">
+          <float_array id="Cube_008-mesh-positions-array" count="60">-1 -1 -1 -1 2.47531 -1 1 2.47531 -1 1 -1 -1 -1 -1 4.155627 -1 2.47531 1 1 2.47531 1 1 -1 4.155627 -1 -0.3333333 2.136021 -1 0.4872322 1 -0.9106369 2.47531 -0.5760725 0.8946006 2.47531 -0.5760725 1 0.4872322 1 1 -0.3333333 2.136021 0.8946006 -1 -0.5760725 -0.9106369 -1 -0.5760725 0.8946006 -0.3333333 -0.5760725 -0.9106369 -0.3333333 -0.5760725 0.8946006 0.4872322 -0.5760725 -0.9106369 0.4872322 -0.5760725</float_array>
+          <technique_common>
+            <accessor source="#Cube_008-mesh-positions-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_008-mesh-normals">
+          <float_array id="Cube_008-mesh-normals-array" count="51">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0.9983965 0 0.05660891 0.99819 0.05710977 0.01885181 0.9984205 0.04554492 0.03289777 -0.9974846 0.06731069 0.02221912 0 0 1 -0.9978048 0.053685 0.03877741 -0.9977715 0 0.06672567 0.9983965 0 0.05660891 0.9994576 0 0.03293198 -0.9992458 0 0.03883337 -0.9977714 0 0.06672561 -0.9977715 0 0.06672561</float_array>
+          <technique_common>
+            <accessor source="#Cube_008-mesh-normals-array" count="17" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_008-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_008-mesh-positions"/>
+        </vertices>
+        <triangles material="Net_Metal_001-material" count="36">
+          <input semantic="VERTEX" source="#Cube_008-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_008-mesh-normals" offset="1"/>
+          <p>9 0 1 0 0 0 11 1 2 1 1 1 12 2 13 2 3 2 14 3 15 3 0 3 1 4 3 4 0 4 10 5 9 5 19 5 15 6 8 6 4 6 17 7 9 7 8 7 13 8 14 8 7 8 16 9 15 9 14 9 12 10 16 10 13 10 18 9 17 9 16 9 6 11 18 11 12 11 11 9 19 9 18 9 0 0 4 0 8 0 9 0 5 0 1 0 0 0 8 0 9 0 1 1 5 1 10 1 11 1 6 1 2 1 1 1 10 1 11 1 2 2 6 2 12 2 13 2 7 2 3 2 3 2 2 2 12 2 3 3 7 3 14 3 15 3 4 3 0 3 3 3 14 3 0 3 1 4 2 4 3 4 10 12 5 12 9 12 15 13 17 13 8 13 17 5 19 5 9 5 13 14 16 14 14 14 16 9 17 9 15 9 12 15 18 15 16 15 18 9 19 9 17 9 6 16 11 16 18 16 11 9 10 9 19 9</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_004-mesh" name="Cube.004">
+      <mesh>
+        <source id="Cube_004-mesh-positions">
+          <float_array id="Cube_004-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_004-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_004-mesh-normals">
+          <float_array id="Cube_004-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_004-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_004-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_004-mesh-positions"/>
+        </vertices>
+        <triangles material="Net_Metal_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_004-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_004-mesh-normals" offset="1"/>
+          <p>5 0 0 0 4 0 6 1 1 1 5 1 7 2 2 2 6 2 4 3 3 3 7 3 1 4 3 4 0 4 6 5 4 5 7 5 5 0 1 0 0 0 6 1 2 1 1 1 7 2 3 2 2 2 4 3 0 3 3 3 1 4 2 4 3 4 6 5 5 5 4 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Plane_009-mesh" name="Plane.009">
+      <mesh>
+        <source id="Plane_009-mesh-positions">
+          <float_array id="Plane_009-mesh-positions-array" count="12">1 -1 0 -1 -1 0 1 1 0 -1 1 0</float_array>
+          <technique_common>
+            <accessor source="#Plane_009-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_009-mesh-normals">
+          <float_array id="Plane_009-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Plane_009-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_009-mesh-map-0">
+          <float_array id="Plane_009-mesh-map-0-array" count="12">2.836738 0.303739 -1.953153 0.1141844 2.836738 0.1141844 2.836738 0.303739 -1.953153 0.303739 -1.953153 0.1141844</float_array>
+          <technique_common>
+            <accessor source="#Plane_009-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Plane_009-mesh-vertices">
+          <input semantic="POSITION" source="#Plane_009-mesh-positions"/>
+        </vertices>
+        <triangles material="Net_Bottom_001-material" count="2">
+          <input semantic="VERTEX" source="#Plane_009-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane_009-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane_009-mesh-map-0" offset="2" set="0"/>
+          <p>3 0 0 0 0 1 2 0 2 3 0 3 1 0 4 0 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Plane_002-mesh" name="Plane.002">
+      <mesh>
+        <source id="Plane_002-mesh-positions">
+          <float_array id="Plane_002-mesh-positions-array" count="12">1 -1 0 -1 -1 0 1 1 0 -1 1 0</float_array>
+          <technique_common>
+            <accessor source="#Plane_002-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_002-mesh-normals">
+          <float_array id="Plane_002-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Plane_002-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_002-mesh-map-0">
+          <float_array id="Plane_002-mesh-map-0-array" count="12">2.836738 0.303739 -1.953153 0.1141844 2.836738 0.1141844 2.836738 0.303739 -1.953153 0.303739 -1.953153 0.1141844</float_array>
+          <technique_common>
+            <accessor source="#Plane_002-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Plane_002-mesh-vertices">
+          <input semantic="POSITION" source="#Plane_002-mesh-positions"/>
+        </vertices>
+        <triangles material="Net_Top_001-material" count="2">
+          <input semantic="VERTEX" source="#Plane_002-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane_002-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane_002-mesh-map-0" offset="2" set="0"/>
+          <p>3 0 0 0 0 1 2 0 2 3 0 3 1 0 4 0 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_003-mesh" name="Cube.003">
+      <mesh>
+        <source id="Cube_003-mesh-positions">
+          <float_array id="Cube_003-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_003-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_003-mesh-normals">
+          <float_array id="Cube_003-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_003-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_003-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_003-mesh-positions"/>
+        </vertices>
+        <triangles material="Net_Metal_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_003-mesh-normals" offset="1"/>
+          <p>5 0 0 0 4 0 6 1 1 1 5 1 7 2 2 2 6 2 4 3 3 3 7 3 1 4 3 4 0 4 6 5 4 5 7 5 5 0 1 0 0 0 6 1 2 1 1 1 7 2 3 2 2 2 4 3 0 3 3 3 1 4 2 4 3 4 6 5 5 5 4 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Plane-mesh" name="Plane">
+      <mesh>
+        <source id="Plane-mesh-positions">
+          <float_array id="Plane-mesh-positions-array" count="12">1 -1 0 -1 -1 0 1 1 0 -1 1 0</float_array>
+          <technique_common>
+            <accessor source="#Plane-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane-mesh-normals">
+          <float_array id="Plane-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Plane-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane-mesh-map-0">
+          <float_array id="Plane-mesh-map-0-array" count="12">2.493406 1.022233 -1.519054 0.01743257 2.481133 0.01434046 2.493406 1.022233 -1.506781 1.025325 -1.519054 0.01743257</float_array>
+          <technique_common>
+            <accessor source="#Plane-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Plane-mesh-vertices">
+          <input semantic="POSITION" source="#Plane-mesh-positions"/>
+        </vertices>
+        <triangles material="Net_001-material" count="2">
+          <input semantic="VERTEX" source="#Plane-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane-mesh-map-0" offset="2" set="0"/>
+          <p>3 0 0 0 0 1 2 0 2 3 0 3 1 0 4 0 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_001-mesh" name="Cube.001">
+      <mesh>
+        <source id="Cube_001-mesh-positions">
+          <float_array id="Cube_001-mesh-positions-array" count="24">1 1 -1 1 -1 -1 -1 -0.9999998 -1 -0.9999997 1 -1 1 0.9999995 1 0.9999994 -1.000001 1 -1 -0.9999997 1 -1 1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_001-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_001-mesh-normals">
+          <float_array id="Cube_001-mesh-normals-array" count="36">0 0 -1 1 0 0 0 -1 -4.76837e-7 -1 1.19209e-7 -1.49012e-7 2.38419e-7 1 2.38419e-7 0 0 -1 1 -2.98023e-7 2.98023e-7 -6.25849e-7 -1 0 -1 0 0 0 1 0 0 0 1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_001-mesh-normals-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_001-mesh-map-0">
+          <float_array id="Cube_001-mesh-map-0-array" count="72">0.672815 0.8419125 0.5508708 0.7199683 0.5508708 0.8419125 0.8503675 0.4722604 0.2298803 0.3108462 0.8494091 0.3505094 0.03726857 0.2221563 0.6955242 0.04021346 0.0330742 0.06518632 0.9308078 0.9168787 0.6878468 0.8832368 0.6878467 0.9168787 0.9765441 0.7089778 0.4314259 0.754568 0.9678105 0.8235165 0.672815 0.8419125 0.672815 0.7199683 0.5508708 0.7199683 0.8503675 0.4722604 0.2374345 0.4690823 0.2298803 0.3108462 0.03726857 0.2221563 0.7022556 0.1863329 0.696937 0.04021346 0.9308078 0.9168787 0.9308078 0.8832368 0.6878468 0.8832368 0.9765441 0.7089778 0.4547283 0.6063259 0.4314259 0.754568 0 1 0.4145236 0.5997382 0.4145241 1.000001 0 1 -7.88432e-7 0.5997384 0.4145236 0.5997382</float_array>
+          <technique_common>
+            <accessor source="#Cube_001-mesh-map-0-array" count="36" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_001-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_001-mesh-positions"/>
+        </vertices>
+        <triangles material="Metal_001-material" count="10">
+          <input semantic="VERTEX" source="#Cube_001-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_001-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_001-mesh-map-0" offset="2" set="0"/>
+          <p>0 0 0 2 0 1 3 0 2 4 1 3 1 1 4 0 1 5 5 2 6 2 2 7 1 2 8 2 3 9 7 3 10 3 3 11 0 4 12 7 4 13 4 4 14 0 5 15 1 5 16 2 5 17 4 6 18 5 6 19 1 6 20 5 7 21 6 7 22 2 7 23 2 8 24 6 8 25 7 8 26 0 9 27 3 9 28 7 9 29</p>
+        </triangles>
+        <triangles material="Board_001-material" count="2">
+          <input semantic="VERTEX" source="#Cube_001-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_001-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_001-mesh-map-0" offset="2" set="0"/>
+          <p>7 10 30 5 10 31 4 10 32 7 11 33 6 11 34 5 11 35</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Circle_005-mesh" name="Circle.005">
+      <mesh>
+        <source id="Circle_005-mesh-positions">
+          <float_array id="Circle_005-mesh-positions-array" count="27">0 1 0 -0.7071068 0.7071068 0 -1 0 0 -0.7071068 -0.7071068 0 0 -1 0 0.7071069 -0.7071067 0 1 0 0 0.7071069 0.7071067 0 2.36023e-7 0 0.8147554</float_array>
+          <technique_common>
+            <accessor source="#Circle_005-mesh-positions-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Circle_005-mesh-normals">
+          <float_array id="Circle_005-mesh-normals-array" count="27">0 0 1 -0.6110764 0.253116 -0.7500119 0.6110762 -0.253116 -0.7500121 -0.2531161 0.6110764 -0.7500119 -0.2531161 -0.6110764 -0.750012 0.253116 -0.6110762 -0.750012 0.253116 0.6110762 -0.750012 -0.6110764 -0.253116 -0.7500119 0.6110762 0.253116 -0.7500121</float_array>
+          <technique_common>
+            <accessor source="#Circle_005-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Circle_005-mesh-vertices">
+          <input semantic="POSITION" source="#Circle_005-mesh-positions"/>
+        </vertices>
+        <triangles material="Screw1-material" count="14">
+          <input semantic="VERTEX" source="#Circle_005-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Circle_005-mesh-normals" offset="1"/>
+          <p>5 0 7 0 1 0 6 1 5 1 8 1 2 2 1 2 8 2 5 3 4 3 8 3 8 4 0 4 7 4 1 5 0 5 8 5 4 6 3 6 8 6 7 7 6 7 8 7 3 8 2 8 8 8 1 0 2 0 3 0 3 0 4 0 1 0 4 0 5 0 1 0 5 0 6 0 7 0 7 0 0 0 1 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Circle_004-mesh" name="Circle.004">
+      <mesh>
+        <source id="Circle_004-mesh-positions">
+          <float_array id="Circle_004-mesh-positions-array" count="27">0 1 0 -0.7071068 0.7071068 0 -1 0 0 -0.7071068 -0.7071068 0 0 -1 0 0.7071069 -0.7071067 0 1 0 0 0.7071069 0.7071067 0 2.36023e-7 0 0.8147554</float_array>
+          <technique_common>
+            <accessor source="#Circle_004-mesh-positions-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Circle_004-mesh-normals">
+          <float_array id="Circle_004-mesh-normals-array" count="27">0 0 1 -0.6110764 0.253116 -0.7500119 0.6110762 -0.253116 -0.7500121 -0.2531161 0.6110764 -0.7500119 -0.2531161 -0.6110764 -0.750012 0.253116 -0.6110762 -0.750012 0.253116 0.6110762 -0.750012 -0.6110764 -0.253116 -0.7500119 0.6110762 0.253116 -0.7500121</float_array>
+          <technique_common>
+            <accessor source="#Circle_004-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Circle_004-mesh-vertices">
+          <input semantic="POSITION" source="#Circle_004-mesh-positions"/>
+        </vertices>
+        <triangles material="Screw1-material" count="14">
+          <input semantic="VERTEX" source="#Circle_004-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Circle_004-mesh-normals" offset="1"/>
+          <p>5 0 7 0 1 0 6 1 5 1 8 1 2 2 1 2 8 2 5 3 4 3 8 3 8 4 0 4 7 4 1 5 0 5 8 5 4 6 3 6 8 6 7 7 6 7 8 7 3 8 2 8 8 8 1 0 2 0 3 0 3 0 4 0 1 0 4 0 5 0 1 0 5 0 6 0 7 0 7 0 0 0 1 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Circle_003-mesh" name="Circle.003">
+      <mesh>
+        <source id="Circle_003-mesh-positions">
+          <float_array id="Circle_003-mesh-positions-array" count="27">0 1 0 -0.7071068 0.7071068 0 -1 0 0 -0.7071068 -0.7071068 0 0 -1 0 0.7071069 -0.7071067 0 1 0 0 0.7071069 0.7071067 0 2.36023e-7 0 0.8147554</float_array>
+          <technique_common>
+            <accessor source="#Circle_003-mesh-positions-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Circle_003-mesh-normals">
+          <float_array id="Circle_003-mesh-normals-array" count="27">0 0 1 -0.6110764 0.253116 -0.7500119 0.6110762 -0.253116 -0.7500121 -0.2531161 0.6110764 -0.7500119 -0.2531161 -0.6110764 -0.750012 0.253116 -0.6110762 -0.750012 0.253116 0.6110762 -0.750012 -0.6110764 -0.253116 -0.7500119 0.6110762 0.253116 -0.7500121</float_array>
+          <technique_common>
+            <accessor source="#Circle_003-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Circle_003-mesh-vertices">
+          <input semantic="POSITION" source="#Circle_003-mesh-positions"/>
+        </vertices>
+        <triangles material="Screw1-material" count="14">
+          <input semantic="VERTEX" source="#Circle_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Circle_003-mesh-normals" offset="1"/>
+          <p>5 0 7 0 1 0 6 1 5 1 8 1 2 2 1 2 8 2 5 3 4 3 8 3 8 4 0 4 7 4 1 5 0 5 8 5 4 6 3 6 8 6 7 7 6 7 8 7 3 8 2 8 8 8 1 0 2 0 3 0 3 0 4 0 1 0 4 0 5 0 1 0 5 0 6 0 7 0 7 0 0 0 1 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Circle_001-mesh" name="Circle.001">
+      <mesh>
+        <source id="Circle_001-mesh-positions">
+          <float_array id="Circle_001-mesh-positions-array" count="27">0 1 0 -0.7071068 0.7071068 0 -1 0 0 -0.7071068 -0.7071068 0 0 -1 0 0.7071069 -0.7071067 0 1 0 0 0.7071069 0.7071067 0 2.36023e-7 0 0.8147554</float_array>
+          <technique_common>
+            <accessor source="#Circle_001-mesh-positions-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Circle_001-mesh-normals">
+          <float_array id="Circle_001-mesh-normals-array" count="27">0 0 1 -0.6110764 0.253116 -0.7500119 0.6110762 -0.253116 -0.7500121 -0.2531161 0.6110764 -0.7500119 -0.2531161 -0.6110764 -0.750012 0.253116 -0.6110762 -0.750012 0.253116 0.6110762 -0.750012 -0.6110764 -0.253116 -0.7500119 0.6110762 0.253116 -0.7500121</float_array>
+          <technique_common>
+            <accessor source="#Circle_001-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Circle_001-mesh-vertices">
+          <input semantic="POSITION" source="#Circle_001-mesh-positions"/>
+        </vertices>
+        <triangles material="Screw1-material" count="14">
+          <input semantic="VERTEX" source="#Circle_001-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Circle_001-mesh-normals" offset="1"/>
+          <p>5 0 7 0 1 0 6 1 5 1 8 1 2 2 1 2 8 2 5 3 4 3 8 3 8 4 0 4 7 4 1 5 0 5 8 5 4 6 3 6 8 6 7 7 6 7 8 7 3 8 2 8 8 8 1 0 2 0 3 0 3 0 4 0 1 0 4 0 5 0 1 0 5 0 6 0 7 0 7 0 0 0 1 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Cube_019" name="Cube.019" type="NODE">
+        <matrix sid="transform">-0.04374762 3.82454e-9 0 2.976267 -3.82454e-9 -0.04374762 0 1.562298 0 0 1.300303 0.4192743 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_020-mesh" name="Cube.019">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Leg_001-material" target="#Leg_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_015" name="Cube.015" type="NODE">
+        <matrix sid="transform">0.04374762 -6.60571e-9 0 -2.957209 6.60571e-9 0.04374762 0 1.562298 0 0 1.300303 0.4192743 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_016-mesh" name="Cube.015">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Leg_001-material" target="#Leg_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_014" name="Cube.014" type="NODE">
+        <matrix sid="transform">0.04374762 -6.60571e-9 0 -2.957209 6.60571e-9 0.04374762 0 -1.637804 0 0 1.300303 0.4192743 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_015-mesh" name="Cube.014">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Leg_001-material" target="#Leg_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_001" name="Cube.001" type="NODE">
+        <matrix sid="transform">-0.04374762 3.82454e-9 0 2.976267 -3.82454e-9 -0.04374762 0 -1.637804 0 0 1.300303 0.4192743 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_005-mesh" name="Cube.001">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Leg_001-material" target="#Leg_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_010" name="Cube.010" type="NODE">
+        <matrix sid="transform">-0.02311771 2.53032e-8 0 0.005671205 -3.49068e-9 -0.1675758 0 2.102449 0 0 0.007291779 1.8539 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_013-mesh" name="Cube.010">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Net_Metal_001-material" target="#Net_Metal_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_009" name="Cube.009" type="NODE">
+        <matrix sid="transform">-0.02311771 1.25564e-8 0 0.005671234 -3.49068e-9 -0.08315705 0 1.764686 0 0 0.007291779 1.650021 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_012-mesh" name="Cube.009">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Net_Metal_001-material" target="#Net_Metal_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_008" name="Cube.008" type="NODE">
+        <matrix sid="transform">-0.02685704 6.64316e-15 1.27912e-9 0.005671228 -4.0553e-9 4.22286e-9 -0.008471237 1.839407 -2.02407e-15 -0.09660786 -3.7029e-10 1.750572 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_011-mesh" name="Cube.008">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Net_Metal_001-material" target="#Net_Metal_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Circle_007" name="Circle.007" type="NODE">
+        <matrix sid="transform">2.70581e-9 1.30151e-9 -0.00861951 -0.01714569 0 -0.00861951 -1.30151e-9 2.241693 -0.00861951 4.08565e-16 -2.70581e-9 1.863717 0 0 0 1</matrix>
+        <instance_geometry url="#Circle_007-mesh" name="Circle.007">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Screw1_001-material" target="#Screw1_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Circle_006" name="Circle.006" type="NODE">
+        <matrix sid="transform">4.76086e-9 -3.35656e-9 0.00861951 0.02886983 0 -0.00861951 -3.35656e-9 2.241693 0.00861951 1.85395e-15 -4.76086e-9 1.863717 0 0 0 1</matrix>
+        <instance_geometry url="#Circle_006-mesh" name="Circle.006">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Screw1_001-material" target="#Screw1_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cylinder_001" name="Cylinder.001" type="NODE">
+        <matrix sid="transform">0.005551217 -0.01921503 0 0.005838791 0.01921503 0.005551217 0 1.718027 0 0 0.09065928 1.599212 0 0 0 1</matrix>
+        <instance_geometry url="#Cylinder_001-mesh" name="Cylinder.001">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Screw2_001-material" target="#Screw2_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cylinder" name="Cylinder" type="NODE">
+        <matrix sid="transform">-0.005551226 0.01921502 0 0.005686766 -0.01921502 -0.005551226 0 -1.730498 0 0 0.09065928 1.599212 0 0 0 1</matrix>
+        <instance_geometry url="#Cylinder-mesh" name="Cylinder">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Screw2_001-material" target="#Screw2_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Circle_005" name="Circle.005" type="NODE">
+        <matrix sid="transform">4.76086e-9 1.05964e-9 -0.00861951 -0.01734432 0 0.00861951 1.05964e-9 -2.254163 0.00861951 -5.85276e-16 4.76086e-9 1.863717 0 0 0 1</matrix>
+        <instance_geometry url="#Circle_002-mesh" name="Circle.005">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Screw1_001-material" target="#Screw1_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Circle_004" name="Circle.004" type="NODE">
+        <matrix sid="transform">2.70581e-9 -1.02753e-9 0.00861951 0.0286712 0 0.00861951 1.02753e-9 -2.254163 -0.00861951 -3.22559e-16 2.70581e-9 1.863717 0 0 0 1</matrix>
+        <instance_geometry url="#Circle_000-mesh" name="Circle.004">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Screw1_001-material" target="#Screw1_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_007" name="Cube.007" type="NODE">
+        <matrix sid="transform">0.02685704 0 0 0.005854319 0 -4.22286e-9 0.008471237 -1.851878 0 -0.09660786 -3.7029e-10 1.750572 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_010-mesh" name="Cube.007">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Net_Metal_001-material" target="#Net_Metal_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_005" name="Cube.005" type="NODE">
+        <matrix sid="transform">0.02311771 0 0 0.005854319 0 0.08315705 0 -1.777156 0 0 0.007291779 1.650021 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_009-mesh" name="Cube.005">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Net_Metal_001-material" target="#Net_Metal_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_003" name="Cube.003" type="NODE">
+        <matrix sid="transform">0.02311771 0 0 0.005854318 0 0.1675758 0 -2.11492 0 0 0.007291779 1.8539 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_008-mesh" name="Cube.003">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Net_Metal_001-material" target="#Net_Metal_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_004" name="Cube.004" type="NODE">
+        <matrix sid="transform">0.01908156 0 0 0.005824208 0 0.01908156 0 2.23644 0 0 0.2762871 2.118341 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_004-mesh" name="Cube.004">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Net_Metal_001-material" target="#Net_Metal_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Plane_005" name="Plane.005" type="NODE">
+        <matrix sid="transform">1.0529e-9 0 2.057926 0.01934085 0 2.232361 0 -0.00247623 -0.01394603 0 1.55369e-7 1.870971 0 0 0 1</matrix>
+        <instance_geometry url="#Plane_009-mesh" name="Plane.005">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Net_Bottom_001-material" target="#Net_Bottom_001-material">
+                <bind_vertex_input semantic="Plane_009-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Plane_002" name="Plane.002" type="NODE">
+        <matrix sid="transform">1.51307e-9 0 2.057926 0.01934085 0 2.232361 0 -0.00247623 -0.0200412 0 1.55369e-7 2.35874 0 0 0 1</matrix>
+        <instance_geometry url="#Plane_002-mesh" name="Plane.002">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Net_Top_001-material" target="#Net_Top_001-material">
+                <bind_vertex_input semantic="Plane_002-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_002" name="Cube.002" type="NODE">
+        <matrix sid="transform">0.01908156 0 0 0.005824208 0 0.01908156 0 -2.253363 0 0 0.2675326 2.118215 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_003-mesh" name="Cube.002">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Net_Metal_001-material" target="#Net_Metal_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Plane" name="Plane" type="NODE">
+        <matrix sid="transform">1.71107e-8 0 2.057926 0.01934085 0 2.232361 0 -0.00247623 -0.2266384 0 1.55369e-7 2.111995 0 0 0 1</matrix>
+        <instance_geometry url="#Plane-mesh" name="Plane">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Net_001-material" target="#Net_001-material">
+                <bind_vertex_input semantic="Plane-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_011" name="Cube.011" type="NODE">
+        <matrix sid="transform">3.286 0 0 0 0 1.829 0 0 0 0 0.09142618 1.749863 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_001-mesh" name="Cube.011">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Metal_001-material" target="#Metal_001-material">
+                <bind_vertex_input semantic="Cube_001-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="Board_001-material" target="#Board_001-material">
+                <bind_vertex_input semantic="Cube_001-mesh-map-0" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Camera_001" name="Camera.001" type="NODE">
+        <matrix sid="transform">0.4954221 -0.2414288 0.8344275 7.350805 0.8686525 0.1376943 -0.4759027 -4.238083 7.03902e-7 0.9606001 0.2779346 3.701448 0 0 0 1</matrix>
+        <instance_camera url="#Camera_001-camera"/>
+      </node>
+      <node id="Circle_003" name="Circle.003" type="NODE">
+        <matrix sid="transform">2.70581e-9 1.30151e-9 -0.00861951 -0.01714569 0 -0.00861951 -1.30151e-9 2.241693 -0.00861951 4.08565e-16 -2.70581e-9 1.863717 0 0 0 1</matrix>
+        <instance_geometry url="#Circle_005-mesh" name="Circle.003">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Screw1-material" target="#Screw1-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Circle_002" name="Circle.002" type="NODE">
+        <matrix sid="transform">4.76086e-9 -3.35656e-9 0.00861951 0.02886983 0 -0.00861951 -3.35656e-9 2.241693 0.00861951 1.85395e-15 -4.76086e-9 1.863717 0 0 0 1</matrix>
+        <instance_geometry url="#Circle_004-mesh" name="Circle.002">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Screw1-material" target="#Screw1-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Circle_001" name="Circle.001" type="NODE">
+        <matrix sid="transform">4.76086e-9 1.05964e-9 -0.00861951 -0.01734432 0 0.00861951 1.05964e-9 -2.254163 0.00861951 -5.85276e-16 4.76086e-9 1.863717 0 0 0 1</matrix>
+        <instance_geometry url="#Circle_003-mesh" name="Circle.001">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Screw1-material" target="#Screw1-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Circle" name="Circle" type="NODE">
+        <matrix sid="transform">2.70581e-9 -1.02753e-9 0.00861951 0.0286712 0 0.00861951 1.02753e-9 -2.254163 -0.00861951 -3.22559e-16 2.70581e-9 1.863717 0 0 0 1</matrix>
+        <instance_geometry url="#Circle_001-mesh" name="Circle">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Screw1-material" target="#Screw1-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

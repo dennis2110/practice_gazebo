@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<launch>
+	
+	<!-- these are the arguments you can pass this launch file, for example paused:=true -->
+	<arg name="debug" default="false"/>
+	<arg name="gui" default="true"/>
+  	<arg name="paused" default="false"/>
+	<arg name="use_sim_time" default="true"/>
+    <arg name="headless" default="false"/>
+    <!-- load gazebo empty_world.launch -->
+    <!-- We resume the logic in empty_world.launch -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    	<arg name="debug" value="$(arg debug)" />
+    	<arg name="gui" value="$(arg gui)" />
+    	<arg name="paused" value="$(arg paused)"/>
+    	<arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    	<arg name="headless" value="$(arg headless)"/>
+  	</include>
+
+	
+
+    <!-- box -->
+    <arg name="box_name" default="box" />
+    <arg name="box_x_pos" default="0.0" />
+    <arg name="box_y_pos" default="0.0" />
+    <arg name="box_z_pos" default="1.0" />
+  
+  
+    <!-- Load the box:-->
+  	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find box_description)/urdf/box.xacro'
+  		box_name:=$(arg box_name)
+  		"
+  	/>
+
+    <node name="spawn_urdf_table" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg box_name) 
+		-param robot_description
+    	-x $(arg box_x_pos) -y $(arg box_y_pos) -z $(arg box_z_pos)
+    	-R 0.0 -P 0.0 -Y 0.0" 
+	/>
+
+   	<!--<node name="robot_state_publisher_box" pkg="robot_state_publisher" 
+		type="robot_state_publisher" respawn="false" output="screen">
+    	<remap from="/joint_states" to="/$(arg box_name)/joint_states" />
+   	</node>-->
+	
+
+
+	<!-- Ball: -->
+    <!--<arg name="pingpong_ball_name" default="ball" />
+    <arg name="ball_x_pos" default="0.5" /> 
+    <arg name="ball_y_pos" default="0.0" /> 
+    <arg name="ball_z_pos" default="3.66" />  
+
+	<node pkg="kuka_kr5_gazebo" type="timed_roslaunch.sh"
+        args="5 pingpong_description load_pingpong_ball.launch
+        pingpong_ball_name:=$(arg pingpong_ball_name)
+        ball_x_pos:=$(arg ball_x_pos)
+        ball_y_pos:=$(arg ball_y_pos)
+        ball_z_pos:=$(arg ball_z_pos)"
+        name="load_ball_after25" output="screen">
+	</node>-->
+
+
+</launch>

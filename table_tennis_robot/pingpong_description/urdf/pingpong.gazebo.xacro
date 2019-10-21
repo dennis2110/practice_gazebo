@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+   <gazebo reference="pingpong_ball_link">
+      <gravity>1</gravity>
+      <dampingFactor>0.0</dampingFactor>
+      <maxVel>100</maxVel>
+      <minDepth>0</minDepth>
+      <mu1>0.05</mu1>
+      <mu2>0.05</mu2>
+      <fdir1>0 0 0</fdir1>
+      <kp>1e+5</kp>
+      <kd>1e-2</kd>
+      <selfCollide>0</selfCollide>
+      <maxContacts>5</maxContacts>  <!-- set this to 1 and ball stops sliding with high angle -->
+      <!--<material>Gazebo/Orange</material>--> <!-- caution this overrwrites (dae) everything!!! -->
+   </gazebo>
+
+<!-- p3d plugin (3D Position Interface for Ground Truth)
+     This is required only for rviz that the balllink tf is known! -->
+   <gazebo>
+      <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
+         <frameName>world</frameName>
+         <bodyName>pingpong_ball_footprint</bodyName>
+         <topicName>/gazebo/$(arg pingpong_ball_name)/odom</topicName>
+         <updateRate>$(arg ball_gz_update_rate)</updateRate>
+      </plugin>
+   </gazebo>
+
+</robot>

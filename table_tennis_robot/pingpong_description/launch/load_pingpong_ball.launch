@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="pingpong_ball_name" default="ball" />
+  <arg name="ball_gz_update_rate" default="60" />
+  <arg name="ball_x_pos" default="1.67" />
+  <arg name="ball_y_pos" default="0.14" />
+  <arg name="ball_z_pos" default="0.67" />
+  
+
+
+
+  <!-- just load ball description: -->
+<group ns="$(arg pingpong_ball_name)">
+    <!-- Load the ball:-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find pingpong_description)/urdf/pingpong.xacro'
+  pingpong_ball_name:=$(arg pingpong_ball_name)
+  ball_gz_update_rate:=$(arg ball_gz_update_rate)
+  "
+  />
+
+        <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg pingpong_ball_name) -param robot_description
+    -x $(arg ball_x_pos) -y $(arg ball_y_pos) -z $(arg ball_z_pos)
+    -R 0.0 -P 0.0 -Y 0.0" />
+
+   <node name="robot_state_publisher_ball" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+      <remap from="/joint_states" to="/$(arg pingpong_ball_name)/joint_states" />
+   </node>
+</group>
+
+
+
+</launch>

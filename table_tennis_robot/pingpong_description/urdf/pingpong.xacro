@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="$(arg pingpong_ball_name)">
+
+    <xacro:include filename="$(find pingpong_description)/urdf/pingpong.urdf.xacro" />
+    <xacro:pingpong_ball_macro prefix=""/>
+
+</robot>

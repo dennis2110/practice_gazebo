@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+<model name="tabletennis_table">
+  <pose>0 0 0 0 0 0</pose>
+    <link name="link">
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0.001</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>100</mass>
+        <inertia>
+          <ixx>38</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>38</iyy>
+          <iyz>0.0</iyz>
+          <izz>38</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://tabletennis_table/meshes/tabletennis_table.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0.8</restitution_coefficient>
+            <threshold>0.0</threshold>
+          </bounce>
+          <contact>
+            <ode>
+              <max_vel>1</max_vel>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://tabletennis_table/meshes/tabletennis_table.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <static>1</static>
+  </model>
+</sdf>
