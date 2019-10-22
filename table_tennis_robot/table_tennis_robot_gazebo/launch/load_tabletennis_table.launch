@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+	<arg name="debug" default="false"/>
+	<arg name="gui" default="true"/>
+  <arg name="paused" default="false"/>
+	<arg name="use_sim_time" default="true"/>
+  <arg name="headless" default="false"/>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find table_tennis_robot_gazebo)/worlds/empty_world.world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <!-- tabletennis table -->
+  <arg name="tabletennis_table_name" default="tabletennis_table" />
+  <arg name="tabletennis_table_x_pos" default="1.0" />
+  <arg name="tabletennis_table_y_pos" default="1.0" />
+  <arg name="tabletennis_table_z_pos" default="0.44" />
+  
+
+  <!-- Load the tabletennis_table:-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find table_description)/urdf/tabletennis_table.xacro'
+  	tabletennis_table_name:=$(arg tabletennis_table_name)
+  	"
+  />
+
+  <node name="spawn_urdf_table" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg tabletennis_table_name) 
+		-param robot_description
+  	-x $(arg tabletennis_table_x_pos) -y $(arg tabletennis_table_y_pos) -z $(arg tabletennis_table_z_pos)
+  	-R 0.0 -P 0.0 -Y 0.0" 
+	/>
+
+  <node name="robot_state_publisher_tabletennis_table" pkg="robot_state_publisher" 
+		type="robot_state_publisher" respawn="false" output="screen">
+  	<remap from="/joint_states" to="/$(arg tabletennis_table_name)/joint_states" />
+  </node>
+
+</launch>
