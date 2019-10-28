@@ -4,16 +4,15 @@
       <gazebo reference="tabletennis_table_link">
          <gravity>1</gravity>
          <dampingFactor>0.0</dampingFactor>
-         <maxVel>1</maxVel>
-         <minDepth>0.0</minDepth>
+         <maxVel>1.0</maxVel>
+         <minDepth>1.0</minDepth>
          <mu1>0.5</mu1>
          <mu2>0.5</mu2>
          <fdir1>0 0 0</fdir1>
-         <kp>1e+10</kp>
-         <kd>1.0</kd>
-         <selfCollide>0</selfCollide>
-         <maxContacts>3</maxContacts>  <!-- set this to 1 and ball stops sliding with high angle -->
-         <material>Gazebo/Red</material> <!-- caution this overrwrites (dae) everything!!! -->
+         <kp>1e+7</kp>
+         <kd>1e-10</kd>
+         <selfCollide>1</selfCollide>
+         <maxContacts>10</maxContacts>  <!-- set this to 1 and ball stops sliding with high angle -->
       </gazebo>
    </xacro:macro>
 <!-- p3d plugin (3D Position Interface for Ground Truth)

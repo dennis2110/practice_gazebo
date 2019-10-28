@@ -4,14 +4,14 @@
       <gravity>1</gravity>
       <dampingFactor>0.0</dampingFactor>
       <maxVel>100</maxVel>
-      <minDepth>0</minDepth>
-      <mu1>0.05</mu1>
-      <mu2>0.05</mu2>
+      <minDepth>0.001</minDepth>
+      <mu1>0.01</mu1>
+      <mu2>0.01</mu2>
       <fdir1>0 0 0</fdir1>
-      <kp>1e+5</kp>
-      <kd>1e-2</kd>
+      <!--<kp>1e+5</kp>-->
+      <kd>1.0</kd>
       <selfCollide>0</selfCollide>
-      <maxContacts>5</maxContacts>  <!-- set this to 1 and ball stops sliding with high angle -->
+      <maxContacts>10</maxContacts>  <!-- set this to 1 and ball stops sliding with high angle -->
       <!--<material>Gazebo/Orange</material>--> <!-- caution this overrwrites (dae) everything!!! -->
    </gazebo>
 
