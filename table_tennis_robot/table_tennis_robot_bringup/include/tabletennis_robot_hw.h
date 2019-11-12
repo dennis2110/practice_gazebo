@@ -11,7 +11,7 @@ public:
     TabletennisRobot();
     ~TabletennisRobot();
     ros::Time getTime() const {return ros::Time::now();}
-    ros::Duration getPeriod() const {return ros::Duration(0.01);}
+    ros::Duration getPeriod() const {return ros::Duration(0.001);}
 
     void init(ros::NodeHandle* node);
     void read(ros::Time time, ros::Duration period);
@@ -23,8 +23,8 @@ public:
 private:
     hardware_interface::JointStateInterface jnt_state_interface;
     //hardware_interface::VelocityJointInterface jnt_vel_interface;
-    hardware_interface::PositionJointInterface jnt_pos_interface;
-    //hardware_interface::EffortJointInterface jnt_eff_interface;
+    //hardware_interface::PositionJointInterface jnt_pos_interface;
+    hardware_interface::EffortJointInterface jnt_eff_interface;
 
     double slide_rail_cmd;
     double slide_rail_pos;

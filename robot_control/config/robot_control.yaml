@@ -1,0 +1,27 @@
+linear_slide_rail:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  
+  # Position Controllers ---------------------------------------
+  slide_rail_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: slide_rail_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  arm_joint1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: base_arm_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  arm_joint2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_2_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  arm_joint3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_3_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  arm_joint4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: arm_4_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}

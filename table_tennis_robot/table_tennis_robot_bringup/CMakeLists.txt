@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(table_tennis_robot_bringup)
 
+######### epos2 ##########
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
+
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+##########################
+
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
@@ -124,10 +131,15 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+set(HEADERS
+    include/tabletennis_robot_epos2.h
+    )
+set(SOURCES
+    src/tabletennis_robot_epos2.cpp
+    )
+
 ## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/table_tennis_robot_bringup.cpp
-# )
+add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -139,6 +151,13 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/table_tennis_robot_bringup_node.cpp)
 
+######### epos2 ##########
+#add_executable(${PROJECT_NAME} HelloEposCmd.cpp)
+add_executable(tabletennis_robot_bringup src/tabletennis_robot_bringup.cpp
+                                         ${SOURCES})
+add_dependencies(tabletennis_robot_bringup ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(tabletennis_robot_bringup ${catkin_LIBRARIES} -lEposCmd)
+##########################
 
 add_executable(tabletennis_robot_main src/tabletennis_robot_main.cpp
                                       src/tabletennis_robot_hw.cpp)

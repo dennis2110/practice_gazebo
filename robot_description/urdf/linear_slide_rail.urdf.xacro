@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="linear_slide" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="linear_slide_rail" xmlns:xacro="http://ros.org/wiki/xacro">
 
     <xacro:property name="pi" value="3.1415" />
     <xacro:property name="base_width" value="0.4" />
@@ -51,7 +51,8 @@
 
 
 
-
+    <!-- include gazebo file -->
+    <xacro:include filename="$(find robot_description)/urdf/linear_slide_rail.gazebo" />
 
 
 
@@ -121,10 +122,10 @@
     <xacro:slide_rail prefix="r" reflect="0.05"/>
     <xacro:slide_rail prefix="l" reflect="-0.05"/>
     
-    <joint name="j1_slide_block" type="prismatic">
+    <joint name="slide_rail_joint" type="prismatic">
         <parent link="r_slide_rail"/>
         <child link="slide_block_base"/>
-        <limit effort="1000.0" lower="-0.7" upper="0.7" velocity="0.5"/>
+        <limit effort="10.0" lower="-0.7" upper="0.7" velocity="0.5"/>
         <origin xyz="-0.05 0 ${slide_rail_height}"/>
         <dynamics damping="0.0" friction="0.0"/>
         <axis xyz="0 1 0"/>
@@ -145,16 +146,6 @@
         </collision>
         <xacro:default_inertial mass="0.05"/>
     </link>
-
-    <transmission name="j1_slide_block_trans">
-        <type>transmission_interface/SimpleTransmission</type>
-        <actuator name="j1_slide_block_motor">
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-        <joint name="j1_slide_block">
-            <hardwareInterface>PositionJointInterface</hardwareInterface>
-        </joint>
-    </transmission>
 
     <joint name="slide_block_to_j2block1" type="fixed">
         <parent link="slide_block_base"/>
@@ -178,7 +169,7 @@
         <xacro:default_inertial mass="0.05"/>
     </link>
 
-    <joint name="j2_joint" type="revolute">
+    <joint name="base_arm_joint" type="revolute">
         <parent link="j2_block1"/>
         <child link="j2_block2"/>
         <limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="0.5"/>
@@ -269,7 +260,7 @@
         <xacro:default_inertial mass="0.05"/>
     </link>
 
-    <joint name="j3_joint" type="revolute">
+    <joint name="arm_2_joint" type="revolute">
         <parent link="j2_block5"/>
         <child link="j3_block1"/>
         <limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="0.5"/>
@@ -316,7 +307,7 @@
         <xacro:default_inertial mass="0.05"/>
     </link>
 
-    <joint name="j4_joint" type="revolute">
+    <joint name="arm_3_joint" type="revolute">
         <parent link="j3_block2"/>
         <child link="j4_block1"/>
         <limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="0.5"/>
@@ -363,7 +354,7 @@
         <xacro:default_inertial mass="0.05"/>
     </link>
 
-    <joint name="j5_joint" type="revolute">
+    <joint name="arm_4_joint" type="revolute">
         <parent link="j4_block2"/>
         <child link="j5_block1"/>
         <limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="0.5"/>
@@ -410,10 +401,61 @@
         <xacro:default_inertial mass="0.05"/>
     </link>
     
+    <!-- transmission -->
+    <transmission name="slide_rail_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="slide_rail_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="slide_rail_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
 
+    <transmission name="base_arm_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_arm_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="base_arm_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
 
+    <transmission name="arm_2_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="arm_2_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="arm_2_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
 
+    <transmission name="arm_3_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="arm_3_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="arm_3_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
 
+    <transmission name="arm_4_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="arm_4_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="arm_4_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
 
 
 

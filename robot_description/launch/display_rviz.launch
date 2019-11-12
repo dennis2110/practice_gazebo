@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
   <!--<arg name="model" default="$(find urdf_tutorial)/urdf/01-myfirst.urdf"/>-->
   <!--<arg name="model" default="$(find urdf_sim_tutorial)/urdf/09-publishjoints.urdf.xacro"/>-->

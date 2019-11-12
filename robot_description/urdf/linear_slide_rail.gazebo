@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<robot>
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/linear_slide_rail</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="base_link">
+    <mu1>1</mu1>
+    <mu2>1</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <gazebo reference="slide_block_base">
+    <mu1>1</mu1>
+    <mu2>1</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <gazebo reference="j2_block2">
+    <mu1>1</mu1>
+    <mu2>1</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Red</material>
+  </gazebo>
+ 
+  <gazebo reference="j3_block1">
+    <mu1>1</mu1>
+    <mu2>1</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <gazebo reference="j4_block1">
+    <mu1>1</mu1>
+    <mu2>1</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Red</material>
+  </gazebo>  
+
+  <gazebo reference="j5_block1">
+    <mu1>1</mu1>
+    <mu2>1</mu2>
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Red</material>
+  </gazebo> 
+
+
+</robot>

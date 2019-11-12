@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>robot_control</name>
+  <version>0.0.0</version>
+  <description>The robot_control package</description>
+
+  <!-- One maintainer tag required, multiple allowed, one person per tag -->
+  <!-- Example:  -->
+  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
+  <maintainer email="denn1slu@todo.todo">denn1slu</maintainer>
+
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>TODO</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>controller_manager</build_depend>
+  <build_depend>effort_controllers</build_depend>
+  <build_depend>joint_state_controller</build_depend>
+  <build_depend>robot_state_publisher</build_depend>
+  <build_depend>rqt_gui</build_depend>
+  <build_export_depend>controller_manager</build_export_depend>
+  <build_export_depend>effort_controllers</build_export_depend>
+  <build_export_depend>joint_state_controller</build_export_depend>
+  <build_export_depend>robot_state_publisher</build_export_depend>
+  <build_export_depend>rqt_gui</build_export_depend>
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>effort_controllers</exec_depend>
+  <exec_depend>joint_state_controller</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rqt_gui</exec_depend>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

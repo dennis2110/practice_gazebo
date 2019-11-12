@@ -39,25 +39,25 @@ TabletennisRobot::TabletennisRobot(){
     //arm -> connect and register the joint position interface
     hardware_interface::JointHandle slide_rail_pos_cmd_handle(
         jnt_state_interface.getHandle("slide_rail_joint"), &slide_rail_cmd);
-    jnt_pos_interface.registerHandle(slide_rail_pos_cmd_handle);
+    jnt_eff_interface.registerHandle(slide_rail_pos_cmd_handle);
 
     hardware_interface::JointHandle base_arm_pos_cmd_handle(
         jnt_state_interface.getHandle("base_arm_joint"), &arm_cmd[0]);
-    jnt_pos_interface.registerHandle(base_arm_pos_cmd_handle);
+    jnt_eff_interface.registerHandle(base_arm_pos_cmd_handle);
 
     hardware_interface::JointHandle arm_2_pos_cmd_handle(
         jnt_state_interface.getHandle("arm_2_joint"), &arm_cmd[1]);
-    jnt_pos_interface.registerHandle(arm_2_pos_cmd_handle);
+    jnt_eff_interface.registerHandle(arm_2_pos_cmd_handle);
 
     hardware_interface::JointHandle arm_3_pos_cmd_handle(
         jnt_state_interface.getHandle("arm_3_joint"), &arm_cmd[2]);
-    jnt_pos_interface.registerHandle(arm_3_pos_cmd_handle);
+    jnt_eff_interface.registerHandle(arm_3_pos_cmd_handle);
 
     hardware_interface::JointHandle arm_4_pos_cmd_handle(
         jnt_state_interface.getHandle("arm_4_joint"), &arm_cmd[3]);
-    jnt_pos_interface.registerHandle(arm_4_pos_cmd_handle);
+    jnt_eff_interface.registerHandle(arm_4_pos_cmd_handle);
 
-    registerInterface(&jnt_pos_interface);
+    registerInterface(&jnt_eff_interface);
     ROS_INFO("Tabletennis Robot HW creat");
 
 }
@@ -75,6 +75,6 @@ void TabletennisRobot::read(ros::Time time, ros::Duration period){
 }
 
 void TabletennisRobot::write(ros::Time time, ros::Duration period){
-    ROS_INFO("%4.3f %4.3f %4.3f %4.3f %4.3f",
+    ROS_INFO("joint 0~4 : %4.3f %4.3f %4.3f %4.3f %4.3f",
         slide_rail_cmd,arm_cmd[0],arm_cmd[1],arm_cmd[2],arm_cmd[3]);
 }

@@ -1,0 +1,4 @@
+<launch>
+  <node name="tabletennis_robot_hw_node" pkg="table_tennis_robot_bringup"
+        type="tabletennis_robot_main" respawn="false" output="screen" ns="/linear_slide_rail" />
+</launch>
