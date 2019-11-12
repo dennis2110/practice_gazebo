@@ -11,6 +11,9 @@ namespace TabletennisRobot
     }
 
     bool EPOS2::init(ros::NodeHandle &node){
+        ///////////////////////
+        ///// ROS setting /////
+        ///////////////////////
         slide_rail_joint_command_sub_ = node.subscribe(
             "/linear_slide_rail/slide_rail_joint_position_controller/command",
              5, &EPOS2::slide_rail_Callback, this);
@@ -31,7 +34,34 @@ namespace TabletennisRobot
             "/linear_slide_rail/arm_joint4_position_controller/command",
              5, &EPOS2::arm_4_Callback, this);
     
-        return true;
+        statusCheck_service_ = node.advertiseService("/status_check",&EPOS2::statuscheck_Callback,this);
+
+        ////////////////////////
+        ///// EPOS setting /////
+        ////////////////////////
+        if(epos_device_.initialization() == MMC_SUCCESS)
+            ROS_INFO("init success");
+        else
+            ROS_ERROR("init fail");
+        
+
+
+        if(epos_device_.deviceOpenedCheck())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+
+    void EPOS2::close_device(){
+        if((epos_device_.closeDevice()) == MMC_FAILED)
+            ROS_ERROR("Device closing failed");
+        else
+            ROS_INFO("Device closing successed");
     }
 
     void EPOS2::slide_rail_Callback(const std_msgs::Float64ConstPtr& command_msg){
@@ -52,6 +82,12 @@ namespace TabletennisRobot
 
     void EPOS2::arm_4_Callback(const std_msgs::Float64ConstPtr& command_msg){
         motor_cmd[4] = command_msg->data;
+    }
+
+    bool EPOS2::statuscheck_Callback(table_tennis_robot_msgsrv::EPOSstatus::Request& request, table_tennis_robot_msgsrv::EPOSstatus::Response& response){
+        response.DeviceStatus = epos_device_.deviceOpenedCheck();
+        response.HomingStatus = epos_device_.homingCheck();
+        return true;
     }
 
 }
