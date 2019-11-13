@@ -1,0 +1,7 @@
+uint16 usNodeId
+string deviceName
+string protocolStackName
+string interfaceName
+string portName
+int32 baudrate
+---

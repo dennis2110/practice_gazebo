@@ -10,18 +10,19 @@ int main(int argc, char **argv)
     TabletennisRobot::EPOS2 robot;
 
     if(robot.init(nh))
-        ROS_INFO("device open success");
+        ROS_INFO("robot init success");
     else
-        ROS_ERROR("device open fail");
+        ROS_ERROR("robot init fail");
 
 
     ros::Rate loop_rate(30);
     while (ros::ok())
     {
         ros::spinOnce();
-    
+        robot.update();
         loop_rate.sleep();
     }
+    
     
     robot.close_device();
 
