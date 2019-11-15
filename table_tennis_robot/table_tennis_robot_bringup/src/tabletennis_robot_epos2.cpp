@@ -66,7 +66,7 @@ namespace TabletennisRobot
             if(epos_device_.PPMCheck()){
                 std::cout << motor_cmd[0] << " " << motor_cmd[1] <<std::endl;
             
-                epos_device_.setPosition(motor_cmd[0]);
+                epos_device_.setPosition((unsigned short)1,motor_cmd[0]);
 
 
 
@@ -128,7 +128,7 @@ namespace TabletennisRobot
 
     bool EPOS2::opendevice_Callback(table_tennis_robot_msgsrv::OpenDevice::Request& request, table_tennis_robot_msgsrv::OpenDevice::Response& response){
         if(!epos_device_.deviceOpenedCheck()){
-            if(epos_device_.openDevice(request.usNodeId,request.deviceName, request.protocolStackName, request.interfaceName, request.portName, request.baudrate) == MMC_FAILED)
+            if(epos_device_.openDevice(request.deviceName, request.protocolStackName, request.interfaceName, request.portName, request.baudrate) == MMC_FAILED)
             {
                 ROS_ERROR("open device fail");
             }
@@ -149,7 +149,7 @@ namespace TabletennisRobot
     }
 
     bool EPOS2::setPPM_Callback(table_tennis_robot_msgsrv::setPPMparam::Request& request, table_tennis_robot_msgsrv::setPPMparam::Response& response){
-        if(epos_device_.startProfilePositionMode(request.profile_velocity, request.profile_acceleration, request.profile_deceleration) == MMC_FAILED){
+        if(epos_device_.startProfilePositionMode((unsigned short)1,request.profile_velocity, request.profile_acceleration, request.profile_deceleration) == MMC_FAILED){
             ROS_ERROR("set PPM fail");
         }
         return true;
