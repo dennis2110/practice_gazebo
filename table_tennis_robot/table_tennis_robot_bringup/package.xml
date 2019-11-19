@@ -66,6 +66,10 @@
   <build_export_depend>table_tennis_robot_msgsrv</build_export_depend>
   <exec_depend>table_tennis_robot_msgsrv</exec_depend>
 
+  <build_depend>serial</build_depend>
+  <build_export_depend>serial</build_export_depend>
+  <exec_depend>serial</exec_depend>
+
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- Other tools can request additional information be placed here -->

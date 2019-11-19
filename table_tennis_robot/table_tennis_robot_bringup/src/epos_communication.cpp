@@ -2,7 +2,7 @@
 
 namespace TabletennisRobot
 {
-    EposCommunication::EposCommunication(){
+    EposCommunication::EposCommunication():homeArdu("/dev/ttyACM0",5){
         g_pKeyHandle = 0;
         subKeyHandle = 0;
         g_baudrate = 0;
@@ -90,6 +90,7 @@ namespace TabletennisRobot
         }
         else {
             deviceOpenedCheckStatus = MMC_FAILED; //used to forbid other functions as getPosition and getVelocity if device is not opened
+            homingCompletedStatus = MMC_FAILED;
         }
         return lResult;
     }
@@ -98,6 +99,8 @@ namespace TabletennisRobot
         //Prepare EPOS controller:
         int lResult = MMC_FAILED;
         unsigned int ulErrorCode = 0;
+        
+#ifdef UseSubDevice
         if((lResult = PrepareEpos(g_pKeyHandle, g_usNodeId1,&ulErrorCode))==MMC_FAILED)
         {
             LogError("PrepareEpos(ID1)", lResult, ulErrorCode);
@@ -110,12 +113,22 @@ namespace TabletennisRobot
         {
             motorEnableCheckStatus = MMC_SUCCESS;
         }
+#else
+        if((lResult = PrepareEpos(g_pKeyHandle, g_usNodeId1,&ulErrorCode))==MMC_FAILED)
+        {
+            LogError("PrepareEpos(ID1)", lResult, ulErrorCode);
+        }else
+        {
+            motorEnableCheckStatus = MMC_SUCCESS;
+        }
+#endif
         return lResult;
     }
 
     int  EposCommunication::disableMotor(){
         int lResult = MMC_FAILED;
         unsigned int ulErrorCode = 0;
+#ifdef UseSubDevice
         if((lResult = DisableEpos(g_pKeyHandle, g_usNodeId1,&ulErrorCode)) == MMC_FAILED)
         {
             LogError("DisableEpos (ID1)", lResult, ulErrorCode);
@@ -126,14 +139,72 @@ namespace TabletennisRobot
         {
             motorEnableCheckStatus = MMC_FAILED;
         }
+#else
+        if((lResult = DisableEpos(g_pKeyHandle, g_usNodeId1,&ulErrorCode)) == MMC_FAILED)
+        {
+            LogError("DisableEpos (ID1)", lResult, ulErrorCode);
+        }else
+        {
+            motorEnableCheckStatus = MMC_FAILED;
+        }
+#endif
         return lResult;
     }
 
     int EposCommunication::autoHoming(){
-        return MMC_FAILED;
+        int lResult = MMC_SUCCESS;
+        unsigned int ulErrorCode = 0;
+
+        std::cout << "set vel mode" << std::endl;
+
+        if(VCS_ActivateProfileVelocityMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
+        {
+            LogError("VCS_ActivateProfileVelocityMode", lResult, ulErrorCode);
+            lResult = MMC_FAILED;
+        }
+        long targetvelocity = -200;
+        if(VCS_MoveWithVelocity(g_pKeyHandle, g_usNodeId1, targetvelocity, &ulErrorCode) == MMC_FAILED)
+		{
+			LogError("VCS_MoveWithVelocity", lResult, ulErrorCode);
+            lResult = MMC_FAILED;
+		}
+
+        homeArdu.readdata = 0;
+        std::cout <<"move and wait for sensor...." <<std::endl;
+        while (homeArdu.readdata == 0)
+        {
+            homeArdu.read(&homeArdu.readdata,5);
+            if(homeArdu.readdata==1)
+                std::cout <<"123456:" << homeArdu.readdata <<":654321" <<std::endl;
+        }
+        
+        if(VCS_HaltVelocityMovement(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == 0)
+		{
+            LogError("VCS_HaltVelocityMovement", lResult, ulErrorCode);
+			lResult = MMC_FAILED;
+		}
+        std::cout << "set home mode" << std::endl;
+
+        if(VCS_ActivateHomingMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
+        {
+            LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
+            lResult = MMC_FAILED;
+        }
+
+        if(VCS_FindHome(g_pKeyHandle, g_usNodeId1, HM_ACTUAL_POSITION, &ulErrorCode) == MMC_FAILED)
+        {
+            LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
+            lResult = MMC_FAILED;
+        }
+        if(lResult == MMC_SUCCESS){
+            homingCompletedStatus = MMC_SUCCESS;
+        }
+        std::cout << "end auto home" << std::endl;
+        
+        return lResult;
     }
 
-    int EposCommunication::startProfilePositionMode(unsigned short p_usNodeId, unsigned int p_profile_velocity, unsigned int p_profile_acceleration,unsigned int p_profile_deceleration){
+    int EposCommunication::startProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, unsigned int p_profile_velocity, unsigned int p_profile_acceleration,unsigned int p_profile_deceleration){
         int lResult = MMC_SUCCESS;
 	    unsigned int ulErrorCode = 0;
 
@@ -141,12 +212,12 @@ namespace TabletennisRobot
         g_profile_acceleration = p_profile_acceleration;
         g_profile_deceleration = p_profile_deceleration;
 
-        if(ActivateProfilePositionMode(g_pKeyHandle,p_usNodeId,&ulErrorCode) == MMC_FAILED){
-            ROS_ERROR("activate PPM fail");
+        if(ActivateProfilePositionMode(p_DeviceHandle,p_usNodeId,&ulErrorCode) == MMC_FAILED){
+            LogInfo("activate PPM fail");
         }
 
-        if(SetPositionProfile(p_usNodeId, &ulErrorCode) == MMC_FAILED){
-            ROS_ERROR("set PPM fail");
+        if(SetPositionProfile(p_DeviceHandle, p_usNodeId, &ulErrorCode) == MMC_FAILED){
+            LogInfo("set PPM fail");
         }else{
             PPMStatus = MMC_SUCCESS;
         }
@@ -154,16 +225,33 @@ namespace TabletennisRobot
         return lResult;
     }
 
-    int EposCommunication::setPosition(unsigned short p_usNodeId, float position_setpoint){
+    int EposCommunication::setPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId, float position_setpoint){
+        int lResult = MMC_SUCCESS;
+	    unsigned int ulErrorCode = 0;
+        long position_QC = 0;
+
+        if(p_usNodeId == g_usNodeId1){
+            position_QC = mToQC(position_setpoint);
+        }
+
+        if(SetPosition(p_DeviceHandle, p_usNodeId, position_QC, &ulErrorCode) == MMC_FAILED){
+            LogInfo("set position fail");
+            lResult = MMC_FAILED;
+        }else{
+			LogInfo("SetPosition executed.");
+		}
+
+        return lResult;
+    }
+
+    int EposCommunication::stopPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId){
         int lResult = MMC_SUCCESS;
 	    unsigned int ulErrorCode = 0;
 
-        if(SetPosition(p_usNodeId, (long)position_setpoint, &ulErrorCode) == MMC_FAILED){
-            ROS_ERROR("set position fail");
-        }else{
-			ROS_INFO("SetPosition executed.");
-		}
-
+        if(StopPosition(p_DeviceHandle, p_usNodeId, &ulErrorCode) == MMC_FAILED){
+            LogInfo("stop position fail");
+            lResult = MMC_FAILED;
+        }
         return lResult;
     }
 
@@ -177,7 +265,13 @@ namespace TabletennisRobot
             LogError("getPosition", lResult, ulErrorCode);
             return lResult;
         }
-        //*pPositionIs = &(float)pPositionIsCounts;
+        if(p_usNodeId == g_usNodeId1){
+            *pPositionIs = QCTom(&pPositionIsCounts);
+        }else{
+
+        }
+        
+        
 
         //only for Debugging
         //ROS_INFO_STREAM("!!! pPositionIs: " << *pPositionIs << " pPositionIsCounts: " << pPositionIsCounts);
@@ -194,7 +288,14 @@ namespace TabletennisRobot
             LogError("getVelocity", lResult, ulErrorCode);
             return lResult;
         }
-        //*pVelocityIs = countsTomm(&pVelocityIsCounts);
+
+        if(p_usNodeId == g_usNodeId1){
+            *pVelocityIs = QCTom(&pVelocityIsCounts);
+        }else{
+
+        }
+
+
         return lResult;
     }
 
@@ -333,7 +434,7 @@ namespace TabletennisRobot
         {
             g_pKeyHandle = 0;
             subKeyHandle = 0;
-            ROS_ERROR("Opening device failed.");
+            std::cout << "############ device open fail ############" << std::endl;
         }
 
         delete []pDeviceName;
@@ -387,7 +488,7 @@ namespace TabletennisRobot
             lResult = MMC_FAILED;
         }
 
-        ROS_INFO_STREAM("Debug 1: FaultState:" << oIsFault);
+        std::cout << "Debug 1: FaultState:" << oIsFault << std::endl;
 
         if(oIsFault)
         {
@@ -419,7 +520,7 @@ namespace TabletennisRobot
             }
             else{
                 VCS_GetEnableState(p_DeviceHandle, p_usNodeId, &oIsEnabled, p_pErrorCode);
-                ROS_INFO_STREAM("SetEnableState should be 1:" <<  oIsEnabled);
+                std::cout << "SetEnableState should be 1:" <<  oIsEnabled << std::endl;
             }
         }
 
@@ -453,17 +554,17 @@ namespace TabletennisRobot
             lResult = MMC_FAILED;
         }
         else {
-            ROS_INFO("VCS_ActivateProfilePositionMode successfull.");
+            LogInfo("VCS_ActivateProfilePositionMode successfull.");
         }
         return lResult;
     }
 
-    int EposCommunication::SetPositionProfile(unsigned short p_usNodeId, unsigned int* p_pErrorCode)
+    int EposCommunication::SetPositionProfile(HANDLE p_DeviceHandle, unsigned short p_usNodeId, unsigned int* p_pErrorCode)
     {
         //to use set variables below first!
         int lResult = MMC_SUCCESS;
 
-        if(VCS_SetPositionProfile(g_pKeyHandle, p_usNodeId, g_profile_velocity, g_profile_acceleration, g_profile_deceleration, p_pErrorCode) == MMC_FAILED)
+        if(VCS_SetPositionProfile(p_DeviceHandle, p_usNodeId, g_profile_velocity, g_profile_acceleration, g_profile_deceleration, p_pErrorCode) == MMC_FAILED)
         {
             LogError("VCS_SetPositionProfile", lResult, *p_pErrorCode);
             lResult = MMC_FAILED;
@@ -472,7 +573,7 @@ namespace TabletennisRobot
         return lResult;
     }
 
-    int EposCommunication::SetPosition(unsigned short p_usNodeId, long position_setpoint, unsigned int* p_pErrorCode){
+    int EposCommunication::SetPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId, long position_setpoint, unsigned int* p_pErrorCode){
         // absolute position, starts immediately
         int lResult = MMC_SUCCESS;
         std::stringstream msg;
@@ -480,15 +581,24 @@ namespace TabletennisRobot
         msg << "move to position = " << position_setpoint << ", node = " << p_usNodeId;
         LogInfo(msg.str());
 
-        if(VCS_MoveToPosition(g_pKeyHandle, p_usNodeId, position_setpoint, 1, 1, p_pErrorCode) == MMC_FAILED)
+        if(VCS_MoveToPosition(p_DeviceHandle, p_usNodeId, position_setpoint, 1, 1, p_pErrorCode) == MMC_FAILED)
             {
                 LogError("VCS_MoveToPosition", lResult, *p_pErrorCode);
                 lResult = MMC_FAILED;
             } 
         else{
-            ROS_INFO("Movement executed.");
+            LogInfo("Movement executed.");
         }
 
+        return lResult;
+    }
+
+    int EposCommunication::StopPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId, unsigned int* p_pErrorCode){
+        int lResult = MMC_SUCCESS;
+        if(VCS_HaltPositionMovement(p_DeviceHandle, p_usNodeId, p_pErrorCode) == MMC_FAILED){
+            LogError("VCS_HaltPositionMovement", lResult, *p_pErrorCode);
+            lResult = MMC_FAILED;
+        }
         return lResult;
     }
 
@@ -512,6 +622,15 @@ namespace TabletennisRobot
             lResult = MMC_FAILED;
         }
         return lResult;
+    }
+
+    long EposCommunication::mToQC(float m){
+        return (long)(m*90000);//slide rail (90000 QC/m)
+    }
+
+    float EposCommunication::QCTom(int* QC){
+        float top = (float)*QC;
+        return top/90000.0f;
     }
 
     float EposCommunication::countsTomm(int* counts){

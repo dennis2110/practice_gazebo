@@ -23,6 +23,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   urdf
   table_tennis_robot_msgsrv
+  serial
 )
 
 ## System dependencies are found with CMake's conventions
@@ -117,7 +118,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES table_tennis_robot_bringup
-  CATKIN_DEPENDS std_msgs table_tennis_robot_msgsrv
+  CATKIN_DEPENDS std_msgs table_tennis_robot_msgsrv serial
 #  DEPENDS system_lib
 )
 
@@ -135,10 +136,12 @@ include_directories(
 set(HEADERS
     include/tabletennis_robot_epos2.h
     include/epos_communication.h
+    include/arduserial.h
     )
 set(SOURCES
     src/tabletennis_robot_epos2.cpp
     src/epos_communication.cpp
+    src/arduserial.cpp
     )
 
 ## Declare a C++ library

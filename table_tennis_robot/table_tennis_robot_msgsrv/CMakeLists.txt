@@ -61,6 +61,7 @@ find_package(catkin REQUIRED COMPONENTS
    EPOSstatus.srv
    OpenDevice.srv
    setPPMparam.srv
+   stopMotor.srv
 #   Service1.srv
 #   Service2.srv
  )

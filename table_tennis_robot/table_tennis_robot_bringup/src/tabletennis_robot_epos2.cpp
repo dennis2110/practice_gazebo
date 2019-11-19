@@ -43,6 +43,8 @@ namespace TabletennisRobot
         openDevice_service_ = node.advertiseService("/open_device",&EPOS2::opendevice_Callback, this);
         closeDevice_service_ = node.advertiseService("/close_device", &EPOS2::closedevice_Callback, this);
         setPPM_service_ = node.advertiseService("/set_PPM", &EPOS2::setPPM_Callback, this);
+        stop_service_ = node.advertiseService("/stop_motor",&EPOS2::stopMotor_Callback, this);
+        homing_service_ = node.advertiseService("/homing", &EPOS2::homing_Callback, this);
 
         motor_status_pub_ = node.advertise<table_tennis_robot_msgsrv::motor_status>("/motor_status",10);
 
@@ -64,17 +66,23 @@ namespace TabletennisRobot
     void EPOS2::update(){
         if(epos_device_.deviceOpenedCheck()){
             if(epos_device_.PPMCheck()){
-                std::cout << motor_cmd[0] << " " << motor_cmd[1] <<std::endl;
+                if(!stop_motor){
+                    std::cout << motor_cmd[0] << " " << motor_cmd[1] <<std::endl;
             
-                epos_device_.setPosition((unsigned short)1,motor_cmd[0]);
+                    epos_device_.setPosition(epos_device_.g_pKeyHandle, epos_device_.g_usNodeId1, motor_cmd[0]);
 
 
 
 
-
-                motor_status_msg.position = 10.0;
-                motor_status_msg.velocity = 20.0;
-                motor_status_pub_.publish(motor_status_msg);
+                    if(epos_device_.getPosition(epos_device_.g_usNodeId1,&motor_status_msg.position)==MMC_FAILED){
+                        ROS_ERROR("123");
+                    }
+                    std::cout <<"######################" << motor_status_msg.position << std::endl;
+                    if(epos_device_.getVelocity(epos_device_.g_usNodeId1,&motor_status_msg.velocity)==MMC_FAILED){
+                        ROS_ERROR("456");
+                    }
+                    motor_status_pub_.publish(motor_status_msg);
+                }
             }
         }
     }
@@ -120,6 +128,7 @@ namespace TabletennisRobot
     }
 
     bool EPOS2::statuscheck_Callback(table_tennis_robot_msgsrv::EPOSstatus::Request& request, table_tennis_robot_msgsrv::EPOSstatus::Response& response){
+        stop_motor = false;
         response.DeviceStatus = epos_device_.deviceOpenedCheck();
         response.MotorStatus = epos_device_.motorEnableCheck();
         response.HomingStatus = epos_device_.homingCheck();
@@ -149,8 +158,35 @@ namespace TabletennisRobot
     }
 
     bool EPOS2::setPPM_Callback(table_tennis_robot_msgsrv::setPPMparam::Request& request, table_tennis_robot_msgsrv::setPPMparam::Response& response){
-        if(epos_device_.startProfilePositionMode((unsigned short)1,request.profile_velocity, request.profile_acceleration, request.profile_deceleration) == MMC_FAILED){
-            ROS_ERROR("set PPM fail");
+        if((int)request.usNodeId == 1){
+            if(epos_device_.startProfilePositionMode(epos_device_.g_pKeyHandle, request.usNodeId, request.profile_velocity, request.profile_acceleration, request.profile_deceleration) == MMC_FAILED){
+                ROS_ERROR("set PPM fail");
+            }
+        }else{
+            if(epos_device_.startProfilePositionMode(epos_device_.subKeyHandle, request.usNodeId, request.profile_velocity, request.profile_acceleration, request.profile_deceleration) == MMC_FAILED){
+                ROS_ERROR("set PPM fail");
+            }
+        }
+        return true;
+    }
+
+    bool EPOS2::stopMotor_Callback(table_tennis_robot_msgsrv::stopMotor::Request& request, table_tennis_robot_msgsrv::stopMotor::Response& response){
+        stop_motor = true;
+        if((int)request.usNodeID == 1){
+            if(epos_device_.stopPosition(epos_device_.g_pKeyHandle,request.usNodeID) == MMC_FAILED){
+                ROS_ERROR("stop PPM fail");
+            }
+        }else{
+            if(epos_device_.stopPosition(epos_device_.subKeyHandle,request.usNodeID) == MMC_FAILED){
+                ROS_ERROR("stop PPM fail");
+            }
+        }
+        return true;
+    }
+
+    bool EPOS2::homing_Callback(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response){
+        if(epos_device_.autoHoming()==MMC_FAILED){
+            ROS_ERROR("auto home fail");
         }
         return true;
     }

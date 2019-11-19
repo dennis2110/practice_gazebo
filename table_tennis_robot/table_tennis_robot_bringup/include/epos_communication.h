@@ -6,8 +6,9 @@
 	#define MMC_FAILED 0
 #endif
 
-#define UseSubDevice
+//#define UseSubDevice
 
+#include "arduserial.h"
 #include "Definitions.h"
 #include <ros/ros.h>
 #include <iostream>
@@ -18,6 +19,9 @@ namespace TabletennisRobot
 {
     class EposCommunication
     {
+    private:
+        typedef void* HANDLE;
+        typedef int BOOL;
     public:
         EposCommunication();
         ~EposCommunication();
@@ -32,14 +36,13 @@ namespace TabletennisRobot
         int enableMotor();
         int disableMotor();
         int autoHoming();
-        int	startProfilePositionMode(unsigned short p_usNodeId, unsigned int p_profile_velocity, unsigned int p_profile_acceleration,unsigned int p_profile_deceleration);
-        int	setPosition(unsigned short p_usNodeId, float position_setpoint);
+        int	startProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, unsigned int p_profile_velocity, unsigned int p_profile_acceleration,unsigned int p_profile_deceleration);
+        int	setPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId, float position_setpoint);
+        int stopPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId);
         int	getPosition(unsigned short p_usNodeId, float* pPositionIs);
         int	getVelocity(unsigned short p_usNodeId, float* pVelocityIs);
 
-    private:
-        typedef void* HANDLE;
-        typedef int BOOL;
+    
 
     private:
         void  LogError(std::string functionName, int p_lResult, unsigned int p_ulErrorCode);
@@ -55,10 +58,15 @@ namespace TabletennisRobot
         int   DisableEpos(HANDLE p_DeviceHandle, unsigned short p_usNodeId, unsigned int* p_pErrorCode);
         //autuhome private fun
         int	ActivateProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, unsigned int* p_pErrorCode);
-        int	SetPositionProfile(unsigned short p_usNodeId, unsigned int* p_pErrorCode);
-        int	SetPosition(unsigned short p_usNodeId, long position_setpoint, unsigned int* p_pErrorCode);
+        int	SetPositionProfile(HANDLE p_DeviceHandle, unsigned short p_usNodeId, unsigned int* p_pErrorCode);
+        int	SetPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId, long position_setpoint, unsigned int* p_pErrorCode);
+        int StopPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId, unsigned int* p_pErrorCode);
         int	GetPosition(unsigned short p_usNodeId, int* pPositionIsCounts, unsigned int* p_pErrorCode);
         int	GetVelocity(unsigned short p_usNodeId, int* pVelocityIsCounts, unsigned int* p_pErrorCode);
+
+        long mToQC(float m);
+        float QCTom(int* QC);
+
         float countsTomm(int* counts);
         int mmToCounts(float mm);
 
@@ -72,6 +80,10 @@ namespace TabletennisRobot
         const unsigned short g_usNodeId4 = 4;
         const unsigned short g_usNodeId5 = 5;
 
+        void* g_pKeyHandle;
+        // subdevice
+        void* subKeyHandle;
+
 
     private:
 
@@ -81,9 +93,7 @@ namespace TabletennisRobot
         bool homingCompletedStatus = MMC_FAILED;
         bool PPMStatus = MMC_FAILED;
         
-        void* g_pKeyHandle;
-        // subdevice
-        void* subKeyHandle;
+        
         
 
         int g_baudrate;
@@ -98,5 +108,8 @@ namespace TabletennisRobot
         unsigned int g_profile_velocity;
         unsigned int g_profile_acceleration;
         unsigned int g_profile_deceleration;
+
+        ArduSerial homeArdu;
+        
     };
 }

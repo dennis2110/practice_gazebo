@@ -7,6 +7,7 @@
 #include <table_tennis_robot_msgsrv/OpenDevice.h>
 #include <table_tennis_robot_msgsrv/setPPMparam.h>
 #include <table_tennis_robot_msgsrv/motor_status.h>
+#include <table_tennis_robot_msgsrv/stopMotor.h>
 #include <std_srvs/Empty.h>
 
 #include "epos_communication.h"
@@ -36,6 +37,8 @@ class EPOS2
       bool opendevice_Callback(table_tennis_robot_msgsrv::OpenDevice::Request& request, table_tennis_robot_msgsrv::OpenDevice::Response& response);
       bool closedevice_Callback(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response);
       bool setPPM_Callback(table_tennis_robot_msgsrv::setPPMparam::Request& request, table_tennis_robot_msgsrv::setPPMparam::Response& response);
+      bool stopMotor_Callback(table_tennis_robot_msgsrv::stopMotor::Request& request, table_tennis_robot_msgsrv::stopMotor::Response& response);
+      bool homing_Callback(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response);
 
     public:
 
@@ -43,9 +46,11 @@ class EPOS2
       double motor_cmd[5];
       float motor_vel;
       float motor_pos;
+      bool stop_motor;
 
       table_tennis_robot_msgsrv::motor_status motor_status_msg;
 
+//////////////////////////////////////////////////////////////////
       ros::Subscriber slide_rail_joint_command_sub_;
       ros::Subscriber arm_1_joint_command_sub_;
       ros::Subscriber arm_2_joint_command_sub_;
@@ -55,9 +60,8 @@ class EPOS2
       ros::ServiceServer statusCheck_service_;
       ros::ServiceServer openDevice_service_;
       ros::ServiceServer closeDevice_service_;
-
       ros::ServiceServer setPPM_service_;
-
+      ros::ServiceServer stop_service_;
       ros::ServiceServer homing_service_;
 
       ros::Publisher motor_status_pub_;
