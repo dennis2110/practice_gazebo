@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+    <arg name="debug" default="false"/>
+    <arg name="gui" default="true"/>
+    <arg name="paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="headless" default="false"/>
+    
+    <!-- We resume the logic in empty_world.launch -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
+    </include>    
+
+	<include file="$(find tabletennisrobot_description)/launch/TTbot_upload.launch">
+		<arg name="robot_name" value="TTbot" />
+		<arg name="use_ros_control" value="True" />
+		<arg name="motors_controller_type" value="EffortJointInterface" />
+		<arg name="bot_x" value="0.0" />
+		<arg name="bot_y" value="0.0" />
+		<arg name="bot_z" value="0.0" />
+  	</include>
+
+
+
+</launch>

@@ -165,6 +165,13 @@ add_dependencies(tabletennis_robot_bringup ${${PROJECT_NAME}_EXPORTED_TARGETS} $
 target_link_libraries(tabletennis_robot_bringup ${catkin_LIBRARIES} -lEposCmd)
 ##########################
 
+########## test ##########
+add_executable(joint_status_pub test/joint_status_pub.cpp)
+add_dependencies(joint_status_pub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(joint_status_pub ${catkin_LIBRARIES})
+##########################
+
+
 add_executable(tabletennis_robot_main src/tabletennis_robot_main.cpp
                                       src/tabletennis_robot_hw.cpp)
 add_dependencies(tabletennis_robot_main ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

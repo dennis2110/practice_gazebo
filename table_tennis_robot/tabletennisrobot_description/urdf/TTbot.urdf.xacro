@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<robot xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://ros.org/wiki/xacro"
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<xacro:include filename="$(find tabletennisrobot_description)/urdf/TTbot.transmission.xacro" />
+	<xacro:include filename="$(find tabletennisrobot_description)/urdf/TTbot.gazebo.xacro" />
+
+	<!-- Kinematic model -->
+  	<xacro:macro name="TTbot_robot" params="prefix">
+		<!-- Links: -->	
+		<link name="${prefix}base_link" >
+			<inertial>
+		    	<origin xyz="0 0 0" rpy="0 0 0" />
+       			<mass value="10" />
+       			<inertia ixx="0.0441803207364147" ixy="5.37433593375545E-07" ixz="0.004045564920652" iyy="0.0584309411563095" iyz="-4.8990117845347E-07" izz="0.0514875586171667" />
+		    </inertial>
+      		<visual>
+		        <origin rpy="0 0 0" xyz="0 0 0" />
+        		<geometry>
+        			<mesh filename="package://tabletennisrobot_description/meshes/visual/base_link.dae" />
+		        </geometry>
+		    </visual>
+      		<collision>
+        		<origin rpy="0 0 0" xyz="0 0 0" />
+        		<geometry>
+          			<mesh filename="package://tabletennisrobot_description/meshes/visual/base_link.dae" />
+		        </geometry>
+ 		    </collision>
+    	</link>
+
+		<link name="${prefix}slide_link" >
+			<inertial>
+		    	<origin xyz="0 0 0" rpy="0 0 0" />
+       			<mass value="10" />
+       			<inertia ixx="0.0441803207364147" ixy="5.37433593375545E-07" ixz="0.004045564920652" iyy="0.0584309411563095" iyz="-4.8990117845347E-07" izz="0.0514875586171667" />
+		    </inertial>
+      		<visual>
+		        <origin rpy="0 0 0" xyz="0 0 0" />
+        		<geometry>
+        			<mesh filename="package://tabletennisrobot_description/meshes/visual/slide_link.dae" />
+		        </geometry>
+		    </visual>
+      		<collision>
+        		<origin rpy="0 0 0" xyz="0 0 0" />
+        		<geometry>
+          			<mesh filename="package://tabletennisrobot_description/meshes/visual/slide_link.dae" />
+		        </geometry>
+ 		    </collision>
+    	</link>
+
+		<link name="${prefix}joint_1_link" >
+			<inertial>
+		    	<origin xyz="${-0.125/2} 0 ${-0.125/2}" rpy="0 0 0" />
+       			<mass value="10" />
+       			<inertia ixx="0.0441803207364147" ixy="5.37433593375545E-07" ixz="0.004045564920652" iyy="0.0584309411563095" iyz="-4.8990117845347E-07" izz="0.0514875586171667" />
+		    </inertial>
+      		<visual>
+		        <origin xyz="${-0.125/2} 0 ${-0.125/2}" rpy="0 0 0" />
+        		<geometry>
+        			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_1_link.dae" />
+		        </geometry>
+		    </visual>
+      		<collision>
+        		<origin xyz="${-0.125/2} 0 ${-0.125/2}" rpy="0 0 0" />
+        		<geometry>
+          			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_1_link.dae" />
+		        </geometry>
+ 		    </collision>
+    	</link>
+
+		<link name="${prefix}joint_2_link" >
+			<inertial>
+		    	<origin xyz="${-0.067/2} ${-0.015} ${-0.067/2}" rpy="0 0 0" />
+       			<mass value="10" />
+       			<inertia ixx="0.0441803207364147" ixy="5.37433593375545E-07" ixz="0.004045564920652" iyy="0.0584309411563095" iyz="-4.8990117845347E-07" izz="0.0514875586171667" />
+		    </inertial>
+      		<visual>
+		        <origin xyz="${-0.067/2} ${-0.015} ${-0.067/2}" rpy="0 0 0" />
+        		<geometry>
+        			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_2_link.dae" />
+		        </geometry>
+		    </visual>
+      		<collision>
+        		<origin xyz="${-0.067/2} ${-0.015} ${-0.067/2}" rpy="0 0 0" />
+        		<geometry>
+          			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_2_link.dae" />
+		        </geometry>
+ 		    </collision>
+    	</link>
+
+		<link name="${prefix}joint_3_link" >
+			<inertial>
+		    	<origin xyz="${-0.039/2} ${-0.023} ${-0.039/2}" rpy="0 0 0" />
+       			<mass value="10" />
+       			<inertia ixx="0.0441803207364147" ixy="5.37433593375545E-07" ixz="0.004045564920652" iyy="0.0584309411563095" iyz="-4.8990117845347E-07" izz="0.0514875586171667" />
+		    </inertial>
+      		<visual>
+		        <origin xyz="${-0.039/2} ${-0.023} ${-0.039/2}" rpy="0 0 0" />
+        		<geometry>
+        			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_3_link.dae" />
+		        </geometry>
+		    </visual>
+      		<collision>
+        		<origin xyz="${-0.039/2} ${-0.023} ${-0.039/2}" rpy="0 0 0" />
+        		<geometry>
+          			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_3_link.dae" />
+		        </geometry>
+ 		    </collision>
+    	</link>
+
+		<link name="${prefix}joint_4_link" >
+			<inertial>
+		    	<origin xyz="${-0.1+0.045/2} ${-0.01} ${-0.045/2}" rpy="0 ${0} 0" />
+       			<mass value="10" />
+       			<inertia ixx="0.0441803207364147" ixy="5.37433593375545E-07" ixz="0.004045564920652" iyy="0.0584309411563095" iyz="-4.8990117845347E-07" izz="0.0514875586171667" />
+		    </inertial>
+      		<visual>
+		        <origin xyz="${-0.1+0.045/2} ${-0.01} ${-0.045/2}" rpy="0 ${0} 0" />
+        		<geometry>
+        			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_4_link.dae" />
+		        </geometry>
+		    </visual>
+      		<collision>
+        		<origin xyz="${-0.1+0.045/2} ${-0.01} ${-0.045/2}" rpy="0 ${0} 0" />
+        		<geometry>
+          			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_4_link.dae" />
+		        </geometry>
+ 		    </collision>
+    	</link>
+    	
+    	
+    	
+    	
+    	<!-- joints: -->
+		<joint name="${prefix}joint_0" type="prismatic">
+    		<origin xyz="0.0 0.4 0.621" rpy="${pi/2} 0 0" />
+    		<parent link="${prefix}base_link" />
+    		<child link = "${prefix}slide_link" />
+    		<axis xyz="1 0 0" />
+    		<limit effort="150" lower="0.2" upper="1.25" velocity="0.5" />
+    		<dynamics damping="0.0" friction="0.0"/>
+  		</joint>
+
+		<joint name="${prefix}joint_1" type="revolute">
+			<parent link="${prefix}slide_link"/>
+        	<child link="${prefix}joint_1_link"/>
+
+			<origin xyz="${0.147/2} ${0.225} ${0.15/2}" rpy="0 0 0" />
+        	<limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="0.5"/>
+        	<dynamics damping="0.0" friction="0.0"/>
+        	<axis xyz="0 1 0"/>
+    	</joint>
+
+		<joint name="${prefix}joint_2" type="revolute">
+			<parent link="${prefix}joint_1_link"/>
+        	<child link="${prefix}joint_2_link"/>
+
+			<origin xyz="${0.05} ${0.091} ${0}" rpy="0 0 ${pi/2}" />
+        	<limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="0.5"/>
+        	<dynamics damping="0.0" friction="0.0"/>
+        	<axis xyz="0 1 0"/>
+    	</joint>
+
+		<joint name="${prefix}joint_3" type="revolute">
+			<parent link="${prefix}joint_2_link"/>
+        	<child link="${prefix}joint_3_link"/>
+
+			<origin xyz="${0.253} ${0.082-0.015} ${0}" rpy="${pi} 0 0" />
+        	<limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="0.5"/>
+        	<dynamics damping="0.0" friction="0.0"/>
+        	<axis xyz="0 1 0"/>
+    	</joint>
+
+		<joint name="${prefix}joint_4" type="revolute">
+			<parent link="${prefix}joint_3_link"/>
+        	<child link="${prefix}joint_4_link"/>
+
+			<origin xyz="${0.216} ${0.04-0.023} ${0}" rpy="0 0 ${pi}" />
+        	<limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="0.5"/>
+        	<dynamics damping="0.0" friction="0.0"/>
+        	<axis xyz="0 1 0"/>
+    	</joint>
+
+		<!-- gazebo and transmission -->
+		<xacro:TTbot_transmission prefix="${prefix}" />
+    	<xacro:TTbot_gazebo prefix="${prefix}" />
+	
+	</xacro:macro>
+</robot>

@@ -132,6 +132,7 @@ namespace TabletennisRobot
         response.DeviceStatus = epos_device_.deviceOpenedCheck();
         response.MotorStatus = epos_device_.motorEnableCheck();
         response.HomingStatus = epos_device_.homingCheck();
+        epos_device_.getVelocityUnit();
         return true;
     }
 

@@ -91,6 +91,7 @@ namespace TabletennisRobot
         else {
             deviceOpenedCheckStatus = MMC_FAILED; //used to forbid other functions as getPosition and getVelocity if device is not opened
             homingCompletedStatus = MMC_FAILED;
+            PPMStatus = MMC_FAILED;
         }
         return lResult;
     }
@@ -178,12 +179,34 @@ namespace TabletennisRobot
                 std::cout <<"123456:" << homeArdu.readdata <<":654321" <<std::endl;
         }
         
-        if(VCS_HaltVelocityMovement(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == 0)
+        if(VCS_HaltVelocityMovement(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
 		{
             LogError("VCS_HaltVelocityMovement", lResult, ulErrorCode);
 			lResult = MMC_FAILED;
 		}
         std::cout << "set home mode" << std::endl;
+
+
+        if(VCS_ActivateProfilePositionMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
+        {
+            LogError("VCS_ActivateProfilePositionMode", lResult, ulErrorCode);
+            lResult = MMC_FAILED;
+        }
+        
+
+        if(VCS_SetPositionProfile(g_pKeyHandle, g_usNodeId1, 1000, 200, 200, &ulErrorCode) == MMC_FAILED)
+        {
+            LogError("VCS_SetPositionProfile", lResult, ulErrorCode);
+            lResult = MMC_FAILED;
+        }
+
+        if(VCS_MoveToPosition(g_pKeyHandle, g_usNodeId1, 42250, 0, 1, &ulErrorCode) == MMC_FAILED)
+        {
+            LogError("VCS_MoveToPosition", lResult, ulErrorCode);
+            lResult = MMC_FAILED;
+        } 
+
+        sleep(10);
 
         if(VCS_ActivateHomingMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
         {
@@ -232,6 +255,14 @@ namespace TabletennisRobot
 
         if(p_usNodeId == g_usNodeId1){
             position_QC = mToQC(position_setpoint);
+        }else if(p_usNodeId == g_usNodeId2){
+
+        }else if(p_usNodeId == g_usNodeId3){
+            
+        }else if(p_usNodeId == g_usNodeId4){
+            
+        }else if(p_usNodeId == g_usNodeId5){
+            
         }
 
         if(SetPosition(p_DeviceHandle, p_usNodeId, position_QC, &ulErrorCode) == MMC_FAILED){
@@ -267,8 +298,14 @@ namespace TabletennisRobot
         }
         if(p_usNodeId == g_usNodeId1){
             *pPositionIs = QCTom(&pPositionIsCounts);
-        }else{
+        }else if(p_usNodeId == g_usNodeId2){
 
+        }else if(p_usNodeId == g_usNodeId3){
+            
+        }else if(p_usNodeId == g_usNodeId4){
+            
+        }else if(p_usNodeId == g_usNodeId5){
+            
         }
         
         
@@ -290,14 +327,37 @@ namespace TabletennisRobot
         }
 
         if(p_usNodeId == g_usNodeId1){
-            *pVelocityIs = QCTom(&pVelocityIsCounts);
-        }else{
+            *pVelocityIs = RPMTom_s(&pVelocityIsCounts);
+        }else if(p_usNodeId == g_usNodeId2){
 
+        }else if(p_usNodeId == g_usNodeId3){
+            
+        }else if(p_usNodeId == g_usNodeId4){
+            
+        }else if(p_usNodeId == g_usNodeId5){
+            
         }
 
 
         return lResult;
     }
+
+    int EposCommunication::getVelocityUnit(){
+        int lResult = MMC_SUCCESS;
+        unsigned char dimension;
+        char notation;
+        unsigned int ulErrorCode = 0;
+        if(VCS_GetVelocityUnits(g_pKeyHandle,g_usNodeId1,&dimension,&notation,&ulErrorCode) == MMC_FAILED){
+            LogError("VCS_GetVelocityUnits", lResult, ulErrorCode);
+            lResult = MMC_FAILED;
+        }
+        std::cout << "dimension: " << int(dimension) << std::endl;
+        std::cout << "notation: " << int(notation) << std::endl;
+
+        return lResult;
+    }
+
+    
 
     ////////////////////////////
     ///// private function /////
@@ -604,22 +664,37 @@ namespace TabletennisRobot
 
     int EposCommunication::GetPosition(unsigned short p_usNodeId, int* pPositionIsCounts, unsigned int* p_pErrorCode){
         int lResult = MMC_SUCCESS;
-
-        if(VCS_GetPositionIs(g_pKeyHandle, p_usNodeId, pPositionIsCounts, p_pErrorCode) == MMC_FAILED)
-        {
-            LogError("VCS_GetPositionIs", lResult, *p_pErrorCode);
-            lResult = MMC_FAILED;
+        if(p_usNodeId == g_usNodeId1){
+            if(VCS_GetPositionIs(g_pKeyHandle, p_usNodeId, pPositionIsCounts, p_pErrorCode) == MMC_FAILED)
+            {
+                LogError("VCS_GetPositionIs", lResult, *p_pErrorCode);
+                lResult = MMC_FAILED;
+            }
+        }else{
+            if(VCS_GetPositionIs(subKeyHandle, p_usNodeId, pPositionIsCounts, p_pErrorCode) == MMC_FAILED)
+            {
+                LogError("VCS_GetPositionIs", lResult, *p_pErrorCode);
+                lResult = MMC_FAILED;
+            }
         }
         return lResult;
     }
 
     int EposCommunication::GetVelocity(unsigned short p_usNodeId, int* pVelocityIsCounts, unsigned int* p_pErrorCode){
         int lResult = MMC_SUCCESS;
-
-        if(VCS_GetVelocityIs(g_pKeyHandle, p_usNodeId, pVelocityIsCounts, p_pErrorCode) == MMC_FAILED)
-        {
-            LogError("VCS_GetVelocityIs", lResult, *p_pErrorCode);
-            lResult = MMC_FAILED;
+        if(p_usNodeId == g_usNodeId1){
+            if(VCS_GetVelocityIs(g_pKeyHandle, p_usNodeId, pVelocityIsCounts, p_pErrorCode) == MMC_FAILED)
+            {
+                LogError("VCS_GetVelocityIs", lResult, *p_pErrorCode);
+                lResult = MMC_FAILED;
+            }
+        }
+        else{
+            if(VCS_GetVelocityIs(subKeyHandle, p_usNodeId, pVelocityIsCounts, p_pErrorCode) == MMC_FAILED)
+            {
+                LogError("VCS_GetVelocityIs", lResult, *p_pErrorCode);
+                lResult = MMC_FAILED;
+            }
         }
         return lResult;
     }
@@ -633,17 +708,9 @@ namespace TabletennisRobot
         return top/90000.0f;
     }
 
-    float EposCommunication::countsTomm(int* counts){
-        //can't achieve now  (need actual motor reduction ratio)
-        return 0.0;
+    float EposCommunication::RPMTom_s(int* RPM){
+        float top = (float)*RPM;
+        return top*2048.0f/(90000.0f * 60.0f);
     }
-
-    int EposCommunication::mmToCounts(float mm){
-        //can't achieve now  (need actual motor reduction ratio)
-        return 0;
-    }
-
-
-
 
 }

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:macro name="TTbot_gazebo" params="prefix">
+
+        <xacro:unless value="$(arg use_ros_control)">
+            <!-- Just color the links: -->
+            <gazebo reference="base_link">
+                <material>Gazebo/DarkGrey</material>
+            </gazebo>
+
+            <gazebo reference="slide_link">
+                <material>Gazebo/Grey</material>
+            </gazebo>
+
+            <gazebo reference="joint_1_link">
+                <material>Gazebo/DarkGrey</material>
+            </gazebo>
+
+            <gazebo reference="joint_2_link">
+                <material>Gazebo/Grey</material>
+            </gazebo>
+
+            <gazebo reference="joint_3_link">
+                <material>Gazebo/DarkGrey</material>
+            </gazebo>
+
+            <gazebo reference="joint_4_link">
+                <material>Gazebo/Grey</material>
+            </gazebo>
+
+        </xacro:unless>
+
+        <xacro:if value="$(arg use_ros_control)">
+
+            <gazebo reference="base_link">
+                <mu1>1</mu1>
+                <mu2>1</mu2>
+                <selfCollide>true</selfCollide>
+                <material>Gazebo/DarkGrey</material>
+            </gazebo>
+
+            <gazebo reference="slide_link">
+                <mu1>1</mu1>
+                <mu2>1</mu2>
+                <selfCollide>true</selfCollide>
+                <material>Gazebo/Grey</material>
+            </gazebo>
+
+            <gazebo reference="joint_1_link">
+                <mu1>1</mu1>
+                <mu2>1</mu2>
+                <selfCollide>true</selfCollide>
+                <material>Gazebo/DarkGrey</material>
+            </gazebo>
+
+            <gazebo reference="joint_2_link">
+                <mu1>1</mu1>
+                <mu2>1</mu2>
+                <selfCollide>true</selfCollide>
+                <material>Gazebo/Grey</material>
+            </gazebo>
+
+            <gazebo reference="joint_3_link">
+                <mu1>1</mu1>
+                <mu2>1</mu2>
+                <selfCollide>true</selfCollide>
+                <material>Gazebo/DarkGrey</material>
+            </gazebo>
+
+            <gazebo reference="joint_4_link">
+                <mu1>1</mu1>
+                <mu2>1</mu2>
+                <selfCollide>true</selfCollide>
+                <material>Gazebo/Grey</material>
+            </gazebo>
+
+     
+        </xacro:if>
+
+    </xacro:macro>
+</robot>

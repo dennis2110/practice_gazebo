@@ -41,6 +41,7 @@ namespace TabletennisRobot
         int stopPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId);
         int	getPosition(unsigned short p_usNodeId, float* pPositionIs);
         int	getVelocity(unsigned short p_usNodeId, float* pVelocityIs);
+        int getVelocityUnit();
 
     
 
@@ -66,9 +67,7 @@ namespace TabletennisRobot
 
         long mToQC(float m);
         float QCTom(int* QC);
-
-        float countsTomm(int* counts);
-        int mmToCounts(float mm);
+        float RPMTom_s(int* RPM);
 
 
 
