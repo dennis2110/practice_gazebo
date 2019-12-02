@@ -6,7 +6,7 @@
   <!-- Load joint controller configurations from YAML file to parameter server -->
   <!--<rosparam file="$(find tabletennisrobot_control)/config/TTbot_control_profile_position.yaml" command="load"/>-->
   <!--<rosparam file="$(find tabletennisrobot_control)/config/TTbot_control_velocity.yaml" command="load"/>-->
-  <rosparam file="$(find tabletennisrobot_control)/config/TTbot_control_profile_position.yaml" command="load"/>
+  <rosparam file="$(find profile_position_controllers)/config/TTbot_control_profile_position.yaml" command="load"/>
 
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"

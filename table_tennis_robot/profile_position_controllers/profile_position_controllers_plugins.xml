@@ -1,0 +1,9 @@
+<library path="lib/libprofile_position_controllers">
+
+  <class name="ttbot_velocity_controllers/JointProfilePositionController" type="ttbot_velocity_controllers::JointProfilePositionController" base_class_type="controller_interface::ControllerBase">
+    <description>
+      The ProfilePositionController tracks position to velocity commands. It expects a VelocityJointInterface type of hardware interface.
+    </description>
+  </class>
+
+</library>
