@@ -15,8 +15,8 @@ void motor_status_Callback(const table_tennis_robot_msgsrv::motor_statusConstPtr
 }
 
 void joint_status_Callback(const sensor_msgs::JointStateConstPtr& jointstate_msg){
-    sim_vel_joint0 = jointstate_msg->velocity[4];
-    sim_pos_joint0 = jointstate_msg->position[4];
+    sim_vel_joint0 = jointstate_msg->velocity[0];
+    sim_pos_joint0 = jointstate_msg->position[0];
 }
 
 
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
 
   ros::Subscriber motor_status_sub_ = n.subscribe("/motor_status",10,motor_status_Callback);
-  ros::Subscriber joint_status_sub_ = n.subscribe("/linear_slide_rail/joint_states",10,joint_status_Callback);
+  ros::Subscriber joint_status_sub_ = n.subscribe("/TTbot/joint_states",10,joint_status_Callback);
 
   ros::Publisher sim_vel_pub = n.advertise<std_msgs::Float32>("/sim_vel",10);
   ros::Publisher sim_pos_pub = n.advertise<std_msgs::Float32>("/sim_pos",10);

@@ -7,6 +7,9 @@
 <arg name="bot_x" default="0.0" /> 
 <arg name="bot_y" default="0.0" /> 
 <arg name="bot_z" default="0.0" />
+<arg name="bot_R" default="0.0" /> 
+<arg name="bot_P" default="0.0" /> 
+<arg name="bot_Y" default="0.0" />
 
 <!-- Load robot description to parameter server -->
 <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find tabletennisrobot_description)/urdf/TTbot_robot.urdf.xacro'
@@ -17,7 +20,7 @@
 
 <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-        args="-urdf -model $(arg robot_name) -param robot_description -x $(arg bot_x) -y $(arg bot_y) -z $(arg bot_z)"
+        args="-urdf -model $(arg robot_name) -param robot_description -x $(arg bot_x) -y $(arg bot_y) -z $(arg bot_z) -R $(arg bot_R) -P $(arg bot_P) -Y $(arg bot_Y)"
     />
 
 </launch>

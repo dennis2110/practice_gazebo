@@ -28,6 +28,9 @@
 		<arg name="bot_x" value="0.0" />
 		<arg name="bot_y" value="0.0" />
 		<arg name="bot_z" value="0.0" />
+		<arg name="bot_R" value="0.0" /> 
+		<arg name="bot_P" value="0.0" /> 
+		<arg name="bot_Y" value="0.0" />
   	</include>
 
 
