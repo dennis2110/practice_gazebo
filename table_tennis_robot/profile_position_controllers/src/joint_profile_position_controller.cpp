@@ -47,7 +47,7 @@
 namespace ttbot_velocity_controllers {
 
 JointProfilePositionController::JointProfilePositionController()
-  : loop_count_(0)
+  : loop_count_(0) , last_velocity(0.0)
 {}
 
 JointProfilePositionController::~JointProfilePositionController()
@@ -65,9 +65,35 @@ bool JointProfilePositionController::init(hardware_interface::VelocityJointInter
     return false;
   }
 
-  // Load PID Controller using gains set on parameter server
-  if (!pid_controller_.init(ros::NodeHandle(n, "pid")))
+  // Get ppm_param name from parameter server
+  ros::NodeHandle nh(ros::NodeHandle(n,"ppm_param"));
+  if (!nh.getParam("vel", ppm_params_struct_.velocity_))
+  {
+    ROS_ERROR("No vel param.  Namespace: %s", nh.getNamespace().c_str());
     return false;
+  }else{
+    std::cout << joint_name << " -> ppm_vel: " << ppm_params_struct_.velocity_ << std::endl;
+  }
+  if (!nh.getParam("acc", ppm_params_struct_.acceleration_))
+  {
+    ROS_ERROR("No acc param.  Namespace: %s", nh.getNamespace().c_str());
+    return false;
+  }else{
+    std::cout << joint_name << " -> ppm_acc: " << ppm_params_struct_.acceleration_ << std::endl;
+  }
+  if (!nh.getParam("dec", ppm_params_struct_.deceleration_))
+  {
+    ROS_ERROR("No dec param.  Namespace: %s", nh.getNamespace().c_str());
+    return false;
+  }else{
+    std::cout << joint_name << " -> ppm_dec: " << ppm_params_struct_.deceleration_ << std::endl;
+  }
+
+
+
+  // Load PID Controller using gains set on parameter server
+  //if (!pid_controller_.init(ros::NodeHandle(n, "pid")))
+  //  return false;
 
   // Start realtime state publisher
   controller_state_publisher_.reset(
@@ -96,7 +122,7 @@ bool JointProfilePositionController::init(hardware_interface::VelocityJointInter
   return true;
 }
 
-void JointProfilePositionController::setGains(const double &p, const double &i, const double &d, const double &i_max, const double &i_min, const bool &antiwindup)
+/*void JointProfilePositionController::setGains(const double &p, const double &i, const double &d, const double &i_max, const double &i_min, const bool &antiwindup)
 {
   pid_controller_.setGains(p,i,d,i_max,i_min,antiwindup);
 }
@@ -115,7 +141,7 @@ void JointProfilePositionController::getGains(double &p, double &i, double &d, d
 void JointProfilePositionController::printDebug()
 {
   pid_controller_.printValues();
-}
+}*/
 
 std::string JointProfilePositionController::getJointName()
 {
@@ -161,64 +187,93 @@ void JointProfilePositionController::starting(const ros::Time& time)
 
   command_.initRT(command_struct_);
 
-  pid_controller_.reset();
+  //pid_controller_.reset();
 }
 
 void JointProfilePositionController::update(const ros::Time& time, const ros::Duration& period)
 {
   command_struct_ = *(command_.readFromRT());
   double command_position = command_struct_.position_;
-  double command_velocity = command_struct_.velocity_;
-  bool has_velocity_ =  command_struct_.has_velocity_;
+  //double command_velocity = command_struct_.velocity_;
+  //bool has_velocity_ =  command_struct_.has_velocity_;
 
-  double error, vel_error;
+  double error;
   double commanded_velocity;
+  double need_distance;
 
   double current_position = joint_.getPosition();
+  double current_velocity = joint_.getVelocity();
+  
 
   // Make sure joint is within limits if applicable
   enforceJointLimits(command_position);
+  //std::string joint_zero = "joint_0";
+  //if(joint_.getName() == joint_zero){
+    
+  error = command_position - current_position;
+  need_distance = last_velocity*last_velocity/(2*ppm_params_struct_.acceleration_);
 
-  // Compute position error
-  if (joint_urdf_->type == urdf::Joint::REVOLUTE)
-  {
-   angles::shortest_angular_distance_with_limits(
-      current_position,
-      command_position,
-      joint_urdf_->limits->lower,
-      joint_urdf_->limits->upper,
-      error);
+  if(abs(error) > 0.0001){
+    if(abs(error) < need_distance){
+      motion_state = uniformDec;
+    }else if(last_velocity < ppm_params_struct_.velocity_){
+      motion_state = uniformAcc;
+    }else{
+      motion_state = constantVel;
+    }
+  }else{
+    motion_state = stop;
   }
-  else if (joint_urdf_->type == urdf::Joint::CONTINUOUS)
-  {
-    error = angles::shortest_angular_distance(current_position, command_position);
-  }
-  else //prismatic
-  {
-    error = command_position - current_position;
-  }
+    
 
-  // Decide which of the two PID computeCommand() methods to call
-  if (has_velocity_)
-  {
-    // Compute velocity error if a non-zero velocity command was given
-    vel_error = command_velocity - joint_.getVelocity();
+    
+    
 
-    // Set the PID error and compute the PID command with nonuniform
-    // time step size. This also allows the user to pass in a precomputed derivative error.
-    commanded_velocity = pid_controller_.computeCommand(error, vel_error, period);
-  }
-  else
-  {
-    // Set the PID error and compute the PID command with nonuniform
-    // time step size.
-    commanded_velocity = pid_controller_.computeCommand(error, period);
-  }
 
+
+    
+  //std::cout << "aaa vel command is :" << commanded_velocity  << " last_velocity:" <<last_velocity << std::endl;
+    
+  switch (motion_state)
+  {
+  case stop:
+    /* code */
+    commanded_velocity = 0.0;
+    
+    break;
+  
+  case constantVel:
+    /* code */
+    commanded_velocity = ppm_params_struct_.velocity_;
+    
+    break;
+
+  case uniformAcc:
+    /* code */
+    commanded_velocity = last_velocity + ( ppm_params_struct_.acceleration_ * period.toSec());
+    
+    break;
+
+  case uniformDec:
+    /* code */
+    commanded_velocity = last_velocity - ( ppm_params_struct_.acceleration_ * period.toSec());
+    
+    break;
+  
+  default:
+    commanded_velocity = 0.0;
+    break;
+  }
+  
+  commandVelocityLimits(commanded_velocity);
+  last_velocity = commanded_velocity;
+  if(error < 0.0){
+    commanded_velocity = -commanded_velocity;
+  }
   joint_.setCommand(commanded_velocity);
 
   // publish state
-  if (loop_count_ % 10 == 0)
+  /*if (loop_count_ % 10 == 0)
   {
     if(controller_state_publisher_ && controller_state_publisher_->trylock())
     {
@@ -232,7 +287,7 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
 
       double dummy;
       bool antiwindup;
-      getGains(controller_state_publisher_->msg_.p,
+      /*getGains(controller_state_publisher_->msg_.p,
         controller_state_publisher_->msg_.i,
         controller_state_publisher_->msg_.d,
         controller_state_publisher_->msg_.i_clamp,
@@ -242,7 +297,7 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
       controller_state_publisher_->unlockAndPublish();
     }
   }
-  loop_count_++;
+  loop_count_++;*/
 }
 
 void JointProfilePositionController::setCommandCB(const std_msgs::Float64ConstPtr& msg)
@@ -264,6 +319,18 @@ void JointProfilePositionController::enforceJointLimits(double &command)
     {
       command = joint_urdf_->limits->lower;
     }
+  }
+}
+
+void JointProfilePositionController::commandVelocityLimits(double &command)
+{
+  if(command > joint_urdf_->limits->velocity)
+  {
+    command = joint_urdf_->limits->velocity;
+  }
+  else if(command < -joint_urdf_->limits->velocity)
+  {
+    command = -joint_urdf_->limits->velocity;
   }
 }
 

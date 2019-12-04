@@ -8,20 +8,20 @@ TTbot:
   slide_rail_joint_position_controller:
     type: ttbot_velocity_controllers/JointProfilePositionController
     joint: joint_0
-    pid: {p: 100.0, i: 0.01, d: 10.0}
+    ppm_param: {vel: 0.5, acc: 5, dec: 5}
   arm_joint1_position_controller:
     type: ttbot_velocity_controllers/JointProfilePositionController
     joint: joint_1
-    pid: {p: 100.0, i: 0.01, d: 10.0}
+    ppm_param: {vel: 0.4, acc: 0.5, dec: 0.5}
   arm_joint2_position_controller:
     type: ttbot_velocity_controllers/JointProfilePositionController
     joint: joint_2
-    pid: {p: 100.0, i: 0.01, d: 10.0}
+    ppm_param: {vel: 0.4, acc: 0.5, dec: 0.5}
   arm_joint3_position_controller:
     type: ttbot_velocity_controllers/JointProfilePositionController
     joint: joint_3
-    pid: {p: 100.0, i: 0.01, d: 10.0}
+    ppm_param: {vel: 0.4, acc: 0.5, dec: 0.5}
   arm_joint4_position_controller:
     type: ttbot_velocity_controllers/JointProfilePositionController
     joint: joint_4
-    pid: {p: 100.0, i: 0.01, d: 10.0}
+    ppm_param: {vel: 0.4, acc: 0.5, dec: 0.5}

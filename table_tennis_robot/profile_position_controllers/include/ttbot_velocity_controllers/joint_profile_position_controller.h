@@ -95,6 +95,20 @@ public:
     bool has_velocity_; // false if no velocity command has been specified
   };
 
+  struct PPM_params
+  {
+    double velocity_;
+    double acceleration_;
+    double deceleration_;
+  };
+
+  enum MotionState{
+    stop,
+    constantVel,
+    uniformAcc,
+    uniformDec
+  };
+
   JointProfilePositionController();
   ~JointProfilePositionController();
 
@@ -144,22 +158,22 @@ public:
   /**
    * \brief Get the PID parameters
    */
-  void getGains(double &p, double &i, double &d, double &i_max, double &i_min);
+  //void getGains(double &p, double &i, double &d, double &i_max, double &i_min);
 
   /**
    * \brief Get the PID parameters
    */
-  void getGains(double &p, double &i, double &d, double &i_max, double &i_min, bool &antiwindup);
+  //void getGains(double &p, double &i, double &d, double &i_max, double &i_min, bool &antiwindup);
 
   /**
    * \brief Print debug info to console
    */
-  void printDebug();
+  //void printDebug();
 
   /**
    * \brief Get the PID parameters
    */
-  void setGains(const double &p, const double &i, const double &d, const double &i_max, const double &i_min, const bool &antiwindup = false);
+  //void setGains(const double &p, const double &i, const double &d, const double &i_max, const double &i_min, const bool &antiwindup = false);
 
   /**
    * \brief Get the name of the joint this controller uses
@@ -179,7 +193,13 @@ public:
 
 private:
   int loop_count_;
-  control_toolbox::Pid pid_controller_;       /**< Internal PID controller. */
+  PPM_params ppm_params_struct_;
+  MotionState motion_state;
+  double last_velocity;
+
+
+  //stop pid control
+  //control_toolbox::Pid pid_controller_;       /**< Internal PID controller. */
 
   std::unique_ptr<
     realtime_tools::RealtimePublisher<
@@ -198,6 +218,7 @@ private:
    * \param command - the input to test
    */
   void enforceJointLimits(double &command);
+  void commandVelocityLimits(double &command);
 
 };
 
