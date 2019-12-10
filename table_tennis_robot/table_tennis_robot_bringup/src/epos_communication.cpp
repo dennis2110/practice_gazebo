@@ -2,7 +2,7 @@
 
 namespace TabletennisRobot
 {
-    EposCommunication::EposCommunication():homeArdu("/dev/ttyACM0",5){
+    EposCommunication::EposCommunication():homeArdu("/dev/ttyACM0",6){
         g_pKeyHandle = 0;
         subKeyHandle = 0;
         g_baudrate = 0;
@@ -110,6 +110,18 @@ namespace TabletennisRobot
         {
             LogError("PrepareEpos(ID2)", lResult, ulErrorCode);
         }
+        else if((lResult = PrepareEpos(subKeyHandle, g_usNodeId3,&ulErrorCode))==MMC_FAILED)
+        {
+            LogError("PrepareEpos(ID3)", lResult, ulErrorCode);
+        }
+        else if((lResult = PrepareEpos(subKeyHandle, g_usNodeId4,&ulErrorCode))==MMC_FAILED)
+        {
+            LogError("PrepareEpos(ID4)", lResult, ulErrorCode);
+        }
+        else if((lResult = PrepareEpos(subKeyHandle, g_usNodeId5,&ulErrorCode))==MMC_FAILED)
+        {
+            LogError("PrepareEpos(ID5)", lResult, ulErrorCode);
+        }
         else
         {
             motorEnableCheckStatus = MMC_SUCCESS;
@@ -136,7 +148,20 @@ namespace TabletennisRobot
         }else if((lResult = DisableEpos(subKeyHandle, g_usNodeId2,&ulErrorCode)) == MMC_FAILED)
         {
             LogError("DisableEpos (ID2)", lResult, ulErrorCode);
-        }else
+        }
+        else if((lResult = DisableEpos(subKeyHandle, g_usNodeId3,&ulErrorCode))==MMC_FAILED)
+        {
+            LogError("DisableEpos (ID3)", lResult, ulErrorCode);
+        }
+        else if((lResult = DisableEpos(subKeyHandle, g_usNodeId4,&ulErrorCode))==MMC_FAILED)
+        {
+            LogError("DisableEpos (ID4)", lResult, ulErrorCode);
+        }
+        else if((lResult = DisableEpos(subKeyHandle, g_usNodeId5,&ulErrorCode))==MMC_FAILED)
+        {
+            LogError("DisableEpos (ID5)", lResult, ulErrorCode);
+        }
+        else
         {
             motorEnableCheckStatus = MMC_FAILED;
         }
@@ -153,72 +178,115 @@ namespace TabletennisRobot
     }
 
     int EposCommunication::autoHoming(){
-        int lResult = MMC_SUCCESS;
+        int lResult = MMC_FAILED;
         unsigned int ulErrorCode = 0;
-
+        bool is_joint0_zero = false;
+        bool is_joint1_zero = false;
         std::cout << "set vel mode" << std::endl;
 
         if(VCS_ActivateProfileVelocityMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
         {
-            LogError("VCS_ActivateProfileVelocityMode", lResult, ulErrorCode);
+            LogError("VCS_ActivateProfileVelocityMode j0", lResult, ulErrorCode);
+            lResult = MMC_FAILED;
+        }
+        if(VCS_ActivateProfileVelocityMode(subKeyHandle, g_usNodeId2, &ulErrorCode) == MMC_FAILED)
+        {
+            LogError("VCS_ActivateProfileVelocityMode j1", lResult, ulErrorCode);
             lResult = MMC_FAILED;
         }
         long targetvelocity = -200;
         if(VCS_MoveWithVelocity(g_pKeyHandle, g_usNodeId1, targetvelocity, &ulErrorCode) == MMC_FAILED)
 		{
-			LogError("VCS_MoveWithVelocity", lResult, ulErrorCode);
+			LogError("VCS_MoveWithVelocity j0", lResult, ulErrorCode);
             lResult = MMC_FAILED;
 		}
-
-        homeArdu.readdata = 0;
-        std::cout <<"move and wait for sensor...." <<std::endl;
-        while (homeArdu.readdata == 0)
-        {
-            homeArdu.read(&homeArdu.readdata,5);
-            if(homeArdu.readdata==1)
-                std::cout <<"123456:" << homeArdu.readdata <<":654321" <<std::endl;
-        }
-        
-        if(VCS_HaltVelocityMovement(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
+        if(VCS_MoveWithVelocity(subKeyHandle, g_usNodeId2, targetvelocity, &ulErrorCode) == MMC_FAILED)
 		{
-            LogError("VCS_HaltVelocityMovement", lResult, ulErrorCode);
-			lResult = MMC_FAILED;
-		}
-        std::cout << "set home mode" << std::endl;
-
-
-        if(VCS_ActivateProfilePositionMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
-        {
-            LogError("VCS_ActivateProfilePositionMode", lResult, ulErrorCode);
+			LogError("VCS_MoveWithVelocity j1", lResult, ulErrorCode);
             lResult = MMC_FAILED;
+		}
+
+        homeArdu.readdata[0] = 0;
+        homeArdu.readdata[1] = 0;
+        std::cout <<"move and wait for sensor...." <<std::endl;
+        while (!lResult)
+        {
+            homeArdu.read(&homeArdu.readdata[0],6);
+            if(homeArdu.readdata[0]==1 && !is_joint0_zero){
+                std::cout <<"123456:" << homeArdu.readdata[0] <<":654321" <<std::endl;
+                if(VCS_HaltVelocityMovement(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
+                {
+                    LogError("VCS_HaltVelocityMovement", lResult, ulErrorCode);
+                    lResult = MMC_FAILED;
+                }
+                std::cout << "set j0 home mode" << std::endl;
+
+                /*if(VCS_ActivateProfilePositionMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
+                {
+                    LogError("VCS_ActivateProfilePositionMode", lResult, ulErrorCode);
+                    lResult = MMC_FAILED;
+                }
+                
+
+                if(VCS_SetPositionProfile(g_pKeyHandle, g_usNodeId1, 1000, 200, 200, &ulErrorCode) == MMC_FAILED)
+                {
+                    LogError("VCS_SetPositionProfile", lResult, ulErrorCode);
+                    lResult = MMC_FAILED;
+                }
+
+                if(VCS_MoveToPosition(g_pKeyHandle, g_usNodeId1, 42250, 0, 1, &ulErrorCode) == MMC_FAILED)
+                {
+                    LogError("VCS_MoveToPosition", lResult, ulErrorCode);
+                    lResult = MMC_FAILED;
+                } 
+
+                sleep(10);*/
+
+                if(VCS_ActivateHomingMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
+                {
+                    LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
+                    lResult = MMC_FAILED;
+                }
+
+                if(VCS_FindHome(g_pKeyHandle, g_usNodeId1, HM_ACTUAL_POSITION, &ulErrorCode) == MMC_FAILED)
+                {
+                    LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
+                    lResult = MMC_FAILED;
+                }
+
+                is_joint0_zero = true;
+            }
+            if(homeArdu.readdata[1]==1 && !is_joint1_zero){
+                std::cout <<"666666:" << homeArdu.readdata[1] <<":666666" <<std::endl;
+                if(VCS_HaltVelocityMovement(subKeyHandle, g_usNodeId2, &ulErrorCode) == MMC_FAILED)
+                {
+                    LogError("VCS_HaltVelocityMovement", lResult, ulErrorCode);
+                    lResult = MMC_FAILED;
+                }
+
+
+
+                if(VCS_ActivateHomingMode(subKeyHandle, g_usNodeId2, &ulErrorCode) == MMC_FAILED)
+                {
+                    LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
+                    lResult = MMC_FAILED;
+                }
+
+                if(VCS_FindHome(subKeyHandle, g_usNodeId2, HM_ACTUAL_POSITION, &ulErrorCode) == MMC_FAILED)
+                {
+                    LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
+                    lResult = MMC_FAILED;
+                }
+                
+                std::cout << "set j1 home mode" << std::endl;
+                is_joint1_zero = true;
+            }
+            
+            if(is_joint0_zero && is_joint1_zero){
+                lResult = MMC_SUCCESS;
+            }
         }
         
-
-        if(VCS_SetPositionProfile(g_pKeyHandle, g_usNodeId1, 1000, 200, 200, &ulErrorCode) == MMC_FAILED)
-        {
-            LogError("VCS_SetPositionProfile", lResult, ulErrorCode);
-            lResult = MMC_FAILED;
-        }
-
-        if(VCS_MoveToPosition(g_pKeyHandle, g_usNodeId1, 42250, 0, 1, &ulErrorCode) == MMC_FAILED)
-        {
-            LogError("VCS_MoveToPosition", lResult, ulErrorCode);
-            lResult = MMC_FAILED;
-        } 
-
-        sleep(10);
-
-        if(VCS_ActivateHomingMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
-        {
-            LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
-            lResult = MMC_FAILED;
-        }
-
-        if(VCS_FindHome(g_pKeyHandle, g_usNodeId1, HM_ACTUAL_POSITION, &ulErrorCode) == MMC_FAILED)
-        {
-            LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
-            lResult = MMC_FAILED;
-        }
         if(lResult == MMC_SUCCESS){
             homingCompletedStatus = MMC_SUCCESS;
         }
@@ -255,14 +323,8 @@ namespace TabletennisRobot
 
         if(p_usNodeId == g_usNodeId1){
             position_QC = mToQC(position_setpoint);
-        }else if(p_usNodeId == g_usNodeId2){
-
-        }else if(p_usNodeId == g_usNodeId3){
-            
-        }else if(p_usNodeId == g_usNodeId4){
-            
-        }else if(p_usNodeId == g_usNodeId5){
-            
+        }else{
+            position_QC = radToQC(p_usNodeId, position_setpoint);
         }
 
         if(SetPosition(p_DeviceHandle, p_usNodeId, position_QC, &ulErrorCode) == MMC_FAILED){
@@ -298,14 +360,8 @@ namespace TabletennisRobot
         }
         if(p_usNodeId == g_usNodeId1){
             *pPositionIs = QCTom(&pPositionIsCounts);
-        }else if(p_usNodeId == g_usNodeId2){
-
-        }else if(p_usNodeId == g_usNodeId3){
-            
-        }else if(p_usNodeId == g_usNodeId4){
-            
-        }else if(p_usNodeId == g_usNodeId5){
-            
+        }else{
+            *pPositionIs = QCTorad(p_usNodeId, &pPositionIsCounts);
         }
         
         
@@ -328,14 +384,8 @@ namespace TabletennisRobot
 
         if(p_usNodeId == g_usNodeId1){
             *pVelocityIs = RPMTom_s(&pVelocityIsCounts);
-        }else if(p_usNodeId == g_usNodeId2){
-
-        }else if(p_usNodeId == g_usNodeId3){
-            
-        }else if(p_usNodeId == g_usNodeId4){
-            
-        }else if(p_usNodeId == g_usNodeId5){
-            
+        }else{
+            *pVelocityIs = RPMTorad_s(p_usNodeId, &pVelocityIsCounts);
         }
 
 
@@ -712,5 +762,50 @@ namespace TabletennisRobot
         float top = (float)*RPM;
         return top*2048.0f/(90000.0f * 60.0f);
     }
+
+    long EposCommunication::radToQC(unsigned short p_usNodeId, float rad){
+        if(p_usNodeId == g_usNodeId2){
+            return (long)(rad*17303);//joint 1 (17303 QC/rad)
+        }else if(p_usNodeId == g_usNodeId3){
+            return (long)(rad*17360);//joint 2 (17360 QC/rad)
+        }else if(p_usNodeId == g_usNodeId4){
+            return (long)(rad*17303);//joint 3 (17303 QC/rad)
+        }else if(p_usNodeId == g_usNodeId5){
+            return (long)(rad*45034);//joint 4 (45034 QC/rad)
+        }else{
+            return 0;
+        }
+    }
+    
+    float EposCommunication::QCTorad(unsigned short p_usNodeId, int* QC){
+        float top = (float)*QC;
+        if(p_usNodeId == g_usNodeId2){
+            return top/17303.0f;
+        }else if(p_usNodeId == g_usNodeId3){
+            return top/17360.0f;
+        }else if(p_usNodeId == g_usNodeId4){
+            return top/17303.0f;
+        }else if(p_usNodeId == g_usNodeId5){
+            return top/45034.0f;
+        }else{
+            return 0.0f;
+        }
+    }
+
+    float EposCommunication::RPMTorad_s(unsigned short p_usNodeId, int* RPM){
+        float top = (float)*RPM;
+        if(p_usNodeId == g_usNodeId2){
+            return top*2048.0f/(17303.0f * 60.0f);
+        }else if(p_usNodeId == g_usNodeId3){
+            return top*2048.0f/(17360.0f * 60.0f);
+        }else if(p_usNodeId == g_usNodeId4){
+            return top*2048.0f/(17303.0f * 60.0f);
+        }else if(p_usNodeId == g_usNodeId5){
+            return top*2048.0f/(45034.0f * 60.0f);
+        }else{
+            return 0.0f;
+        }
+    }
+
 
 }

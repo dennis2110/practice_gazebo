@@ -20,23 +20,23 @@ namespace TabletennisRobot
         ///// ROS setting /////
         ///////////////////////
         slide_rail_joint_command_sub_ = node.subscribe(
-            "/linear_slide_rail/slide_rail_joint_position_controller/command",
+            "/TTbot/slide_rail_joint_position_controller/command",
              5, &EPOS2::slide_rail_Callback, this);
 
         arm_1_joint_command_sub_ = node.subscribe(
-            "/linear_slide_rail/arm_joint1_position_controller/command",
+            "/TTbot/arm_joint1_position_controller/command",
              5, &EPOS2::arm_1_Callback, this);
 
         arm_2_joint_command_sub_ = node.subscribe(
-            "/linear_slide_rail/arm_joint2_position_controller/command",
+            "/TTbot/arm_joint2_position_controller/command",
              5, &EPOS2::arm_2_Callback, this);
             
         arm_3_joint_command_sub_ = node.subscribe(
-            "/linear_slide_rail/arm_joint3_position_controller/command",
+            "/TTbot/arm_joint3_position_controller/command",
              5, &EPOS2::arm_3_Callback, this);
 
         arm_4_joint_command_sub_ = node.subscribe(
-            "/linear_slide_rail/arm_joint4_position_controller/command",
+            "/TTbot/arm_joint4_position_controller/command",
              5, &EPOS2::arm_4_Callback, this);
     
         statusCheck_service_ = node.advertiseService("/status_check",&EPOS2::statuscheck_Callback,this);
@@ -70,6 +70,10 @@ namespace TabletennisRobot
                     std::cout << motor_cmd[0] << " " << motor_cmd[1] <<std::endl;
             
                     epos_device_.setPosition(epos_device_.g_pKeyHandle, epos_device_.g_usNodeId1, motor_cmd[0]);
+                    /*epos_device_.setPosition(epos_device_.subKeyHandle, epos_device_.g_usNodeId2, motor_cmd[1]);
+                    epos_device_.setPosition(epos_device_.subKeyHandle, epos_device_.g_usNodeId3, motor_cmd[2]);
+                    epos_device_.setPosition(epos_device_.subKeyHandle, epos_device_.g_usNodeId4, motor_cmd[3]);
+                    epos_device_.setPosition(epos_device_.subKeyHandle, epos_device_.g_usNodeId5, motor_cmd[4]);*/
 
 
 
@@ -108,6 +112,7 @@ namespace TabletennisRobot
     }
 
     void EPOS2::slide_rail_Callback(const std_msgs::Float64ConstPtr& command_msg){
+        //add offset here
         motor_cmd[0] = command_msg->data;
     }
 

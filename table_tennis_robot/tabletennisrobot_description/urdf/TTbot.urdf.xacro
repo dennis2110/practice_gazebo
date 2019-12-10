@@ -130,6 +130,25 @@
  		    </collision>
     	</link>
     	
+		<link name="${prefix}racket_link" >
+			<inertial>
+		    	<origin xyz="${0} ${0} ${0}" rpy="0 ${0} ${-pi/6}" />
+       			<mass value="8.5E-02" />
+       			<inertia ixx="3.713E-05" ixy="0.0" ixz="0.0" iyy="2.703E-04" iyz="0.0" izz="2.622E-04" />
+		    </inertial>
+      		<visual>
+		        <origin xyz="${0} ${0} ${0}" rpy="0 ${0} ${-pi/6}" />
+        		<geometry>
+        			<mesh filename="package://tabletennisrobot_description/meshes/visual/racket3_1.dae" />
+		        </geometry>
+		    </visual>
+      		<collision>
+				<origin xyz="${0} ${0} ${0}" rpy="0 ${0} ${-pi/6}" />
+        		<geometry>
+          			<mesh filename="package://tabletennisrobot_description/meshes/visual/racket3_1.dae" />
+		        </geometry>
+ 		    </collision>
+    	</link>
     	
     	
     	
@@ -181,6 +200,12 @@
         	<limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="0.5"/>
         	<dynamics damping="0.0" friction="0.0"/>
         	<axis xyz="0 1 0"/>
+    	</joint>
+
+		<joint name="${prefix}joint_racket" type="fixed">
+			<parent link="${prefix}joint_4_link"/>
+        	<child link="${prefix}racket_link"/>
+			<origin xyz="${-0.26-0.0325} ${0.015} ${0}" rpy="0 ${pi/2} ${0}" />
     	</joint>
 
 		<!-- gazebo and transmission -->

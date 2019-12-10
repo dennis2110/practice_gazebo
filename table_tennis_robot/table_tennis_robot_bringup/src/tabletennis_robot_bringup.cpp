@@ -15,7 +15,7 @@ int main(int argc, char **argv)
         ROS_ERROR("robot init fail");
 
 
-    ros::Rate loop_rate(30);
+    ros::Rate loop_rate(100);
     while (ros::ok())
     {
         ros::spinOnce();

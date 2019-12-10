@@ -14,7 +14,7 @@ public:
 private:
 
 public:
-  uint8_t readdata;
+  uint8_t readdata[2];
 private:
   serial::Serial _ser;
   std::string _port;

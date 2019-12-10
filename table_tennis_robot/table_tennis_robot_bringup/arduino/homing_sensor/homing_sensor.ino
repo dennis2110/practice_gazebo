@@ -1,4 +1,4 @@
-uint8_t writecmd[5]={ '$', 0x03,0,'\r', '\n'};
+uint8_t writecmd[6]={ '$', 0x03,0,0,'\r', '\n'};
 
 
 
@@ -11,7 +11,8 @@ void setup() {
 /////////////////////////////////ros
   
 ////////////cny70////////////////
-  pinMode(6,INPUT);
+  pinMode(7,INPUT); // slide rail limit sensor
+  pinMode(6,INPUT); // joint 1 limit sensor
 /////////////////////////////////
 }
 
@@ -53,13 +54,23 @@ void loop() {
 //    writecmd[i+2] = (uint8_t)MotorCMD[i];
 //  }
 
-  if(digitalRead(7)==1){
+  if(digitalRead(7)==1){ //joint 0 sensor (1 是未接觸)
     writecmd[2]= 1;
     digitalWrite(13,HIGH);
   }else{
     writecmd[2]= 0;
     digitalWrite(13,LOW);
   }
-  Serial.write(writecmd, 5);
+  if(digitalRead(6)==0){ //joint 1 sensor (0 是未接觸)
+    writecmd[3]= 1;
+  }else{
+    writecmd[3]= 0;
+  }
+  
+  Serial.write(writecmd, 6);
+  /*Serial.print("sensor0: ");
+  Serial.print(digitalRead(7));
+  Serial.print(" ,sensor1: ");
+  Serial.println(digitalRead(6));*/
 /////////////////////////////////
 }

@@ -6,7 +6,7 @@
 	#define MMC_FAILED 0
 #endif
 
-//#define UseSubDevice
+#define UseSubDevice
 
 #include "arduserial.h"
 #include "Definitions.h"
@@ -65,9 +65,15 @@ namespace TabletennisRobot
         int	GetPosition(unsigned short p_usNodeId, int* pPositionIsCounts, unsigned int* p_pErrorCode);
         int	GetVelocity(unsigned short p_usNodeId, int* pVelocityIsCounts, unsigned int* p_pErrorCode);
 
+        //for joint 0
         long mToQC(float m);
         float QCTom(int* QC);
         float RPMTom_s(int* RPM);
+
+        //for joint 1~4
+        long radToQC(unsigned short p_usNodeId, float m);
+        float QCTorad(unsigned short p_usNodeId, int* QC);
+        float RPMTorad_s(unsigned short p_usNodeId, int* RPM);
 
 
 

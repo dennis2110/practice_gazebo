@@ -24,6 +24,7 @@ find_package(catkin REQUIRED COMPONENTS
   urdf
   table_tennis_robot_msgsrv
   serial
+  rospy
 )
 
 ## System dependencies are found with CMake's conventions
