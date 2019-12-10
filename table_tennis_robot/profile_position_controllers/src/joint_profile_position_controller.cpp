@@ -47,7 +47,7 @@
 namespace ttbot_velocity_controllers {
 
 JointProfilePositionController::JointProfilePositionController()
-  : loop_count_(0) , last_velocity(0.0)
+  : loop_count_(0) , last_velocity(0.0) , last_pos_command(0.0)
 {}
 
 JointProfilePositionController::~JointProfilePositionController()
@@ -187,7 +187,18 @@ void JointProfilePositionController::starting(const ros::Time& time)
 
   command_.initRT(command_struct_);
 
+  last_pos_command = pos_command;
   //pid_controller_.reset();
+
+
+  //calculate max acc, dec time
+  acc_time_max = ppm_params_struct_.velocity_/ppm_params_struct_.acceleration_;
+  dec_time_max = ppm_params_struct_.velocity_/ppm_params_struct_.deceleration_;
+  acc_dis_max = ppm_params_struct_.velocity_ * acc_time_max / 2;
+  dec_dis_max = ppm_params_struct_.velocity_ * dec_time_max / 2;
+  std::cout << "pos_command :" << pos_command <<std::endl;
+  std::cout << "acc_dis_max :" << acc_dis_max <<" dec_dis_max: "<< dec_dis_max<<std::endl;
+  
 }
 
 void JointProfilePositionController::update(const ros::Time& time, const ros::Duration& period)
@@ -197,21 +208,53 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
   //double command_velocity = command_struct_.velocity_;
   //bool has_velocity_ =  command_struct_.has_velocity_;
 
+  // Make sure joint is within limits if applicable
+  /*std::string joint_zero = "joint_0";
+  if(joint_.getName() == joint_zero){
+    command_position += 0.72;
+  }*/
+  enforceJointLimits(command_position);
+
   double error;
   double commanded_velocity;
   double need_distance;
-
+  
   double current_position = joint_.getPosition();
   double current_velocity = joint_.getVelocity();
+
+  error = command_position - current_position;
+  
+  if(command_position != last_pos_command){
+    //calculate acc, vel, dec, time
+    time_count = 0.0;
+    /*std::cout << "########################" <<std::endl;
+    std::cout << "error: " << error <<std::endl;
+    std::cout << "current_position: " << current_position <<std::endl;
+    std::cout << "command_position: " << command_position <<std::endl;
+    std::cout << "########################" <<std::endl;*/
+    calculatetime(error, current_velocity, acc_time, vel_time, dec_time);
+  }
+  
+  
   
 
-  // Make sure joint is within limits if applicable
-  enforceJointLimits(command_position);
-  //std::string joint_zero = "joint_0";
-  //if(joint_.getName() == joint_zero){
+  if(time_count > (acc_time + vel_time + dec_time)){
+    commanded_velocity = 0.0;
+  }else if(time_count > (acc_time + vel_time)){
+    commanded_velocity = last_velocity - ( ppm_params_struct_.deceleration_ * period.toSec());
+  }else if(time_count > acc_time){
+    commanded_velocity = ppm_params_struct_.velocity_;
+  }else{
+    commanded_velocity = last_velocity + ( ppm_params_struct_.acceleration_ * period.toSec());
+  }
+  time_count += period.toSec();
+  
+
+  
     
-  error = command_position - current_position;
-  need_distance = last_velocity*last_velocity/(2*ppm_params_struct_.acceleration_);
+  
+
+  /*need_distance = last_velocity*last_velocity/(2*ppm_params_struct_.deceleration_);
 
   if(abs(error) > 0.0001){
     if(abs(error) < need_distance){
@@ -225,48 +268,41 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
     motion_state = stop;
   }
     
-
-    
-    
-
-
-
-    
-  //std::cout << "aaa vel command is :" << commanded_velocity  << " last_velocity:" <<last_velocity << std::endl;
-    
   switch (motion_state)
   {
   case stop:
-    /* code */
+    
     commanded_velocity = 0.0;
     
     break;
   
   case constantVel:
-    /* code */
+    
     commanded_velocity = ppm_params_struct_.velocity_;
     
     break;
 
   case uniformAcc:
-    /* code */
+    
     commanded_velocity = last_velocity + ( ppm_params_struct_.acceleration_ * period.toSec());
     
     break;
 
   case uniformDec:
-    /* code */
-    commanded_velocity = last_velocity - ( ppm_params_struct_.acceleration_ * period.toSec());
+    
+    commanded_velocity = last_velocity - ( ppm_params_struct_.deceleration_ * period.toSec());
     
     break;
   
   default:
     commanded_velocity = 0.0;
     break;
-  }
+  }*/
   
+
   commandVelocityLimits(commanded_velocity);
   last_velocity = commanded_velocity;
+  last_pos_command = command_position;
   if(error < 0.0){
     commanded_velocity = -commanded_velocity;
   }
@@ -332,6 +368,46 @@ void JointProfilePositionController::commandVelocityLimits(double &command)
   {
     command = -joint_urdf_->limits->velocity;
   }
+}
+
+void JointProfilePositionController::calculatetime(double distance, double now_velocity, double &acc_time, double &vel_time, double &dec_time){
+  double duration_time = 0.001;
+  double acc_dis = 0.0;
+  double dec_dis = 0.0;
+  double acc_vel = now_velocity;
+  double dec_vel = now_velocity;
+
+  for (double v = now_velocity;v>=0;v-=ppm_params_struct_.deceleration_*duration_time){
+    dec_dis += v;
+  }
+  while ((acc_vel < ppm_params_struct_.velocity_) || (dec_vel < ppm_params_struct_.velocity_))
+  {
+    if (acc_vel < ppm_params_struct_.velocity_)
+    {
+      acc_vel += ppm_params_struct_.acceleration_*duration_time;
+      acc_dis += acc_vel*duration_time;
+    }
+    
+    if (dec_vel < ppm_params_struct_.velocity_)
+    {
+      dec_vel += ppm_params_struct_.deceleration_*duration_time;
+      dec_dis += dec_vel*duration_time;
+      
+    }
+    if((dec_dis + acc_dis)>abs(distance)){
+      break;
+    }
+  }
+  //std::cout << "acc_vel: " << acc_vel << " acc_dis: " << acc_dis << "   dec_vel: " << dec_vel << " dec_dis: " << dec_dis<<std::endl;
+  
+  acc_time = acc_dis * 2 / acc_vel;
+  dec_time = dec_dis * 2 / dec_vel;
+  if((dec_dis + acc_dis)>abs(distance)){
+    vel_time = 0.0;
+  }else{
+    vel_time = (abs(distance) - acc_dis - dec_dis)/ppm_params_struct_.velocity_;
+  }
+  
 }
 
 } // namespace

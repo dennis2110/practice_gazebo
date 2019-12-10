@@ -196,6 +196,17 @@ private:
   PPM_params ppm_params_struct_;
   MotionState motion_state;
   double last_velocity;
+  double last_pos_command;
+  double time_count;
+  
+  double dec_time_max;
+  double acc_time_max;
+  double dec_dis_max;
+  double acc_dis_max;
+
+  double acc_time;
+  double vel_time;
+  double dec_time;
 
 
   //stop pid control
@@ -219,6 +230,7 @@ private:
    */
   void enforceJointLimits(double &command);
   void commandVelocityLimits(double &command);
+  void calculatetime(double distance, double now_velocity, double &acc_time, double &vel_time, double &dec_time);
 
 };
 
