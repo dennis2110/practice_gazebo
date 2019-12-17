@@ -254,8 +254,8 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
     
   
 
-  /*need_distance = last_velocity*last_velocity/(2*ppm_params_struct_.deceleration_);
-
+  /*error = command_position - current_position;
+  need_distance = last_velocity*last_velocity/(2*ppm_params_struct_.deceleration_);
   if(abs(error) > 0.0001){
     if(abs(error) < need_distance){
       motion_state = uniformDec;
@@ -267,33 +267,20 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
   }else{
     motion_state = stop;
   }
-    
   switch (motion_state)
   {
   case stop:
-    
     commanded_velocity = 0.0;
-    
     break;
-  
   case constantVel:
-    
     commanded_velocity = ppm_params_struct_.velocity_;
-    
     break;
-
   case uniformAcc:
-    
     commanded_velocity = last_velocity + ( ppm_params_struct_.acceleration_ * period.toSec());
-    
     break;
-
   case uniformDec:
-    
     commanded_velocity = last_velocity - ( ppm_params_struct_.deceleration_ * period.toSec());
-    
     break;
-  
   default:
     commanded_velocity = 0.0;
     break;
@@ -398,7 +385,6 @@ void JointProfilePositionController::calculatetime(double distance, double now_v
       break;
     }
   }
-  //std::cout << "acc_vel: " << acc_vel << " acc_dis: " << acc_dis << "   dec_vel: " << dec_vel << " dec_dis: " << dec_dis<<std::endl;
   
   acc_time = acc_dis * 2 / acc_vel;
   dec_time = dec_dis * 2 / dec_vel;
@@ -407,6 +393,7 @@ void JointProfilePositionController::calculatetime(double distance, double now_v
   }else{
     vel_time = (abs(distance) - acc_dis - dec_dis)/ppm_params_struct_.velocity_;
   }
+  //std::cout << "acc_vel: " << acc_vel << " acc_dis: " << acc_dis << "   dec_vel: " << dec_vel << " dec_dis: " << dec_dis<<std::endl;
   
 }
 

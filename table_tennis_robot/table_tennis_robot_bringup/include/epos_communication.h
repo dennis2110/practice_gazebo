@@ -39,8 +39,8 @@ namespace TabletennisRobot
         int	startProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, unsigned int p_profile_velocity, unsigned int p_profile_acceleration,unsigned int p_profile_deceleration);
         int	setPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId, float position_setpoint);
         int stopPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId);
-        int	getPosition(unsigned short p_usNodeId, float* pPositionIs);
-        int	getVelocity(unsigned short p_usNodeId, float* pVelocityIs);
+        int	getPosition(unsigned short p_usNodeId, double* pPositionIs);
+        int	getVelocity(unsigned short p_usNodeId, double* pVelocityIs);
         int getVelocityUnit();
 
     
@@ -66,14 +66,14 @@ namespace TabletennisRobot
         int	GetVelocity(unsigned short p_usNodeId, int* pVelocityIsCounts, unsigned int* p_pErrorCode);
 
         //for joint 0
-        long mToQC(float m);
-        float QCTom(int* QC);
-        float RPMTom_s(int* RPM);
+        long mToQC(double m);
+        double QCTom(int* QC);
+        double RPMTom_s(int* RPM);
 
         //for joint 1~4
-        long radToQC(unsigned short p_usNodeId, float m);
-        float QCTorad(unsigned short p_usNodeId, int* QC);
-        float RPMTorad_s(unsigned short p_usNodeId, int* RPM);
+        long radToQC(unsigned short p_usNodeId, double m);
+        double QCTorad(unsigned short p_usNodeId, int* QC);
+        double RPMTorad_s(unsigned short p_usNodeId, int* RPM);
 
 
 

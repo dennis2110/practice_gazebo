@@ -5,7 +5,7 @@ uint8_t writecmd[6]={ '$', 0x03,0,0,'\r', '\n'};
 void setup() {
   pinMode(13,OUTPUT);
 ///////serial////////////////////
-  Serial.begin(115200);
+  Serial.begin(9600);
   while(!Serial);
   Serial.setTimeout(10);
 /////////////////////////////////ros

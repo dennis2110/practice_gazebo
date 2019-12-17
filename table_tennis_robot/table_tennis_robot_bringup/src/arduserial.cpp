@@ -11,7 +11,7 @@ ArduSerial::~ArduSerial(){
 
 void ArduSerial::init(){
   _ser.setPort(_port);
-  _ser.setBaudrate(115200);
+  _ser.setBaudrate(9600);
   serial::Timeout to = serial::Timeout::simpleTimeout(1000);
   _ser.setTimeout(to);
   _ser.open();
@@ -77,7 +77,7 @@ void ArduSerial::read(uint8_t *data, size_t size){
           try
           {
             _ser.setPort(_port);
-            _ser.setBaudrate(115200);
+            _ser.setBaudrate(9600);
             serial::Timeout to = serial::Timeout::simpleTimeout(1000);
             _ser.setTimeout(to);
             _ser.open();

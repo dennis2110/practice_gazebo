@@ -331,7 +331,7 @@ namespace TabletennisRobot
             LogInfo("set position fail");
             lResult = MMC_FAILED;
         }else{
-			LogInfo("SetPosition executed.");
+			//LogInfo("SetPosition executed.");
 		}
 
         return lResult;
@@ -348,7 +348,7 @@ namespace TabletennisRobot
         return lResult;
     }
 
-    int EposCommunication::getPosition(unsigned short p_usNodeId, float* pPositionIs){
+    int EposCommunication::getPosition(unsigned short p_usNodeId, double* pPositionIs){
         int lResult = MMC_FAILED;
         unsigned int ulErrorCode = 0;
         int pPositionIsCounts = 0;
@@ -371,7 +371,7 @@ namespace TabletennisRobot
         return lResult;
     }
 
-    int EposCommunication::getVelocity(unsigned short p_usNodeId, float* pVelocityIs){
+    int EposCommunication::getVelocity(unsigned short p_usNodeId, double* pVelocityIs){
         int lResult = MMC_FAILED;
         unsigned int ulErrorCode = 0;
         int pVelocityIsCounts;
@@ -686,10 +686,10 @@ namespace TabletennisRobot
     int EposCommunication::SetPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId, long position_setpoint, unsigned int* p_pErrorCode){
         // absolute position, starts immediately
         int lResult = MMC_SUCCESS;
-        std::stringstream msg;
+        //std::stringstream msg;
 
-        msg << "move to position = " << position_setpoint << ", node = " << p_usNodeId;
-        LogInfo(msg.str());
+        //msg << "move to position = " << position_setpoint << ", node = " << p_usNodeId;
+        //LogInfo(msg.str());
 
         if(VCS_MoveToPosition(p_DeviceHandle, p_usNodeId, position_setpoint, 1, 1, p_pErrorCode) == MMC_FAILED)
             {
@@ -697,7 +697,7 @@ namespace TabletennisRobot
                 lResult = MMC_FAILED;
             } 
         else{
-            LogInfo("Movement executed.");
+            //LogInfo("Movement executed.");
         }
 
         return lResult;
@@ -749,21 +749,21 @@ namespace TabletennisRobot
         return lResult;
     }
 
-    long EposCommunication::mToQC(float m){
+    long EposCommunication::mToQC(double m){
         return (long)(m*90000);//slide rail (90000 QC/m)
     }
 
-    float EposCommunication::QCTom(int* QC){
-        float top = (float)*QC;
-        return top/90000.0f;
+    double EposCommunication::QCTom(int* QC){
+        double top = (double)*QC;
+        return top/90000.0;
     }
 
-    float EposCommunication::RPMTom_s(int* RPM){
-        float top = (float)*RPM;
-        return top*2048.0f/(90000.0f * 60.0f);
+    double EposCommunication::RPMTom_s(int* RPM){
+        double top = (double)*RPM;
+        return top*2048.0/(90000.0 * 60.0);
     }
 
-    long EposCommunication::radToQC(unsigned short p_usNodeId, float rad){
+    long EposCommunication::radToQC(unsigned short p_usNodeId, double rad){
         if(p_usNodeId == g_usNodeId2){
             return (long)(rad*17303);//joint 1 (17303 QC/rad)
         }else if(p_usNodeId == g_usNodeId3){
@@ -777,33 +777,33 @@ namespace TabletennisRobot
         }
     }
     
-    float EposCommunication::QCTorad(unsigned short p_usNodeId, int* QC){
-        float top = (float)*QC;
+    double EposCommunication::QCTorad(unsigned short p_usNodeId, int* QC){
+        double top = (double)*QC;
         if(p_usNodeId == g_usNodeId2){
-            return top/17303.0f;
+            return top/17303.0;
         }else if(p_usNodeId == g_usNodeId3){
-            return top/17360.0f;
+            return top/17360.0;
         }else if(p_usNodeId == g_usNodeId4){
-            return top/17303.0f;
+            return top/17303.0;
         }else if(p_usNodeId == g_usNodeId5){
-            return top/45034.0f;
+            return top/45034.0;
         }else{
-            return 0.0f;
+            return 0.0;
         }
     }
 
-    float EposCommunication::RPMTorad_s(unsigned short p_usNodeId, int* RPM){
-        float top = (float)*RPM;
+    double EposCommunication::RPMTorad_s(unsigned short p_usNodeId, int* RPM){
+        double top = (double)*RPM;
         if(p_usNodeId == g_usNodeId2){
-            return top*2048.0f/(17303.0f * 60.0f);
+            return top*2048.0/(17303.0 * 60.0);
         }else if(p_usNodeId == g_usNodeId3){
-            return top*2048.0f/(17360.0f * 60.0f);
+            return top*2048.0/(17360.0 * 60.0);
         }else if(p_usNodeId == g_usNodeId4){
-            return top*2048.0f/(17303.0f * 60.0f);
+            return top*2048.0/(17303.0 * 60.0);
         }else if(p_usNodeId == g_usNodeId5){
-            return top*2048.0f/(45034.0f * 60.0f);
+            return top*2048.0/(45034.0 * 60.0);
         }else{
-            return 0.0f;
+            return 0.0;
         }
     }
 
