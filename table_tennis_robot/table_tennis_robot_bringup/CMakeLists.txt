@@ -164,6 +164,10 @@ add_executable(tabletennis_robot_bringup src/tabletennis_robot_bringup.cpp
                                          ${SOURCES})
 add_dependencies(tabletennis_robot_bringup ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(tabletennis_robot_bringup ${catkin_LIBRARIES} -lEposCmd)
+
+add_executable(rpm2ms_rads src/rpm2ms_rads.cpp)
+add_dependencies(rpm2ms_rads ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(rpm2ms_rads ${catkin_LIBRARIES})
 ##########################
 
 ########## test ##########
@@ -173,10 +177,10 @@ target_link_libraries(joint_status_pub ${catkin_LIBRARIES})
 ##########################
 
 
-add_executable(tabletennis_robot_main src/tabletennis_robot_main.cpp
-                                      src/tabletennis_robot_hw.cpp)
-add_dependencies(tabletennis_robot_main ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(tabletennis_robot_main ${catkin_LIBRARIES})
+#add_executable(tabletennis_robot_main src/tabletennis_robot_main.cpp
+#                                      src/tabletennis_robot_hw.cpp)
+#add_dependencies(tabletennis_robot_main ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#target_link_libraries(tabletennis_robot_main ${catkin_LIBRARIES})
 
 
 ## Rename C++ executable without prefix

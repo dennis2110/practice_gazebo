@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
     //30~40Hz if pub 1 joint pos and vel
     //20Hz if pub 5 joint pos and vel
-    ros::Rate loop_rate(20);
+    ros::Rate loop_rate(150);
     while (ros::ok())
     {
         ros::Time start_update_time = ros::Time::now();

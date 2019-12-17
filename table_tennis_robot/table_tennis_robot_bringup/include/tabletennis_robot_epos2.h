@@ -16,6 +16,10 @@
 
 #include <math.h>
 
+#include <memory>
+#include <realtime_tools/realtime_buffer.h>
+#include <realtime_tools/realtime_publisher.h>
+
 namespace TabletennisRobot
 {
 class EPOS2
@@ -72,6 +76,9 @@ class EPOS2
       ros::ServiceServer homing_service_;
 
       ros::Publisher motor_status_pub_;
+      //std::unique_ptr<
+      // realtime_tools::RealtimePublisher<
+      //  table_tennis_robot_msgsrv::motor_status> > motor_status_publisher_ ;
 
       EposCommunication epos_device_;
 };

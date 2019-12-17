@@ -56,14 +56,24 @@ namespace TabletennisRobot
         stop_service_ = node.advertiseService("/stop_motor",&EPOS2::stopMotor_Callback, this);
         homing_service_ = node.advertiseService("/homing", &EPOS2::homing_Callback, this);
 
-        motor_status_pub_ = node.advertise<table_tennis_robot_msgsrv::motor_status>("/motor_status",10);
-
+        motor_status_pub_ = node.advertise<table_tennis_robot_msgsrv::motor_status>("/motor_status_rpm",10);
+        // motor_status_publisher_.reset(
+        //     new realtime_tools::RealtimePublisher<table_tennis_robot_msgsrv::motor_status>(node, "/motor_status_rpm", 1));
+        
         ////////////////////////
         ///// EPOS setting /////
         ////////////////////////
         if(epos_device_.initialization() == MMC_SUCCESS)
         {
             ROS_INFO("init success");
+            // if(motor_status_publisher_ && motor_status_publisher_->trylock())
+            // {
+            //     for(int i=0;i<5;i++){
+            //         motor_status_publisher_->msg_.position.push_back(0);
+            //         motor_status_publisher_->msg_.velocity.push_back(0);
+            //     }
+            //     motor_status_publisher_->unlockAndPublish();
+            // }
             return true;
         }
         else
@@ -99,16 +109,37 @@ namespace TabletennisRobot
                     last_motor_cmd[4] = motor_cmd[4];
 
                     
-                    epos_device_.getPosition(epos_device_.g_usNodeId1,&motor_status_msg.position.at(0));
-                    epos_device_.getPosition(epos_device_.g_usNodeId2,&motor_status_msg.position.at(1));
-                    epos_device_.getPosition(epos_device_.g_usNodeId3,&motor_status_msg.position.at(2));
-                    epos_device_.getPosition(epos_device_.g_usNodeId4,&motor_status_msg.position.at(3));
-                    epos_device_.getPosition(epos_device_.g_usNodeId5,&motor_status_msg.position.at(4));
-                    epos_device_.getVelocity(epos_device_.g_usNodeId1,&motor_status_msg.velocity.at(0));
-                    epos_device_.getVelocity(epos_device_.g_usNodeId2,&motor_status_msg.velocity.at(1));
-                    epos_device_.getVelocity(epos_device_.g_usNodeId3,&motor_status_msg.velocity.at(2));
-                    epos_device_.getVelocity(epos_device_.g_usNodeId4,&motor_status_msg.velocity.at(3));
-                    epos_device_.getVelocity(epos_device_.g_usNodeId5,&motor_status_msg.velocity.at(4));
+
+
+
+
+                    // if(motor_status_publisher_ && motor_status_publisher_->trylock())
+                    // {
+                    // epos_device_.getPosition(epos_device_.g_usNodeId1,&motor_status_publisher_->msg_.position.at(0));
+                    // epos_device_.getPosition(epos_device_.g_usNodeId2,&motor_status_publisher_->msg_.position.at(1));
+                    // epos_device_.getPosition(epos_device_.g_usNodeId3,&motor_status_publisher_->msg_.position.at(2));
+                    // epos_device_.getPosition(epos_device_.g_usNodeId4,&motor_status_publisher_->msg_.position.at(3));
+                    // epos_device_.getPosition(epos_device_.g_usNodeId5,&motor_status_publisher_->msg_.position.at(4));
+                    // epos_device_.getVelocity(epos_device_.g_usNodeId1,&motor_status_publisher_->msg_.velocity.at(0));
+                    // epos_device_.getVelocity(epos_device_.g_usNodeId2,&motor_status_publisher_->msg_.velocity.at(1));
+                    // epos_device_.getVelocity(epos_device_.g_usNodeId3,&motor_status_publisher_->msg_.velocity.at(2));
+                    // epos_device_.getVelocity(epos_device_.g_usNodeId4,&motor_status_publisher_->msg_.velocity.at(3));
+                    // epos_device_.getVelocity(epos_device_.g_usNodeId5,&motor_status_publisher_->msg_.velocity.at(4));
+                    // motor_status_publisher_->unlockAndPublish();
+                    // }
+
+
+                     epos_device_.getPosition(epos_device_.g_usNodeId1,&motor_status_msg.position.at(0));
+                     epos_device_.getPosition(epos_device_.g_usNodeId2,&motor_status_msg.position.at(1));
+                     epos_device_.getPosition(epos_device_.g_usNodeId3,&motor_status_msg.position.at(2));
+                     epos_device_.getPosition(epos_device_.g_usNodeId4,&motor_status_msg.position.at(3));
+                     epos_device_.getPosition(epos_device_.g_usNodeId5,&motor_status_msg.position.at(4));
+                    
+                     epos_device_.getVelocity(epos_device_.g_usNodeId1,&motor_status_msg.velocity.at(0));
+                     epos_device_.getVelocity(epos_device_.g_usNodeId2,&motor_status_msg.velocity.at(1));
+                     epos_device_.getVelocity(epos_device_.g_usNodeId3,&motor_status_msg.velocity.at(2));
+                     epos_device_.getVelocity(epos_device_.g_usNodeId4,&motor_status_msg.velocity.at(3));
+                     epos_device_.getVelocity(epos_device_.g_usNodeId5,&motor_status_msg.velocity.at(4));
 
                     motor_status_pub_.publish(motor_status_msg);
                 }
