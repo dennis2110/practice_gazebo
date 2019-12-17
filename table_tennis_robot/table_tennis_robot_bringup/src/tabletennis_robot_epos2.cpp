@@ -6,18 +6,18 @@ namespace TabletennisRobot
         for(int i=0;i<5;i++){
             motor_cmd[i] = 0.0;
             last_motor_cmd[i] = 0.0;
-            motor_status_msg.position.push_back(0.0);
-            motor_status_msg.velocity.push_back(0.0);
+            motor_status_msg.position.push_back(0);
+            motor_status_msg.velocity.push_back(0);
         }
         motor_vel = 0.0;
         motor_pos = 0.0;
         loop_count_ = 0;
         stop_motor = true;
-        motor_status_msg.name.push_back("real_joint_0");
-        motor_status_msg.name.push_back("real_joint_1");
-        motor_status_msg.name.push_back("real_joint_2");
-        motor_status_msg.name.push_back("real_joint_3");
-        motor_status_msg.name.push_back("real_joint_4");
+        motor_status_msg.name.push_back("real_joint_0_rpm");
+        motor_status_msg.name.push_back("real_joint_1_rpm");
+        motor_status_msg.name.push_back("real_joint_2_rpm");
+        motor_status_msg.name.push_back("real_joint_3_rpm");
+        motor_status_msg.name.push_back("real_joint_4_rpm");
         
     }
 
@@ -56,7 +56,7 @@ namespace TabletennisRobot
         stop_service_ = node.advertiseService("/stop_motor",&EPOS2::stopMotor_Callback, this);
         homing_service_ = node.advertiseService("/homing", &EPOS2::homing_Callback, this);
 
-        motor_status_pub_ = node.advertise<sensor_msgs::JointState>("/motor_status",10);
+        motor_status_pub_ = node.advertise<table_tennis_robot_msgsrv::motor_status>("/motor_status",10);
 
         ////////////////////////
         ///// EPOS setting /////

@@ -1,2 +1,3 @@
-float32 velocity
-float32 position
+string[] name
+int32[] position
+int32[] velocity

@@ -6,7 +6,7 @@
 #include <table_tennis_robot_msgsrv/EPOSstatus.h>
 #include <table_tennis_robot_msgsrv/OpenDevice.h>
 #include <table_tennis_robot_msgsrv/setPPMparam.h>
-//#include <table_tennis_robot_msgsrv/motor_status.h>
+#include <table_tennis_robot_msgsrv/motor_status.h>
 #include <table_tennis_robot_msgsrv/stopMotor.h>
 #include <std_srvs/Empty.h>
 
@@ -54,8 +54,8 @@ class EPOS2
       bool stop_motor;
       
 
-      //table_tennis_robot_msgsrv::motor_status motor_status_msg;
-      sensor_msgs::JointState motor_status_msg;
+      table_tennis_robot_msgsrv::motor_status motor_status_msg;
+      //sensor_msgs::JointState motor_status_msg;
 
 //////////////////////////////////////////////////////////////////
       ros::Subscriber slide_rail_joint_command_sub_;
