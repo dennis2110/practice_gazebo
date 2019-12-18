@@ -27,8 +27,17 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
       sensor_msgs::JointState real_joint_msg;
-      real_joint_msg.position.at(0) = (double)rel_joint_state_rpm.position.at(0);
+      real_joint_msg.position.at(0) = (double)rel_joint_state_rpm.position.at(0)/90000.0;
+      real_joint_msg.position.at(1) = (double)rel_joint_state_rpm.position.at(1)/17303.0;
+      real_joint_msg.position.at(2) = (double)rel_joint_state_rpm.position.at(2)/17360.0;
+      real_joint_msg.position.at(3) = (double)rel_joint_state_rpm.position.at(3)/17303.0;
+      real_joint_msg.position.at(4) = (double)rel_joint_state_rpm.position.at(4)/45034.0;
 
+      real_joint_msg.velocity.at(0) = (double)rel_joint_state_rpm.velocity.at(0)*2048.0/(90000.0*60.0);
+      real_joint_msg.velocity.at(1) = (double)rel_joint_state_rpm.velocity.at(1)*2048.0/(17303.0*60.0);
+      real_joint_msg.velocity.at(2) = (double)rel_joint_state_rpm.velocity.at(2)*2048.0/(17360.0*60.0);
+      real_joint_msg.velocity.at(3) = (double)rel_joint_state_rpm.velocity.at(3)*2048.0/(17303.0*60.0);
+      real_joint_msg.velocity.at(4) = (double)rel_joint_state_rpm.velocity.at(4)*2048.0/(45034.0*60.0);
 
       rel_joint_state.publish(real_joint_msg);
 
