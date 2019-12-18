@@ -348,21 +348,21 @@ namespace TabletennisRobot
         return lResult;
     }
 
-    int EposCommunication::getPosition(unsigned short p_usNodeId, int* pPositionIs){
+    int EposCommunication::getPosition(unsigned short p_usNodeId, double* pPositionIs){
         int lResult = MMC_FAILED;
         unsigned int ulErrorCode = 0;
-        //int pPositionIsCounts = 0;
+        int pPositionIsCounts = 0;
 
-        if((lResult = GetPosition(p_usNodeId, pPositionIs, &ulErrorCode))==MMC_FAILED)
+        if((lResult = GetPosition(p_usNodeId, &pPositionIsCounts, &ulErrorCode))==MMC_FAILED)
         {
             LogError("getPosition", lResult, ulErrorCode);
             return lResult;
         }
-        /*if(p_usNodeId == g_usNodeId1){
+        if(p_usNodeId == g_usNodeId1){
             *pPositionIs = QCTom(&pPositionIsCounts);
         }else{
             *pPositionIs = QCTorad(p_usNodeId, &pPositionIsCounts);
-        }*/
+        }
         
         
 
@@ -371,22 +371,22 @@ namespace TabletennisRobot
         return lResult;
     }
 
-    int EposCommunication::getVelocity(unsigned short p_usNodeId, int* pVelocityIs){
+    int EposCommunication::getVelocity(unsigned short p_usNodeId, double* pVelocityIs){
         int lResult = MMC_FAILED;
         unsigned int ulErrorCode = 0;
-        //int pVelocityIsCounts;
+        int pVelocityIsCounts;
 
-        if((lResult = GetVelocity(p_usNodeId, pVelocityIs, &ulErrorCode))==MMC_FAILED)
+        if((lResult = GetVelocity(p_usNodeId, &pVelocityIsCounts, &ulErrorCode))==MMC_FAILED)
         {
             LogError("getVelocity", lResult, ulErrorCode);
             return lResult;
         }
 
-        /*if(p_usNodeId == g_usNodeId1){
+        if(p_usNodeId == g_usNodeId1){
             *pVelocityIs = RPMTom_s(&pVelocityIsCounts);
         }else{
             *pVelocityIs = RPMTorad_s(p_usNodeId, &pVelocityIsCounts);
-        }*/
+        }
 
 
         return lResult;

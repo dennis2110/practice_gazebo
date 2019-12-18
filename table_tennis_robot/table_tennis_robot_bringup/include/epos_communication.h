@@ -39,8 +39,8 @@ namespace TabletennisRobot
         int	startProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, unsigned int p_profile_velocity, unsigned int p_profile_acceleration,unsigned int p_profile_deceleration);
         int	setPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId, float position_setpoint);
         int stopPosition(HANDLE p_DeviceHandle, unsigned short p_usNodeId);
-        int	getPosition(unsigned short p_usNodeId, int* pPositionIs);
-        int	getVelocity(unsigned short p_usNodeId, int* pVelocityIs);
+        int	getPosition(unsigned short p_usNodeId, double* pPositionIs);
+        int	getVelocity(unsigned short p_usNodeId, double* pVelocityIs);
         int getVelocityUnit();
 
     

@@ -1,9 +1,10 @@
 #include "ros/ros.h"
-#include "table_tennis_robot_msgsrv/motor_status.h"
+//#include "table_tennis_robot_msgsrv/motor_status.h"
 #include "sensor_msgs/JointState.h"
 #include "std_msgs/Float32.h"
 
-table_tennis_robot_msgsrv::motor_status rel_joint_state;
+
+sensor_msgs::JointState rel_joint_state;
 sensor_msgs::JointState sim_joint_state;
 
 /*float rel_vel_joint0 = 0.0;
@@ -12,7 +13,7 @@ float rel_pos_joint0 = 0.0;
 float sim_vel_joint0 = 0.0;
 float sim_pos_joint0 = 0.0;*/
 
-void motor_status_Callback(const table_tennis_robot_msgsrv::motor_statusConstPtr& motorstatus_msg){
+void motor_status_Callback(const sensor_msgs::JointStateConstPtr& motorstatus_msg){
     rel_joint_state = *motorstatus_msg;
     //rel_vel_joint0 = motorstatus_msg->velocity[0];
     //rel_pos_joint0 = motorstatus_msg->position[0];
@@ -36,8 +37,8 @@ int main(int argc, char **argv)
     return 1;
   }
   for(int i=0;i<5;i++){
-      rel_joint_state.position.push_back(0);
-      rel_joint_state.velocity.push_back(0);
+      rel_joint_state.position.push_back(0.0);
+      rel_joint_state.velocity.push_back(0.0);
       sim_joint_state.position.push_back(0.0);
       sim_joint_state.velocity.push_back(0.0);
   }
@@ -45,7 +46,7 @@ int main(int argc, char **argv)
 
   ros::NodeHandle n;
 
-  ros::Subscriber motor_status_sub_ = n.subscribe("/motor_status",10,motor_status_Callback);
+  ros::Subscriber motor_status_sub_ = n.subscribe("/realTTbot/motor_status",10,motor_status_Callback);
   ros::Subscriber joint_status_sub_ = n.subscribe("/TTbot/joint_states",10,joint_status_Callback);
 
   ros::Publisher sim_vel_pub = n.advertise<std_msgs::Float32>("/sim_vel",10);
