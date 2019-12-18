@@ -29,25 +29,9 @@ namespace TabletennisRobot
         ///////////////////////
         ///// ROS setting /////
         ///////////////////////
-        slide_rail_joint_command_sub_ = node.subscribe(
-            "/TTbot/slide_rail_joint_position_controller/command",
-             5, &EPOS2::slide_rail_Callback, this);
-
-        arm_1_joint_command_sub_ = node.subscribe(
-            "/TTbot/arm_joint1_position_controller/command",
-             5, &EPOS2::arm_1_Callback, this);
-
-        arm_2_joint_command_sub_ = node.subscribe(
-            "/TTbot/arm_joint2_position_controller/command",
-             5, &EPOS2::arm_2_Callback, this);
-            
-        arm_3_joint_command_sub_ = node.subscribe(
-            "/TTbot/arm_joint3_position_controller/command",
-             5, &EPOS2::arm_3_Callback, this);
-
-        arm_4_joint_command_sub_ = node.subscribe(
-            "/TTbot/arm_joint4_position_controller/command",
-             5, &EPOS2::arm_4_Callback, this);
+        real_joint_command_sub_ = node.subscribe(
+            "/realTTbot/command",
+             5, &EPOS2::real_joint_Callback, this);
     
         statusCheck_service_ = node.advertiseService("/status_check",&EPOS2::statuscheck_Callback,this);
         openDevice_service_ = node.advertiseService("/open_device",&EPOS2::opendevice_Callback, this);
@@ -169,25 +153,11 @@ namespace TabletennisRobot
         }
     }
 
-    void EPOS2::slide_rail_Callback(const std_msgs::Float64ConstPtr& command_msg){
-        //add offset here
-        motor_cmd[0] = command_msg->data;
-    }
-
-    void EPOS2::arm_1_Callback(const std_msgs::Float64ConstPtr& command_msg){
-        motor_cmd[1] = command_msg->data;
-    }
-
-    void EPOS2::arm_2_Callback(const std_msgs::Float64ConstPtr& command_msg){
-        motor_cmd[2] = command_msg->data;
-    }
-
-    void EPOS2::arm_3_Callback(const std_msgs::Float64ConstPtr& command_msg){
-        motor_cmd[3] = command_msg->data;
-    }
-
-    void EPOS2::arm_4_Callback(const std_msgs::Float64ConstPtr& command_msg){
-        motor_cmd[4] = command_msg->data;
+    void EPOS2::real_joint_Callback(const std_msgs::Float64MultiArrayConstPtr& command_msg){
+        for (int i = 0; i < 5; i++)
+        {
+            motor_cmd[i] = command_msg->data.at(i);
+        }
     }
 
     bool EPOS2::statuscheck_Callback(table_tennis_robot_msgsrv::EPOSstatus::Request& request, table_tennis_robot_msgsrv::EPOSstatus::Response& response){

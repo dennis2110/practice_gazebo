@@ -3,6 +3,7 @@
 
 #include <ros/ros.h>
 #include <std_msgs/Float64.h>
+#include <std_msgs/Float64MultiArray.h>
 #include <table_tennis_robot_msgsrv/EPOSstatus.h>
 #include <table_tennis_robot_msgsrv/OpenDevice.h>
 #include <table_tennis_robot_msgsrv/setPPMparam.h>
@@ -34,11 +35,7 @@ class EPOS2
 
 
     private:
-      void slide_rail_Callback(const std_msgs::Float64ConstPtr& command_msg);
-      void arm_1_Callback(const std_msgs::Float64ConstPtr& command_msg);
-      void arm_2_Callback(const std_msgs::Float64ConstPtr& command_msg);
-      void arm_3_Callback(const std_msgs::Float64ConstPtr& command_msg);
-      void arm_4_Callback(const std_msgs::Float64ConstPtr& command_msg);
+      void real_joint_Callback(const std_msgs::Float64MultiArrayConstPtr& command_msg);
       bool statuscheck_Callback(table_tennis_robot_msgsrv::EPOSstatus::Request& request, table_tennis_robot_msgsrv::EPOSstatus::Response& response);
       bool opendevice_Callback(table_tennis_robot_msgsrv::OpenDevice::Request& request, table_tennis_robot_msgsrv::OpenDevice::Response& response);
       bool closedevice_Callback(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response);
@@ -62,11 +59,7 @@ class EPOS2
       //sensor_msgs::JointState motor_status_msg;
 
 //////////////////////////////////////////////////////////////////
-      ros::Subscriber slide_rail_joint_command_sub_;
-      ros::Subscriber arm_1_joint_command_sub_;
-      ros::Subscriber arm_2_joint_command_sub_;
-      ros::Subscriber arm_3_joint_command_sub_;
-      ros::Subscriber arm_4_joint_command_sub_;
+      ros::Subscriber real_joint_command_sub_;
 
       ros::ServiceServer statusCheck_service_;
       ros::ServiceServer openDevice_service_;
