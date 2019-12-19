@@ -166,8 +166,8 @@
 			<parent link="${prefix}slide_link"/>
         	<child link="${prefix}joint_1_link"/>
 
-			<origin xyz="${0.147/2} ${0.225} ${0.15/2}" rpy="0 0 0" />
-        	<limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="10.0"/>
+			<origin xyz="${0.147/2} ${0.225} ${0.15/2}" rpy="0 ${pi} ${0}" />
+        	<limit effort="1000.0" lower="${-pi}" upper="${pi}" velocity="10.0"/>
         	<dynamics damping="0.0" friction="0.0"/>
         	<axis xyz="0 1 0"/>
     	</joint>
@@ -177,7 +177,7 @@
         	<child link="${prefix}joint_2_link"/>
 
 			<origin xyz="${0.05} ${0.091} ${0}" rpy="0 0 ${pi/2}" />
-        	<limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="1.0"/>
+        	<limit effort="1000.0" lower="${-pi}" upper="${pi}" velocity="1.0"/>
         	<dynamics damping="0.0" friction="0.0"/>
         	<axis xyz="0 1 0"/>
     	</joint>
@@ -187,7 +187,7 @@
         	<child link="${prefix}joint_3_link"/>
 
 			<origin xyz="${0.253} ${0.082-0.015} ${0}" rpy="${pi} 0 0" />
-        	<limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="1.0"/>
+        	<limit effort="1000.0" lower="${-pi}" upper="${pi}" velocity="1.0"/>
         	<dynamics damping="0.0" friction="0.0"/>
         	<axis xyz="0 1 0"/>
     	</joint>
@@ -197,7 +197,7 @@
         	<child link="${prefix}joint_4_link"/>
 
 			<origin xyz="${0.216} ${0.04-0.023} ${0}" rpy="0 0 ${pi}" />
-        	<limit effort="1000.0" lower="${-pi*3/4}" upper="${pi*3/4}" velocity="1.0"/>
+        	<limit effort="1000.0" lower="${-pi}" upper="${pi}" velocity="1.0"/>
         	<dynamics damping="0.0" friction="0.0"/>
         	<axis xyz="0 1 0"/>
     	</joint>

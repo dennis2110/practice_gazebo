@@ -22,9 +22,13 @@ int main(int argc, char **argv)
   ros::Publisher sim_j3_pub = n.advertise<std_msgs::Float64>("/TTbot/arm_joint3_position_controller/command",10);
   ros::Publisher sim_j4_pub = n.advertise<std_msgs::Float64>("/TTbot/arm_joint4_position_controller/command",10);
   
-  for(int i=0;i<5;i++){
-      unified_cmd.data.push_back(0.0);
-  }
+  
+  unified_cmd.data.push_back(0.0);
+  unified_cmd.data.push_back(0.0);
+  unified_cmd.data.push_back(2.2);
+  unified_cmd.data.push_back(2.9);
+  unified_cmd.data.push_back(2.2);
+  
 
   ros::Rate loop_rate(20);
   while (ros::ok())
@@ -35,19 +39,19 @@ int main(int argc, char **argv)
     rel_cmd = unified_cmd;
     rel_joint_pub.publish(rel_cmd);
 
-    sim_cmd.data = unified_cmd.data.at(0);
+    sim_cmd.data = 1.2 - unified_cmd.data.at(0);
     sim_j0_pub.publish(sim_cmd);
 
     sim_cmd.data = unified_cmd.data.at(1);
     sim_j1_pub.publish(sim_cmd);
 
-    sim_cmd.data = unified_cmd.data.at(2)-2.2;
+    sim_cmd.data = 2.2 - unified_cmd.data.at(2);
     sim_j2_pub.publish(sim_cmd);
 
-    sim_cmd.data = unified_cmd.data.at(3)-2.9;
+    sim_cmd.data = 2.9 - unified_cmd.data.at(3);
     sim_j3_pub.publish(sim_cmd);
 
-    sim_cmd.data = unified_cmd.data.at(4)-1.9;
+    sim_cmd.data = 2.2 - unified_cmd.data.at(4);
     sim_j4_pub.publish(sim_cmd);
 
     ros::spinOnce();

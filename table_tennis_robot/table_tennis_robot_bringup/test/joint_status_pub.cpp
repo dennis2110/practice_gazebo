@@ -58,17 +58,17 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
       std::cout << "rel_vel: " << rel_joint_state.velocity[joint_x] << " rel_pos: " << rel_joint_state.position[joint_x] << 
-                  " sim_vel: " << sim_joint_state.velocity[joint_x] << " sim_pos: " << sim_joint_state.position[joint_x] << std::endl; 
+                  " sim_vel: " << -sim_joint_state.velocity[joint_x] << " sim_pos: " << 1.2 - sim_joint_state.position[joint_x] << std::endl; 
       std_msgs::Float32 msg;
-      msg.data = sim_joint_state.velocity[joint_x];
+      msg.data = -sim_joint_state.velocity[joint_x];
       sim_vel_pub.publish(msg);
-      msg.data = sim_joint_state.position[joint_x];
+      msg.data = 1.2 - sim_joint_state.position[joint_x];
       sim_pos_pub.publish(msg);
 
-      /*msg.data = rel_vel_joint0;
+      msg.data = rel_joint_state.velocity[joint_x];
       rel_vel_pub.publish(msg);
-      msg.data = rel_pos_joint0;
-      rel_pos_pub.publish(msg);*/
+      msg.data = rel_joint_state.position[joint_x];
+      rel_pos_pub.publish(msg);
 
       ros::spinOnce();
       loop_rate.sleep();
