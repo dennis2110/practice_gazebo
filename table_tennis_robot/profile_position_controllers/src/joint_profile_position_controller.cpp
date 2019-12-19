@@ -224,20 +224,20 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
 
   error = command_position - current_position;
   
+  ///   calculate time
+  /////////////////////////////////////////////////////////////////////
+  /*
   if(command_position != last_pos_command){
     //calculate acc, vel, dec, time
     time_count = 0.0;
-    /*std::cout << "########################" <<std::endl;
-    std::cout << "error: " << error <<std::endl;
-    std::cout << "current_position: " << current_position <<std::endl;
-    std::cout << "command_position: " << command_position <<std::endl;
-    std::cout << "########################" <<std::endl;*/
+    // std::cout << "########################" <<std::endl;
+    // std::cout << "error: " << error <<std::endl;
+    // std::cout << "current_position: " << current_position <<std::endl;
+    // std::cout << "command_position: " << command_position <<std::endl;
+    // std::cout << "########################" <<std::endl;
     calculatetime(error, current_velocity, acc_time, vel_time, dec_time);
   }
   
-  
-  
-
   if(time_count > (acc_time + vel_time + dec_time)){
     commanded_velocity = 0.0;
   }else if(time_count > (acc_time + vel_time)){
@@ -248,13 +248,13 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
     commanded_velocity = last_velocity + ( ppm_params_struct_.acceleration_ * period.toSec());
   }
   time_count += period.toSec();
-  
-
+  */
+  /////////////////////////////////////////////////////////////////////
   
     
   
 
-  /*error = command_position - current_position;
+  //error = command_position - current_position;
   need_distance = last_velocity*last_velocity/(2*ppm_params_struct_.deceleration_);
   if(abs(error) > 0.0001){
     if(abs(error) < need_distance){
@@ -284,7 +284,7 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
   default:
     commanded_velocity = 0.0;
     break;
-  }*/
+  }
   
 
   commandVelocityLimits(commanded_velocity);

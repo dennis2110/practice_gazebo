@@ -58,29 +58,36 @@ def strike(pub,pos):
 
 if __name__ == '__main__':
     rospy.init_node('insert_object_1', anonymous=True)
+    j0_pub = rospy.Publisher('/TTbot/slide_rail_joint_position_controller/command', Float64, queue_size=10)
     j1_pub = rospy.Publisher('/TTbot/arm_joint1_position_controller/command', Float64, queue_size=10)
     j2_pub = rospy.Publisher('/TTbot/arm_joint2_position_controller/command', Float64, queue_size=10)
+    j3_pub = rospy.Publisher('/TTbot/arm_joint3_position_controller/command', Float64, queue_size=10)
+    j4_pub = rospy.Publisher('/TTbot/arm_joint4_position_controller/command', Float64, queue_size=10)
+    
     
 
     ball_name = "ball2"
     spawm_ball(ball_name)
 
     initpose = Pose()
-    initpose.position.x = 1.0
-    initpose.position.y = 0.15
-    initpose.position.z = 1.5
+    initpose.position.x = -1.5
+    initpose.position.y = 0.2
+    initpose.position.z = 1.0
     inittwist = Twist()
     inittwist.angular.x = 0.0
     inittwist.angular.y = 0.0
     inittwist.angular.z = 0.0
-    inittwist.linear.x = 3.0
+    inittwist.linear.x = 5.0
     inittwist.linear.y = 0.0
-    inittwist.linear.z = 0.0
+    inittwist.linear.z = 2.0
 
     rospy.sleep(1.)
-    strike(j1_pub,-2)
-    strike(j2_pub,1)
-    rospy.sleep(2.)
+    strike(j0_pub,0.33)
+    strike(j1_pub,-1.9)
+    strike(j2_pub,-1.2)
+    strike(j3_pub,1.0)
+    strike(j4_pub,1.0)
+    rospy.sleep(1.)
     set_ball_state(ball_name, initpose, inittwist)
 
 
@@ -93,9 +100,10 @@ if __name__ == '__main__':
         
         ball_pose, ball_twist = get_ball_state(ball_name)
         
-        if(ball_pose.position.x > 1.3):
-            strike(j2_pub,0.5)
-            strike(j1_pub,-1.0)
+        if(ball_pose.position.x > 1.4):
+            strike(j1_pub,-0.9)
+            strike(j2_pub,-1.0)
+            
             
         #ball_pose.position.y = ball_pose.position.y + 0.1
         #set_ball_state(ball_name, ball_pose, ball_twist)
