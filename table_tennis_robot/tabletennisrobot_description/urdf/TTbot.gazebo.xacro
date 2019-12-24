@@ -74,6 +74,13 @@
                 <material>Gazebo/Grey</material>
             </gazebo>
 
+            <gazebo reference="joint_5_link">
+                <mu1>1</mu1>
+                <mu2>1</mu2>
+                <selfCollide>true</selfCollide>
+                <material>Gazebo/Red</material>
+            </gazebo>
+
      
         </xacro:if>
 

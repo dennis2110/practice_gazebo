@@ -119,33 +119,33 @@
       		<visual>
 		        <origin xyz="${-0.1+0.045/2} ${-0.01} ${-0.045/2}" rpy="0 ${0} 0" />
         		<geometry>
-        			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_4_link.dae" />
+        			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_4_link_DLC.dae" />
 		        </geometry>
 		    </visual>
       		<collision>
         		<origin xyz="${-0.1+0.045/2} ${-0.01} ${-0.045/2}" rpy="0 ${0} 0" />
         		<geometry>
-          			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_4_link.dae" />
+          			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_4_link_DLC.dae" />
 		        </geometry>
  		    </collision>
     	</link>
     	
-		<link name="${prefix}racket_link" >
+		<link name="${prefix}joint_5_link" >
 			<inertial>
-		    	<origin xyz="${0} ${0} ${0}" rpy="0 ${0} ${-pi/6}" />
+		    	<origin xyz="${-0.0225} ${0} ${-0.015}" rpy="0 ${0} ${0}" />
        			<mass value="8.5E-02" />
        			<inertia ixx="3.713E-05" ixy="0.0" ixz="0.0" iyy="2.703E-04" iyz="0.0" izz="2.622E-04" />
 		    </inertial>
       		<visual>
-		        <origin xyz="${0} ${0} ${0}" rpy="0 ${0} ${-pi/6}" />
+		        <origin xyz="${-0.0225} ${0} ${-0.015}" rpy="0 ${0} ${0}" />
         		<geometry>
-        			<mesh filename="package://tabletennisrobot_description/meshes/visual/racket3_1.dae" />
+        			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_5_link_DLC.dae" />
 		        </geometry>
 		    </visual>
       		<collision>
-				<origin xyz="${0} ${0} ${0}" rpy="0 ${0} ${-pi/6}" />
+				<origin xyz="${-0.0225} ${0} ${-0.015}" rpy="0 ${0} ${0}" />
         		<geometry>
-          			<mesh filename="package://tabletennisrobot_description/meshes/visual/racket3_1.dae" />
+          			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_5_link_DLC.dae" />
 		        </geometry>
  		    </collision>
     	</link>
@@ -202,10 +202,14 @@
         	<axis xyz="0 1 0"/>
     	</joint>
 
-		<joint name="${prefix}joint_racket" type="fixed">
+		<joint name="${prefix}joint_5" type="revolute">
 			<parent link="${prefix}joint_4_link"/>
-        	<child link="${prefix}racket_link"/>
-			<origin xyz="${-0.26-0.0325} ${0.015} ${0}" rpy="0 ${pi/2} ${0}" />
+        	<child link="${prefix}joint_5_link"/>
+
+			<origin xyz="${-0.0765} ${0.0435} ${0.001}" rpy="0 ${0} ${pi/2}" />
+			<limit effort="1000.0" lower="${-pi}" upper="${pi}" velocity="1.0"/>
+        	<dynamics damping="0.0" friction="0.0"/>
+			<axis xyz="0 1 0"/>
     	</joint>
 
 		<!-- gazebo and transmission -->

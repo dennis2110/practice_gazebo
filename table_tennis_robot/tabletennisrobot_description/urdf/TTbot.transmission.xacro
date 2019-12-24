@@ -60,5 +60,16 @@
             </actuator>
         </transmission>
 
+        <transmission name="${prefix}J5_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${prefix}joint_5">
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${prefix}J5_motor">
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
     </xacro:macro>
 </robot>

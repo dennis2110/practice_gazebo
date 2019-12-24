@@ -16,6 +16,7 @@
                                           arm_joint2_position_controller
                                           arm_joint3_position_controller
                                           arm_joint4_position_controller
+                                          arm_joint5_position_controller
 					  "/>
 
   <!-- convert joint states to TF transforms for rviz, etc -->
