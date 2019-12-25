@@ -3,7 +3,7 @@
 namespace TabletennisRobot
 {
     EPOS2::EPOS2(){
-        for(int i=0;i<5;i++){
+        for(int i=0;i<JOINT_NUM;i++){
             motor_cmd[i] = 0.0;
             last_motor_cmd[i] = 0.0;
             motor_status_msg.position.push_back(0.0);
@@ -18,6 +18,7 @@ namespace TabletennisRobot
         motor_status_msg.name.push_back("real_joint_2");
         motor_status_msg.name.push_back("real_joint_3");
         motor_status_msg.name.push_back("real_joint_4");
+        motor_status_msg.name.push_back("real_joint_5");
         
     }
 
@@ -154,7 +155,7 @@ namespace TabletennisRobot
     }
 
     void EPOS2::real_joint_Callback(const std_msgs::Float64MultiArrayConstPtr& command_msg){
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < JOINT_NUM; i++)
         {
             motor_cmd[i] = command_msg->data.at(i);
         }

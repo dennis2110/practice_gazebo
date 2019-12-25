@@ -2,6 +2,7 @@
 #include "std_msgs/Float64MultiArray.h"
 #include "std_msgs/Float64.h"
 
+
 std_msgs::Float64MultiArray unified_cmd;
 
 void unified_cmd_Callback(const std_msgs::Float64MultiArrayConstPtr& msg){
@@ -21,6 +22,7 @@ int main(int argc, char **argv)
   ros::Publisher sim_j2_pub = n.advertise<std_msgs::Float64>("/TTbot/arm_joint2_position_controller/command",10);
   ros::Publisher sim_j3_pub = n.advertise<std_msgs::Float64>("/TTbot/arm_joint3_position_controller/command",10);
   ros::Publisher sim_j4_pub = n.advertise<std_msgs::Float64>("/TTbot/arm_joint4_position_controller/command",10);
+  ros::Publisher sim_j5_pub = n.advertise<std_msgs::Float64>("/TTbot/arm_joint5_position_controller/command",10);
   
   
   unified_cmd.data.push_back(0.0);
@@ -28,6 +30,7 @@ int main(int argc, char **argv)
   unified_cmd.data.push_back(2.2);
   unified_cmd.data.push_back(2.9);
   unified_cmd.data.push_back(2.2);
+  unified_cmd.data.push_back(0.0);
   
 
   ros::Rate loop_rate(20);
@@ -53,6 +56,9 @@ int main(int argc, char **argv)
 
     sim_cmd.data = 2.2 - unified_cmd.data.at(4);
     sim_j4_pub.publish(sim_cmd);
+
+    sim_cmd.data = unified_cmd.data.at(5);
+    sim_j5_pub.publish(sim_cmd);
 
     ros::spinOnce();
     loop_rate.sleep();

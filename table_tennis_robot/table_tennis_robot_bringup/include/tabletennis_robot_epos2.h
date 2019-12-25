@@ -21,6 +21,8 @@
 #include <realtime_tools/realtime_buffer.h>
 #include <realtime_tools/realtime_publisher.h>
 
+#define JOINT_NUM 6
+
 namespace TabletennisRobot
 {
 class EPOS2
@@ -48,8 +50,8 @@ class EPOS2
     private:
       int result_fun;
       unsigned int loop_count_;
-      double motor_cmd[5];
-      double last_motor_cmd[5];
+      double motor_cmd[JOINT_NUM];
+      double last_motor_cmd[JOINT_NUM];
       float motor_vel;
       float motor_pos;
       bool stop_motor;
