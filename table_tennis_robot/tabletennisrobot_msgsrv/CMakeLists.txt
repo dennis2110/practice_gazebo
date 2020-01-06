@@ -1,12 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(table_tennis_robot_bringup)
-
-######### epos2 ##########
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
-
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-##########################
+project(tabletennisrobot_msgsrv)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -15,16 +8,10 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  control_msgs
-  controller_interface
-  controller_manager
-  geometry_msgs
-  sensor_msgs
-  std_msgs
-  urdf
-  table_tennis_robot_msgsrv
-  serial
+  roscpp
   rospy
+  std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -61,18 +48,23 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
+ add_message_files(
+   FILES
+   motor_status.msg
 #   Message1.msg
 #   Message2.msg
-# )
+ )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
+ add_service_files(
+   FILES
+   EPOSstatus.srv
+   OpenDevice.srv
+   setPPMparam.srv
+   stopMotor.srv
 #   Service1.srv
 #   Service2.srv
-# )
+ )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -82,10 +74,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -118,8 +110,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES table_tennis_robot_bringup
-  CATKIN_DEPENDS std_msgs table_tennis_robot_msgsrv serial
+#  LIBRARIES table_tennis_robot_msgsrv
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -130,23 +122,14 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  include
+# include
   ${catkin_INCLUDE_DIRS}
 )
 
-set(HEADERS
-    include/tabletennis_robot_epos2.h
-    include/epos_communication.h
-    include/arduserial.h
-    )
-set(SOURCES
-    src/tabletennis_robot_epos2.cpp
-    src/epos_communication.cpp
-    src/arduserial.cpp
-    )
-
 ## Declare a C++ library
-add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+# add_library(${PROJECT_NAME}
+#   src/${PROJECT_NAME}/table_tennis_robot_msgsrv.cpp
+# )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -156,36 +139,7 @@ add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/table_tennis_robot_bringup_node.cpp)
-
-######### epos2 ##########
-#add_executable(${PROJECT_NAME} HelloEposCmd.cpp)
-add_executable(tabletennis_robot_bringup src/tabletennis_robot_bringup.cpp
-                                         ${SOURCES})
-add_dependencies(tabletennis_robot_bringup ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(tabletennis_robot_bringup ${catkin_LIBRARIES} -lEposCmd)
-
-#add_executable(rpm2ms_rads src/rpm2ms_rads.cpp)
-#add_dependencies(rpm2ms_rads ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-#target_link_libraries(rpm2ms_rads ${catkin_LIBRARIES})
-
-add_executable(unified_joint_cmd src/unified_joint_cmd.cpp)
-add_dependencies(unified_joint_cmd ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(unified_joint_cmd ${catkin_LIBRARIES})
-##########################
-
-########## test ##########
-add_executable(joint_status_pub test/joint_status_pub.cpp)
-add_dependencies(joint_status_pub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(joint_status_pub ${catkin_LIBRARIES})
-##########################
-
-
-#add_executable(tabletennis_robot_main src/tabletennis_robot_main.cpp
-#                                      src/tabletennis_robot_hw.cpp)
-#add_dependencies(tabletennis_robot_main ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-#target_link_libraries(tabletennis_robot_main ${catkin_LIBRARIES})
-
+# add_executable(${PROJECT_NAME}_node src/table_tennis_robot_msgsrv_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -249,7 +203,7 @@ target_link_libraries(joint_status_pub ${catkin_LIBRARIES})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_table_tennis_robot_bringup.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_table_tennis_robot_msgsrv.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

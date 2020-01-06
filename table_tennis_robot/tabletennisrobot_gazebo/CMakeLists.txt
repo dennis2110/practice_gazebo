@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(table_tennis_robot_gazebo)
+project(tabletennisrobot_gazebo)
 
 find_package(catkin REQUIRED)
 
