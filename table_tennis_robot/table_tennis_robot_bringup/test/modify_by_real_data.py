@@ -57,53 +57,64 @@ def read_SCV():
     return pingpong_data   
 
 if __name__ == '__main__':
-    rospy.init_node('insert_object_1', anonymous=True)
+    rospy.init_node('modify_by_real_data', anonymous=True)
 
-    data = read_SCV()
-    print(data)
-
-
-
-
-
-
+    table_Coordinate = read_SCV()
+    gazeboCoordinate = [[0 for i in range(3)] for j in range(21)]
+    #table_Coordinate[0~20][0~2]
+    for i in range(0,21):
+        gazeboCoordinate[i][0] = 1.37 - float(table_Coordinate[i][1])
+        gazeboCoordinate[i][1] = -0.762 + float(table_Coordinate[i][0])
+        gazeboCoordinate[i][2] = 0.76 + float(table_Coordinate[i][2])
 
     ball_name = "ball2"
     spawm_ball(ball_name)
 
     initpose = Pose()
-    initpose.position.x = -1.3
-    initpose.position.y = 0.0
-    initpose.position.z = 1.287
+    initpose.position.x = gazeboCoordinate[0][0]
+    initpose.position.y = gazeboCoordinate[0][1]
+    initpose.position.z = gazeboCoordinate[0][2]
 
     inittwist = Twist()
     inittwist.angular.x = 0.0
     inittwist.angular.y = 0.0
     inittwist.angular.z = 0.0
-    inittwist.linear.x = 4.9512
-    inittwist.linear.y = 0.19686
-    inittwist.linear.z = 0.74436
+
+    inittwist.linear.x = (gazeboCoordinate[1][0] - gazeboCoordinate[0][0])*30
+    inittwist.linear.y = (gazeboCoordinate[1][1] - gazeboCoordinate[0][1])*30
+    inittwist.linear.z = (gazeboCoordinate[1][2] - gazeboCoordinate[0][2])*30
     set_ball_state(ball_name, initpose, inittwist)
 
+    i = 0
+    is_change = True
 
-    ball_pose_z=0.78
-    start_time = rospy.Time.now().to_sec()
-
+    start_time = rospy.Time.now().to_sec()    
     rate = rospy.Rate(30) # 10hz
     while not rospy.is_shutdown():
-        if(rospy.Time.now().to_sec() - start_time > 3.0):
+        if(rospy.Time.now().to_sec() - start_time > 2.0):
             break
-
         ball_pose, ball_twist = get_ball_state(ball_name)
+        rospy.loginfo(',%f,%f,%f',ball_pose.position.x,ball_pose.position.y,ball_pose.position.z)
+        i = i + 1
+        if(i<20 and is_change):
+            ball_pose.position.x = gazeboCoordinate[i][0]
+            ball_pose.position.y = gazeboCoordinate[i][1]
+            ball_pose.position.z = gazeboCoordinate[i][2]
+            ball_twist.linear.x = (gazeboCoordinate[i+1][0] - gazeboCoordinate[i][0])*30
+            ball_twist.linear.y = (gazeboCoordinate[i+1][1] - gazeboCoordinate[i][1])*30
+            ball_twist.linear.z = (gazeboCoordinate[i+1][2] - gazeboCoordinate[i][2])*30
+            set_ball_state(ball_name, ball_pose, ball_twist)
+            rospy.loginfo('change %d',i)
         
-        ball_pose.position.y = ball_pose.position.y + 0.1
-        #set_ball_state(ball_name, ball_pose, ball_twist)
-        
-        ball_pose_z = ball_pose.position.z
-        rospy.loginfo(ball_pose_z)
         rate.sleep()
 
     rospy.loginfo("123123")
     delete_ball(ball_name)
+
+
+
+
+
+
+
     
-  

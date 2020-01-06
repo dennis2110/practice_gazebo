@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+<model name="pingpong_ball">
+  <static>true</static>
+  <pose>0 0 0 0 0 0</pose>
+    <link name="link">
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0.001</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>0.0027</mass>
+        <inertia>
+          <ixx>0.000038</ixx>
+          <ixy>0.000038</ixy>
+          <ixz>0.000038</ixz>
+          <iyy>0.000038</iyy>
+          <iyz>0.000038</iyz>
+          <izz>0.000038</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://pingpong_description/models/pingpong_ball/meshes/pingpong_40mm.dae</uri>
+            <scale>1.0 1.0 1.0</scale>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.01</mu>
+              <mu2>0.01</mu2>
+            </ode>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0.7</restitution_coefficient>
+            <threshold>0.0</threshold>
+          </bounce>
+          <contact>
+            <ode>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+              <max_vel>100</max_vel>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://pingpong_description/models/pingpong_ball/meshes/pingpong_40mm.dae</uri>
+            <scale>1.0 1.0 1.0</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

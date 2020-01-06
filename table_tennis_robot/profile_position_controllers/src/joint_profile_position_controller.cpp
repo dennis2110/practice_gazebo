@@ -47,7 +47,7 @@
 namespace ttbot_velocity_controllers {
 
 JointProfilePositionController::JointProfilePositionController()
-  : loop_count_(0) , last_velocity(0.0) , last_pos_command(0.0)
+  : loop_count_(0) , last_velocity(0.0) , last_pos_command(-1.0) //, start_position(-1.0) , start_velocity(-1.0)
 {}
 
 JointProfilePositionController::~JointProfilePositionController()
@@ -223,50 +223,140 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
   double current_velocity = joint_.getVelocity();
 
   error = command_position - current_position;
+  need_distance = last_velocity*last_velocity/(2*ppm_params_struct_.deceleration_);
+  if(command_position != last_pos_command){
+    //start_position = joint_.getPosition();
+    //start_velocity = joint_.getVelocity();
+    //need_distance = current_velocity*current_velocity/(2*ppm_params_struct_.acceleration_);
+    if(error > 0){
+      if(need_distance < abs(error)){
+        motion_state = uniformAcc;
+      }else{
+        motion_state = neg_uniformAcc;
+      }
+    }else{
+      if(need_distance < abs(error)){
+        motion_state = neg_uniformAcc;
+      }else{
+        motion_state = uniformAcc;
+      }
+    }
+  }
   
   ///   calculate time
   /////////////////////////////////////////////////////////////////////
-  /*
-  if(command_position != last_pos_command){
-    //calculate acc, vel, dec, time
-    time_count = 0.0;
-    // std::cout << "########################" <<std::endl;
-    // std::cout << "error: " << error <<std::endl;
-    // std::cout << "current_position: " << current_position <<std::endl;
-    // std::cout << "command_position: " << command_position <<std::endl;
-    // std::cout << "########################" <<std::endl;
-    calculatetime(error, current_velocity, acc_time, vel_time, dec_time);
-  }
-  
-  if(time_count > (acc_time + vel_time + dec_time)){
-    commanded_velocity = 0.0;
-  }else if(time_count > (acc_time + vel_time)){
-    commanded_velocity = last_velocity - ( ppm_params_struct_.deceleration_ * period.toSec());
-  }else if(time_count > acc_time){
-    commanded_velocity = ppm_params_struct_.velocity_;
-  }else{
-    commanded_velocity = last_velocity + ( ppm_params_struct_.acceleration_ * period.toSec());
-  }
-  time_count += period.toSec();
-  */
+  // if(command_position != last_pos_command){
+  //   //calculate acc, vel, dec, time
+  //   time_count = 0.0;
+  //   // std::cout << "########################" <<std::endl;
+  //   // std::cout << "error: " << error <<std::endl;
+  //   // std::cout << "current_position: " << current_position <<std::endl;
+  //   // std::cout << "command_position: " << command_position <<std::endl;
+  //   // std::cout << "########################" <<std::endl;
+  //   calculatetime(error, current_velocity, acc_time, vel_time, dec_time);
+  // }
+  // if(time_count > (acc_time + vel_time + dec_time)){
+  //   commanded_velocity = 0.0;
+  // }else if(time_count > (acc_time + vel_time)){
+  //   commanded_velocity = last_velocity - ( ppm_params_struct_.deceleration_ * period.toSec());
+  // }else if(time_count > acc_time){
+  //   commanded_velocity = ppm_params_struct_.velocity_;
+  // }else{
+  //   commanded_velocity = last_velocity + ( ppm_params_struct_.acceleration_ * period.toSec());
+  // }
+  // time_count += period.toSec();
   /////////////////////////////////////////////////////////////////////
   
     
   
+  /// 
+  /////////////////////////////////////////////////////////////////////
 
-  //error = command_position - current_position;
-  need_distance = last_velocity*last_velocity/(2*ppm_params_struct_.deceleration_);
-  if(abs(error) > 0.0001){
+  
+  /*if(error > 0){
+    if(abs(error) > 0.0001){
+      if(abs(error) < need_distance){
+        motion_state = uniformDec;
+      }else if(last_velocity < ppm_params_struct_.velocity_){
+        motion_state = uniformAcc;
+      }else{
+        motion_state = constantVel;
+      }
+    }else{
+      motion_state = stop;
+    }  
+  }else{
+    if(abs(error) > 0.0001){
+      if(abs(error) < need_distance){
+        motion_state = neg_uniformDec;
+      }else if(last_velocity > -ppm_params_struct_.velocity_){
+        motion_state = neg_uniformAcc;
+      }else{
+        motion_state = neg_constantVel;
+      }
+    }else{
+      motion_state = stop;
+    }
+  }*/
+
+  switch (motion_state)
+  {
+  case stop:
+    
+    break;
+  case constantVel:
     if(abs(error) < need_distance){
-      motion_state = uniformDec;
+        motion_state = uniformDec;
+    }
+    break;
+  case uniformAcc:
+    if(abs(error) < need_distance){
+      if(last_velocity < 0){
+        motion_state = uniformAcc;  
+      }else{
+        motion_state = uniformDec;
+      }
     }else if(last_velocity < ppm_params_struct_.velocity_){
       motion_state = uniformAcc;
     }else{
       motion_state = constantVel;
     }
-  }else{
-    motion_state = stop;
+    break;
+  case uniformDec:
+    if(abs(last_velocity) < 0.01){
+        motion_state = stop;
+    }
+    break;
+  case neg_constantVel:
+    if(abs(error) < need_distance){
+        motion_state = neg_uniformDec;
+    }
+    break;
+  case neg_uniformAcc:
+    if(abs(error) < need_distance){
+      if(last_velocity > 0){
+        motion_state = neg_uniformAcc;  
+      }else{
+        motion_state = neg_uniformDec;
+      }
+    }else if(last_velocity > -ppm_params_struct_.velocity_){
+      motion_state = neg_uniformAcc;
+    }else{
+      motion_state = neg_constantVel;
+    }
+    break;
+  case neg_uniformDec:
+    if(abs(last_velocity) < 0.01){
+        motion_state = stop;
+    }
+    break;
+  default:
+    
+    break;
   }
+
+  
+
   switch (motion_state)
   {
   case stop:
@@ -281,18 +371,28 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
   case uniformDec:
     commanded_velocity = last_velocity - ( ppm_params_struct_.deceleration_ * period.toSec());
     break;
+  case neg_constantVel:
+    commanded_velocity = -ppm_params_struct_.velocity_;
+    break;
+  case neg_uniformAcc:
+    commanded_velocity = last_velocity - ( ppm_params_struct_.acceleration_ * period.toSec());
+    break;
+  case neg_uniformDec:
+    commanded_velocity = last_velocity + ( ppm_params_struct_.deceleration_ * period.toSec());
+    break;
   default:
     commanded_velocity = 0.0;
     break;
   }
+  /////////////////////////////////////////////////////////////////////
   
-
+  //ROS_INFO("motion state: %d",motion_state);
   commandVelocityLimits(commanded_velocity);
   last_velocity = commanded_velocity;
   last_pos_command = command_position;
-  if(error < 0.0){
-    commanded_velocity = -commanded_velocity;
-  }
+  //if(error < 0.0){
+  //  commanded_velocity = -commanded_velocity;
+  //}
   joint_.setCommand(commanded_velocity);
 
   // publish state

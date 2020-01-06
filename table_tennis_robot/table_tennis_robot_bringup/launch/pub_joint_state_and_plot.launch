@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="joint_status_pub" pkg="table_tennis_robot_bringup"
+        type="joint_status_pub" respawn="false" output="log" 
+        args="0"/>
+  <node name="pos_vel_plot"
+        pkg="rqt_plot"
+        type="rqt_plot"
+        args="/sim_pos /sim_vel /rel_pos /rel_vel" />
+
+
+</launch>

@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://table_description</uri>
+      <name>tabletennis_table</name>
+      <pose>0.0 0.0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pingpong_description</uri>
+      <name>ball</name>
+      <pose>1.0 0 3.0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://camera</uri>
+      <name>camera_1</name>
+      <pose>-2.5 -0.3 2.0 0 0.5 0</pose>
+    </include>
+    <include>
+      <uri>model://camera</uri>
+      <name>camera_2</name>
+      <pose>-2.5 0.3 2.0 0 0.5 -0.1</pose>
+    </include>
+    <include>
+      <uri>model://camera</uri>
+      <name>camera_3</name>
+      <pose>2.5 -0.3 2.0 0 0.5 3.1415</pose>
+    </include>
+    <include>
+      <uri>model://camera</uri>
+      <name>camera_4</name>
+      <pose>2.5 0.3 2.0 0 0.5 3.2415</pose>
+    </include>
+  </world>
+</sdf>

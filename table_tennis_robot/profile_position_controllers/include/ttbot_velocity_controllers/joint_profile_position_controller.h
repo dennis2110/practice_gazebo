@@ -103,10 +103,13 @@ public:
   };
 
   enum MotionState{
-    stop,
-    constantVel,
-    uniformAcc,
-    uniformDec
+    stop,             //0
+    constantVel,      //1
+    uniformAcc,       //2
+    uniformDec,       //3
+    neg_constantVel,  //4
+    neg_uniformAcc,   //5
+    neg_uniformDec    //6
   };
 
   JointProfilePositionController();
@@ -197,6 +200,8 @@ private:
   MotionState motion_state;
   double last_velocity;
   double last_pos_command;
+  //double start_position;
+  //double start_velocity;
   double time_count;
   
   double dec_time_max;
