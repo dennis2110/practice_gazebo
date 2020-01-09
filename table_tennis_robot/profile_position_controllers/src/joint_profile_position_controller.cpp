@@ -302,7 +302,15 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
   switch (motion_state)
   {
   case stop:
-    
+    if(error > 0){
+      if(abs(error) > 0.0001){
+          motion_state = uniformAcc;
+      }
+    }else{
+      if(abs(error) > 0.0001){
+          motion_state = neg_uniformAcc;
+      }
+    }
     break;
   case constantVel:
     if(abs(error) < need_distance){

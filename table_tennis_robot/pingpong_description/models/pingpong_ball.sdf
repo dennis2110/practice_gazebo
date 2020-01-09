@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+<model name="pingpong_ball">
+  <pose>0 0 0 0 0 0</pose>
+    <link name="link">
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0.001</angular>
+      </velocity_decay>
+      <inertial>
+        <mass>0.0027</mass>
+        <inertia>
+          <ixx>0.000038</ixx>
+          <ixy>0.000038</ixy>
+          <ixz>0.000038</ixz>
+          <iyy>0.000038</iyy>
+          <iyz>0.000038</iyz>
+          <izz>0.000038</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <sphere>
+            <radius>0.02</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.1</mu>
+              <mu2>0.1</mu2>
+            </ode>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0.7</restitution_coefficient>
+            <threshold>0.0</threshold>
+          </bounce>
+          <contact>
+            <ode>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+              <max_vel>20</max_vel>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <sphere>
+            <radius>0.02</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Orange</name>
+          </script>
+        </material>
+        
+      </visual>
+    </link>
+  </model>
+</sdf>
