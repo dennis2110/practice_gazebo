@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <launch>
-    <node name="tabletennis_robot_bringup" pkg="table_tennis_robot_bringup"
+    <node name="tabletennis_robot_bringup" pkg="tabletennisrobot_bringup"
         type="tabletennis_robot_bringup" respawn="false" output="screen" ns="/realTTbot" />
 
-    <node name="unified_joint_cmd" pkg="table_tennis_robot_bringup"
+    <node name="unified_joint_cmd" pkg="tabletennisrobot_bringup"
         type="unified_joint_cmd" respawn="false" output="screen" />
 
 </launch>

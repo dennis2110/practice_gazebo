@@ -2,7 +2,7 @@
 <robot xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://ros.org/wiki/xacro" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:xacro="http://ros.org/wiki/xacro" name="$(arg tabletennis_table_name)">
 
    <xacro:include filename="$(find table_description)/urdf/tabletennis_table.gazebo.xacro" />
-   <xacro:property name="scale_size" value="0.5" />
+   <xacro:property name="scale_size" value="1.0" />
 
    <xacro:macro name="tabletennis_table_macro" params="prefix">
       <material name="blue">
@@ -13,7 +13,7 @@
       <visual name="tabletennis_table">
          <origin rpy="0 0 0" xyz="0 0 0" />
          <geometry>
-            <mesh filename="package://table_description/models/tabletennis_table/meshes/tabletennis_table.dae" scale="${scale_size*1} ${scale_size*1} ${scale_size*1}" />
+            <mesh filename="package://table_description/models/tabletennis_table/meshes/tabletennis_table_realsize.dae" scale="${scale_size*1} ${scale_size*1} ${scale_size*1}" />
          </geometry>
          <cast_shadows>1</cast_shadows>
          <transparency>0</transparency>
@@ -28,7 +28,7 @@
          <collision>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-               <mesh filename="package://table_description/models/tabletennis_table/meshes/tabletennis_table.dae" scale="${scale_size*1} ${scale_size*1} ${scale_size*1}" />
+               <mesh filename="package://table_description/models/tabletennis_table/meshes/tabletennis_table_realsize.dae" scale="${scale_size*1} ${scale_size*1} ${scale_size*1}" />
             </geometry>
          </collision>
       </link>

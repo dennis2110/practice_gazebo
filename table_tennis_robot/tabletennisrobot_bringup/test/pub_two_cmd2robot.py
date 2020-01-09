@@ -28,7 +28,7 @@ if __name__ == '__main__':
     motor_cmd = init_cmd()
 
     rospy.sleep(1.)
-    move_to(pub, motor_cmd, 0, 0.9)
+    move_to(pub, motor_cmd, 0, 0.5)#0.9)
 
     rospy.sleep(1.5)
-    move_to(pub, motor_cmd, 0, 0.5)
+    move_to(pub, motor_cmd, 0, 0.8)# 0.5)

@@ -40,7 +40,7 @@
             <ode>
               <kd>1.0</kd>
               <min_depth>0.001</min_depth>
-              <max_vel>100</max_vel>
+              <max_vel>20</max_vel>
             </ode>
           </contact>
         </surface>

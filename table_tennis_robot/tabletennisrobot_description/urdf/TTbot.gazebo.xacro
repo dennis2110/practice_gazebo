@@ -37,6 +37,14 @@
                 <mu2>1</mu2>
                 <selfCollide>true</selfCollide>
                 <material>Gazebo/DarkGrey</material>
+                <collision>
+                    <surface>
+                        <bounce>
+                            <restitution_coefficient>1.0</restitution_coefficient>
+                            <threshold>0.0</threshold>
+                        </bounce>
+                    </surface>
+                </collision>
             </gazebo>
 
             <gazebo reference="slide_link">
@@ -75,10 +83,21 @@
             </gazebo>
 
             <gazebo reference="joint_5_link">
-                <mu1>1</mu1>
-                <mu2>1</mu2>
+                <mu1>5</mu1>
+                <mu2>5</mu2>
+                <kp>10000000.0</kp>
+                <minDepth>0.001</minDepth>
+                <maxVel>10</maxVel>
                 <selfCollide>true</selfCollide>
                 <material>Gazebo/Red</material>
+                <collision>
+                    <surface>
+                        <bounce>
+                            <restitution_coefficient>1.0</restitution_coefficient>
+                            <threshold>0.0</threshold>
+                        </bounce>
+                    </surface>
+                </collision>
             </gazebo>
 
      

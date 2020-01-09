@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="table_name" default="table2" />
+	<arg name="table_x" default="0.0" /> 
+	<arg name="table_y" default="-3.0" /> 
+	<arg name="table_z" default="0.0" />
+	<arg name="table_R" default="0.0" /> 
+	<arg name="table_P" default="0.0" /> 
+	<arg name="table_Y" default="0.0" />
+
+	<!-- Load robot description to parameter server -->
+	<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find table_description)/urdf/tabletennis_table.xacro'
+		tabletennis_table_name:=$(arg table_name)"
+  	/>
+
+	<!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    	args="-urdf -model $(arg table_name) -param robot_description -x $(arg table_x) -y $(arg table_y) -z $(arg table_z) -R $(arg table_R) -P $(arg table_P) -Y $(arg table_Y)"
+    />
+</launch>

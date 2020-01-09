@@ -10,7 +10,7 @@
 
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find table_tennis_robot_gazebo)/worlds/tabletennis_table.world"/>
+    <arg name="world_name" value="$(find tabletennisrobot_gazebo)/worlds/tabletennis_table.world"/>
     <arg name="debug" value="$(arg debug)" />
     <arg name="gui" value="$(arg gui)" />
     <arg name="paused" value="$(arg paused)"/>
@@ -42,7 +42,7 @@
         <!--<param name="source_list" value="/TTbot/joint_states" />-->
     </node>
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find table_tennis_robot_gazebo)/config/robot_state_visualize.rviz" required="true" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tabletennisrobot_gazebo)/config/robot_state_visualize.rviz" required="true" />
 
 
 </launch>
