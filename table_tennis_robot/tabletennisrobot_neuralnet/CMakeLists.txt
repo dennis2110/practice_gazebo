@@ -69,4 +69,8 @@ target_link_libraries(sub_ball_move_arm ${catkin_LIBRARIES})
 add_executable(spawn_ball src/spawn_ball.cpp)
 add_dependencies(spawn_ball ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(spawn_ball ${catkin_LIBRARIES})
+
+add_executable(track_ball_inverse src/track_ball_inverse.cpp)
+add_dependencies(track_ball_inverse ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(track_ball_inverse ${catkin_LIBRARIES})
 ###############################
