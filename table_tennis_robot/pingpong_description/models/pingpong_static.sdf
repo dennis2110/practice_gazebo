@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <sdf version="1.5">
 <model name="pingpong_ball">
-  <static>true</static>
+  <!--<static>true</static>-->
   <pose>0 0 0 0 0 0</pose>
     <link name="link">
+      <gravity>false</gravity>
       <velocity_decay>
         <linear>0</linear>
         <angular>0.001</angular>
