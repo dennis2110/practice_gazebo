@@ -73,4 +73,16 @@ target_link_libraries(spawn_ball ${catkin_LIBRARIES})
 add_executable(track_ball_inverse src/track_ball_inverse.cpp)
 add_dependencies(track_ball_inverse ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(track_ball_inverse ${catkin_LIBRARIES})
+
+add_executable(track_ball_inverse2 src/track_ball_inverse2.cpp)
+add_dependencies(track_ball_inverse2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(track_ball_inverse2 ${catkin_LIBRARIES})
+
+add_executable(reset_sim src/reset_sim.cpp)
+add_dependencies(reset_sim ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(reset_sim ${catkin_LIBRARIES})
+
+add_executable(set_model_config src/set_model_config.cpp)
+add_dependencies(set_model_config ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(set_model_config ${catkin_LIBRARIES})
 ###############################

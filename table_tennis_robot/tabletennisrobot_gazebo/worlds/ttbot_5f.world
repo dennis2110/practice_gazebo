@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://table_description</uri>
+      <name>tabletennis_table</name>
+      <pose>0.0 0.0 0 0 0 -1.570795</pose>
+    </include>
+    <include>
+      <uri>model://pingpong_description</uri>
+      <name>ball</name>
+      <pose>0.0 -1.0 3.0 0 0 0</pose>
+    </include>
+  </world>
+</sdf>
