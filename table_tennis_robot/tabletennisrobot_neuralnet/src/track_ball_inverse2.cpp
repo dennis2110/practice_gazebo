@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
   // unified_cmd.data.push_back(0.26);
   // init pose (static)
   unified_cmd.data.push_back(0.4735);
-  unified_cmd.data.push_back(-1.57);//1.57);
+  unified_cmd.data.push_back(1.57);//1.57);
   unified_cmd.data.push_back(2.2); // 2.2 //1.1
   unified_cmd.data.push_back(2.9); // 2.9 //4.2
   unified_cmd.data.push_back(2.2); // 2.2 //3.6
@@ -128,10 +128,10 @@ int main(int argc, char **argv) {
              changeside, is_ball_left, is_ball_right);
     ROS_INFO("##############################");*/
     if (s <= L1 + L2) {
-      //theta2 = M_PIf64 -
-      //         acos((s_square - pow(L1, 2) - pow(L2, 2)) / (-2 * L1 * L2));
-      theta2 = -M_PIf64 +
+      theta2 = M_PIf64 -
                acos((s_square - pow(L1, 2) - pow(L2, 2)) / (-2 * L1 * L2));
+      //theta2 = -M_PIf64 +
+      //        acos((s_square - pow(L1, 2) - pow(L2, 2)) / (-2 * L1 * L2));
       // theta2 = acos((-s_square + pow(L1,2) + pow(L2, 2)) / (2*L1*L2));
       beta = atan2(inv_z1 - inv_z0, inv_x1 - inv_x0);
       psi = acos((s_square + pow(L1, 2) - pow(L2, 2)) / (2 * s * L1));

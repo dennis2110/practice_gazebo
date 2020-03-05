@@ -143,6 +143,13 @@ add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
 #add_dependencies(listener base_pkg_generate_messages_cpp)
 
+add_executable(service src/service.cpp)
+target_link_libraries(service ${catkin_LIBRARIES})
+add_dependencies(service beginner_tutorials_gencpp)
+
+add_executable(client src/client.cpp)
+target_link_libraries(client ${catkin_LIBRARIES})
+add_dependencies(client beginner_tutorials_gencpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

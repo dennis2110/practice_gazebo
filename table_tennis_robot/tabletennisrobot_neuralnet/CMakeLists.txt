@@ -85,4 +85,8 @@ target_link_libraries(reset_sim ${catkin_LIBRARIES})
 add_executable(set_model_config src/set_model_config.cpp)
 add_dependencies(set_model_config ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(set_model_config ${catkin_LIBRARIES})
+
+add_executable(autolaunch src/autolaunch.cpp)
+add_dependencies(autolaunch ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(autolaunch ${catkin_LIBRARIES})
 ###############################
