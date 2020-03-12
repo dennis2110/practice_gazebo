@@ -161,14 +161,14 @@ namespace TabletennisRobot
         }
     }
 
-    bool EPOS2::statuscheck_Callback(table_tennis_robot_msgsrv::EPOSstatus::Request& request, table_tennis_robot_msgsrv::EPOSstatus::Response& response){
+    bool EPOS2::statuscheck_Callback(tabletennisrobot_msgsrv::EPOSstatus::Request& request, tabletennisrobot_msgsrv::EPOSstatus::Response& response){
         response.DeviceStatus = epos_device_.deviceOpenedCheck();
         response.MotorStatus = epos_device_.motorEnableCheck();
         response.HomingStatus = epos_device_.homingCheck();
         return true;
     }
 
-    bool EPOS2::opendevice_Callback(table_tennis_robot_msgsrv::OpenDevice::Request& request, table_tennis_robot_msgsrv::OpenDevice::Response& response){
+    bool EPOS2::opendevice_Callback(tabletennisrobot_msgsrv::OpenDevice::Request& request, tabletennisrobot_msgsrv::OpenDevice::Response& response){
         if(!epos_device_.deviceOpenedCheck()){
             if(epos_device_.openDevice(request.deviceName, request.protocolStackName, request.interfaceName, request.portName, request.baudrate) == MMC_FAILED)
             {
@@ -190,7 +190,7 @@ namespace TabletennisRobot
         return true;    
     }
 
-    bool EPOS2::setPPM_Callback(table_tennis_robot_msgsrv::setPPMparam::Request& request, table_tennis_robot_msgsrv::setPPMparam::Response& response){
+    bool EPOS2::setPPM_Callback(tabletennisrobot_msgsrv::setPPMparam::Request& request, tabletennisrobot_msgsrv::setPPMparam::Response& response){
         if((int)request.usNodeId == 1){
             if(epos_device_.startProfilePositionMode(epos_device_.g_pKeyHandle, request.usNodeId, request.profile_velocity, request.profile_acceleration, request.profile_deceleration) == MMC_FAILED){
                 ROS_ERROR("set PPM fail");
@@ -203,7 +203,7 @@ namespace TabletennisRobot
         return true;
     }
 
-    bool EPOS2::stopMotor_Callback(table_tennis_robot_msgsrv::stopMotor::Request& request, table_tennis_robot_msgsrv::stopMotor::Response& response){
+    bool EPOS2::stopMotor_Callback(tabletennisrobot_msgsrv::stopMotor::Request& request, tabletennisrobot_msgsrv::stopMotor::Response& response){
         stop_motor = true;
         if((int)request.usNodeID == 1){
             if(epos_device_.stopPosition(epos_device_.g_pKeyHandle,request.usNodeID) == MMC_FAILED){

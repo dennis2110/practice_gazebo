@@ -4,11 +4,11 @@
 #include <ros/ros.h>
 #include <std_msgs/Float64.h>
 #include <std_msgs/Float64MultiArray.h>
-#include <table_tennis_robot_msgsrv/EPOSstatus.h>
-#include <table_tennis_robot_msgsrv/OpenDevice.h>
-#include <table_tennis_robot_msgsrv/setPPMparam.h>
+#include <tabletennisrobot_msgsrv/EPOSstatus.h>
+#include <tabletennisrobot_msgsrv/OpenDevice.h>
+#include <tabletennisrobot_msgsrv/setPPMparam.h>
 //#include <table_tennis_robot_msgsrv/motor_status.h>
-#include <table_tennis_robot_msgsrv/stopMotor.h>
+#include <tabletennisrobot_msgsrv/stopMotor.h>
 #include <std_srvs/Empty.h>
 
 #include <sensor_msgs/JointState.h>
@@ -38,11 +38,11 @@ class EPOS2
 
     private:
       void real_joint_Callback(const std_msgs::Float64MultiArrayConstPtr& command_msg);
-      bool statuscheck_Callback(table_tennis_robot_msgsrv::EPOSstatus::Request& request, table_tennis_robot_msgsrv::EPOSstatus::Response& response);
-      bool opendevice_Callback(table_tennis_robot_msgsrv::OpenDevice::Request& request, table_tennis_robot_msgsrv::OpenDevice::Response& response);
+      bool statuscheck_Callback(tabletennisrobot_msgsrv::EPOSstatus::Request& request, tabletennisrobot_msgsrv::EPOSstatus::Response& response);
+      bool opendevice_Callback(tabletennisrobot_msgsrv::OpenDevice::Request& request, tabletennisrobot_msgsrv::OpenDevice::Response& response);
       bool closedevice_Callback(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response);
-      bool setPPM_Callback(table_tennis_robot_msgsrv::setPPMparam::Request& request, table_tennis_robot_msgsrv::setPPMparam::Response& response);
-      bool stopMotor_Callback(table_tennis_robot_msgsrv::stopMotor::Request& request, table_tennis_robot_msgsrv::stopMotor::Response& response);
+      bool setPPM_Callback(tabletennisrobot_msgsrv::setPPMparam::Request& request, tabletennisrobot_msgsrv::setPPMparam::Response& response);
+      bool stopMotor_Callback(tabletennisrobot_msgsrv::stopMotor::Request& request, tabletennisrobot_msgsrv::stopMotor::Response& response);
       bool homing_Callback(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response);
 
     public:
