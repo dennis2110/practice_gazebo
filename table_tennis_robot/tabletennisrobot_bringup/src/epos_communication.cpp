@@ -15,7 +15,7 @@ namespace TabletennisRobot
     int EposCommunication::initialization(){
         int lResult = MMC_SUCCESS;
         unsigned int ulErrorCode = 0;
-
+        homeArdu.init();
         PrintHeader();
         SetDefaultParameters();
         PrintSettings();
@@ -211,8 +211,8 @@ namespace TabletennisRobot
         std::cout <<"move and wait for sensor...." <<std::endl;
         while (!lResult)
         {
-            homeArdu.read(&homeArdu.readdata[0],6);
-            if(homeArdu.readdata[0]==1 && !is_joint0_zero){
+            homeArdu.read_dick(&homeArdu.readdata[0],3);
+            if(homeArdu.readdata[0]==0x31 && !is_joint0_zero){
                 std::cout <<"123456:" << homeArdu.readdata[0] <<":654321" <<std::endl;
                 if(VCS_HaltVelocityMovement(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
                 {
@@ -256,7 +256,7 @@ namespace TabletennisRobot
 
                 is_joint0_zero = true;
             }
-            if(homeArdu.readdata[1]==1 && !is_joint1_zero){
+            if(homeArdu.readdata[1]==0x30 && !is_joint1_zero){
                 std::cout <<"666666:" << homeArdu.readdata[1] <<":666666" <<std::endl;
                 if(VCS_HaltVelocityMovement(subKeyHandle, g_usNodeId2, &ulErrorCode) == MMC_FAILED)
                 {

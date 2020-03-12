@@ -144,9 +144,16 @@ set(SOURCES
     src/epos_communication.cpp
     src/arduserial.cpp
     )
+#set(ARDU_HEADERS
+#    include/arduserial.h
+#    )
+#set(ARDU_SOURCES
+#    src/arduserial.cpp
+#    )
 
 ## Declare a C++ library
 add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+#add_library(${ARDU_LIB} ${ARDU_SOURCES} ${ARDU_HEADERS})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -178,6 +185,11 @@ target_link_libraries(unified_joint_cmd ${catkin_LIBRARIES})
 add_executable(joint_status_pub test/joint_status_pub.cpp)
 add_dependencies(joint_status_pub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(joint_status_pub ${catkin_LIBRARIES})
+
+add_executable(test_ardu_lib test/test_ardu_lib.cpp
+			     src/arduserial.cpp)
+add_dependencies(test_ardu_lib ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(test_ardu_lib ${catkin_LIBRARIES})
 ##########################
 
 

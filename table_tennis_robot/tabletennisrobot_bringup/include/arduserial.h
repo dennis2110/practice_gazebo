@@ -10,6 +10,7 @@ public:
   void init();
   void read(uint8_t *data, size_t size);
   void write(uint8_t *data, size_t size);
+  void read_dick(uint8_t *data, size_t size);
 
 private:
 

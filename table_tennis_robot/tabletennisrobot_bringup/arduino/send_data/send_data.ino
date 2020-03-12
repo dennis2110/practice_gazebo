@@ -1,4 +1,5 @@
-uint8_t writecmd[6]={ '$', 0x03,0,0,'\r', '\n'};
+uint8_t writecmd[6]={ 0x24, 0x41,0x38,0x37,0x25, 0x42};
+                     // $,A,8 ,7 ,%,B
 
 void setup() {
   pinMode(13,OUTPUT);
@@ -31,7 +32,7 @@ void loop() {
 /////////////////////////////////
 
 ////////// write data ///////////
-  if(digitalRead(7)==1){ //joint 0 sensor (1 是未接觸)
+  /*if(digitalRead(7)==1){ //joint 0 sensor (1 是未接觸)
     writecmd[2]= 1;
     digitalWrite(13,HIGH);
   }else{
@@ -42,7 +43,7 @@ void loop() {
     writecmd[3]= 1;
   }else{
     writecmd[3]= 0;
-  }
+  }*/
   
   Serial.write(writecmd, 6);
 /////////////////////////////////
