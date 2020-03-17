@@ -5,7 +5,7 @@ import numpy as np
 from openai_ros.msg import RLExperimentInfo
 import matplotlib
 import matplotlib.pyplot as plt
-import torch
+#import torch
 
 # set up matplotlib
 is_ipython = 'inline' in matplotlib.get_backend()

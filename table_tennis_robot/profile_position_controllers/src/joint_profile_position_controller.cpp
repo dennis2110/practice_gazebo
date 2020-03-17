@@ -192,12 +192,13 @@ void JointProfilePositionController::starting(const ros::Time& time)
 
 
   //calculate max acc, dec time
-  acc_time_max = ppm_params_struct_.velocity_/ppm_params_struct_.acceleration_;
+  /*acc_time_max = ppm_params_struct_.velocity_/ppm_params_struct_.acceleration_;
   dec_time_max = ppm_params_struct_.velocity_/ppm_params_struct_.deceleration_;
   acc_dis_max = ppm_params_struct_.velocity_ * acc_time_max / 2;
   dec_dis_max = ppm_params_struct_.velocity_ * dec_time_max / 2;
   std::cout << "pos_command :" << pos_command <<std::endl;
-  std::cout << "acc_dis_max :" << acc_dis_max <<" dec_dis_max: "<< dec_dis_max<<std::endl;
+  std::cout << "acc_dis_max :" << acc_dis_max <<" dec_dis_max: "<< dec_dis_max<<std::endl;*/
+  std::cout << joint_.getName().c_str() << ": 123" << std::endl;
   
 }
 
