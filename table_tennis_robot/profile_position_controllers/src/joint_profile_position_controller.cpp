@@ -198,8 +198,8 @@ void JointProfilePositionController::starting(const ros::Time& time)
   dec_dis_max = ppm_params_struct_.velocity_ * dec_time_max / 2;
   std::cout << "pos_command :" << pos_command <<std::endl;
   std::cout << "acc_dis_max :" << acc_dis_max <<" dec_dis_max: "<< dec_dis_max<<std::endl;*/
-  std::cout << joint_.getName().c_str() << ": 123" << std::endl;
-  
+  //std::cout << joint_.getName().c_str() << ": 123" << std::endl;
+
 }
 
 void JointProfilePositionController::update(const ros::Time& time, const ros::Duration& period)
@@ -208,7 +208,7 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
   double command_position = command_struct_.position_;
   //double command_velocity = command_struct_.velocity_;
   //bool has_velocity_ =  command_struct_.has_velocity_;
-
+  
   // Make sure joint is within limits if applicable
   /*std::string joint_zero = "joint_0";
   if(joint_.getName() == joint_zero){
@@ -222,7 +222,7 @@ void JointProfilePositionController::update(const ros::Time& time, const ros::Du
   
   double current_position = joint_.getPosition();
   double current_velocity = joint_.getVelocity();
-
+  
   error = command_position - current_position;
   need_distance = last_velocity*last_velocity/(2*ppm_params_struct_.deceleration_);
   if(command_position != last_pos_command){
