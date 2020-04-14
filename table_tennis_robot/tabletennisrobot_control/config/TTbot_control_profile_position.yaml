@@ -8,7 +8,7 @@ TTbot:
   slide_rail_joint_position_controller:
     type: ttbot_velocity_controllers/JointProfilePositionController
     joint: joint_0
-    ppm_param: {vel: 0.38, acc: 0.76, dec: 0.76}
+    ppm_param: {vel: 0.76, acc: 0.76, dec: 0.76}
   arm_joint1_position_controller:
     type: ttbot_velocity_controllers/JointProfilePositionController
     joint: joint_1
