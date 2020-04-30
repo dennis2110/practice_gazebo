@@ -33,7 +33,7 @@ def RLinfo_callback(data):
 
 def RLinfo_listener():
     rospy.init_node('RL_listen', anonymous=True)
-    rospy.Subscriber("/openai/reward", RLExperimentInfo, RLinfo_callback)
+    rospy.Subscriber("/openai/reward/irl", RLExperimentInfo, RLinfo_callback)
     #rospy.spin()
 
 def plot_durations():
@@ -43,7 +43,7 @@ def plot_durations():
     array=np.array(episode_durations)
     plt.title('Training...')
     plt.xlabel('Episode')
-    plt.ylabel('Duration')
+    plt.ylabel('Reward')
     #plt.plot(durations_t.numpy())
     plt.plot(array)
     #if len(durations_t) >= 100:

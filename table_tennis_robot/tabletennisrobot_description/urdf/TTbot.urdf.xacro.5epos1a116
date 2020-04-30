@@ -92,41 +92,40 @@
 
 		<link name="${prefix}joint_3_link" >
 			<inertial>
-		        <origin xyz="${0} ${-0.024} ${0}" rpy="${pi/2} 0 ${pi}" />
-<!--		    	<origin xyz="${-0.039/2} ${-0.023} ${-0.039/2}" rpy="0 0 ${0}" />-->
+		    	<origin xyz="${-0.039/2} ${-0.023} ${-0.039/2}" rpy="0 0 0" />
        			<mass value="3.270E-01" />
        			<inertia ixx="1.203E-04" ixy="0.0" ixz="0.0" iyy="7.429E-3" iyz="0.0" izz="7.462E-3" />
 		    </inertial>
       		<visual>
-		        <origin xyz="${0} ${-0.024} ${0}" rpy="${pi/2} 0 ${pi}" />
+		        <origin xyz="${-0.039/2} ${-0.023} ${-0.039/2}" rpy="0 0 0" />
         		<geometry>
-        			<mesh filename="package://tabletennisrobot_description/meshes/visual/ttbot_joint_3.dae" />
+        			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_3_link.dae" />
 		        </geometry>
 		    </visual>
       		<collision>
-		        <origin xyz="${0} ${-0.024} ${0}" rpy="${pi/2} 0 ${pi}" />
+        		<origin xyz="${-0.039/2} ${-0.023} ${-0.039/2}" rpy="0 0 0" />
         		<geometry>
-          			<mesh filename="package://tabletennisrobot_description/meshes/visual/ttbot_joint_3.dae" />
+          			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_3_link.dae" />
 		        </geometry>
  		    </collision>
     	</link>
 
 		<link name="${prefix}joint_4_link" >
 			<inertial>
-		    	<origin xyz="${0} ${0} ${0}" rpy="${pi/2} ${pi/2} 0" />
+		    	<origin xyz="${-0.1+0.045/2} ${-0.01} ${-0.045/2}" rpy="0 ${0} 0" />
        			<mass value="1.331E-01" />
        			<inertia ixx="3.713E-05" ixy="0.0" ixz="0.0" iyy="2.703E-04" iyz="0.0" izz="2.622E-04" />
 		    </inertial>
       		<visual>
-		        <origin xyz="${0} ${0} ${0}" rpy="${pi/2} ${pi/2} 0" />
+		        <origin xyz="${-0.1+0.045/2} ${-0.01} ${-0.045/2}" rpy="0 ${0} 0" />
         		<geometry>
-        			<mesh filename="package://tabletennisrobot_description/meshes/visual/ttbot_joint_4.dae" />
+        			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_4_link_DLC.dae" />
 		        </geometry>
 		    </visual>
       		<collision>
-        		<origin xyz="${0} ${0} ${0}" rpy="${pi/2} ${pi/2} 0" />
+        		<origin xyz="${-0.1+0.045/2} ${-0.01} ${-0.045/2}" rpy="0 ${0} 0" />
         		<geometry>
-          			<mesh filename="package://tabletennisrobot_description/meshes/visual/ttbot_joint_4.dae" />
+          			<mesh filename="package://tabletennisrobot_description/meshes/visual/joint_4_link_DLC.dae" />
 		        </geometry>
  		    </collision>
     	</link>
@@ -198,7 +197,7 @@
 			<parent link="${prefix}joint_3_link"/>
         	<child link="${prefix}joint_4_link"/>
 
-			<origin xyz="${0.1935} ${0.053} ${0}" rpy="0 0 ${pi}" />
+			<origin xyz="${0.216} ${0.04-0.023} ${0}" rpy="0 0 ${pi}" />
         	<limit effort="1000.0" lower="${-pi}" upper="${pi}" velocity="1.0"/>
         	<dynamics damping="0.0" friction="0.0"/>
         	<axis xyz="0 1 0"/>
@@ -208,7 +207,7 @@
 			<parent link="${prefix}joint_4_link"/>
         	<child link="${prefix}joint_5_link"/>
 
-			<origin xyz="${-0.021} ${-0.043} ${0}" rpy="0 ${pi/2} ${pi/2}" />
+			<origin xyz="${-0.0765} ${0.0435} ${0.001}" rpy="0 ${pi/2} ${pi/2}" />
 			<limit effort="1000.0" lower="${-pi}" upper="${pi}" velocity="1.0"/>
         	<dynamics damping="0.0" friction="0.0"/>
 			<axis xyz="0 1 0"/>
