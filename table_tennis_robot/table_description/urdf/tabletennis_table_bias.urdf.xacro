@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<robot xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://ros.org/wiki/xacro" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:xacro="http://ros.org/wiki/xacro" name="$(arg tabletennis_table_name)">
+
+   <xacro:include filename="$(find table_description)/urdf/tabletennis_table.gazebo.xacro" />
+   <xacro:property name="scale_size" value="1.0" />
+
+   <xacro:macro name="tabletennis_table_macro" params="prefix">
+      <material name="blue">
+         <color rgba="0 0 0.8 1"/>
+      </material>
+
+      <link name="tabletennis_table_link">
+      <visual name="tabletennis_table">
+         <origin rpy="0 0 0" xyz="0 0 0" />
+         <geometry>
+            <mesh filename="package://table_description/models/tabletennis_table/meshes/tabletennis_table_realsize.dae" scale="${scale_size*1} ${scale_size*1} ${scale_size*1}" />
+         </geometry>
+         <cast_shadows>1</cast_shadows>
+         <transparency>0</transparency>
+         <material name="blue"/>
+         <!--<material name="tennis_ball"/>-->
+      </visual>
+         <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="150" />
+            <inertia ixx="38" ixy="0" ixz="0" iyy="38" iyz="0" izz="38" />
+         </inertial>
+         <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+               <mesh filename="package://table_description/models/tabletennis_table/meshes/tabletennis_table_realsize.dae" scale="${scale_size*1} ${scale_size*1} ${scale_size*1}" />
+            </geometry>
+         </collision>
+      </link>
+      
+      <xacro:tabletennis_table_gazebo prefix="${prefix}" />
+
+      <!--<link name="${prefix}tabletennis_table_footprint" />
+      <joint name="${prefix}base_link-tabletennis_table" type="fixed">
+         <origin xyz="0 0 0" rpy="0 0 0" />
+         <parent link="${prefix}tabletennis_table_footprint" />
+         <child link="${prefix}tabletennis_table_link" />
+      </joint>-->
+			<link name="world"/>
+			<joint name="world_joint" type="fixed">
+					<parent link="world"/>
+					<child link="tabletennis_table_link"/>
+					<origin xyz="0 0 0" rpy="0.0 0.0 -1.571"/>
+					<!--origin rpy="0.0 0.0 -1.571" xyz="0.762 1.37 -0.76" /-->
+			</joint>
+
+   </xacro:macro>
+</robot>
+
+<!--package://ball_on_plate_gazebo/models/tennis_ball/meshes/tennis_ball.dae
+
+
+<geometry>
+   <mesh filename="package://ball_on_plate_gazebo/models/tennis_ball/meshes/tennis_ball.dae" scale="1 1 1" />
+</geometry>
+
+<geometry>
+   <mesh filename="package://ball_on_plate_gazebo/models/red_ball/meshes/red_ball.dae" scale="1 1 1" />
+</geometry>
+
+
+-->
