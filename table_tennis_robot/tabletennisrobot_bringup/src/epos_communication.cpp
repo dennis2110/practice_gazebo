@@ -34,9 +34,10 @@ namespace TabletennisRobot
         if(enableMotor()==MMC_FAILED){
             LogError("enableMotor", lResult, ulErrorCode);
         }
-        
-
-
+        ros::Duration(1.0).sleep();
+        std::string ardu_msg("3 0 0");
+        homeArdu.write_dick(ardu_msg);
+        ROS_INFO("aaaaaaaaaaaaaaaaaaaaaaaaa");
         ///////////////////////////////
         return lResult;
     }
@@ -118,10 +119,10 @@ namespace TabletennisRobot
         {
             LogError("PrepareEpos(ID4)", lResult, ulErrorCode);
         }
-        else if((lResult = PrepareEpos(subKeyHandle, g_usNodeId5,&ulErrorCode))==MMC_FAILED)
+        /*else if((lResult = PrepareEpos(subKeyHandle, g_usNodeId5,&ulErrorCode))==MMC_FAILED)
         {
             LogError("PrepareEpos(ID5)", lResult, ulErrorCode);
-        }
+        }*/
         else
         {
             motorEnableCheckStatus = MMC_SUCCESS;
@@ -157,10 +158,10 @@ namespace TabletennisRobot
         {
             LogError("DisableEpos (ID4)", lResult, ulErrorCode);
         }
-        else if((lResult = DisableEpos(subKeyHandle, g_usNodeId5,&ulErrorCode))==MMC_FAILED)
+        /*else if((lResult = DisableEpos(subKeyHandle, g_usNodeId5,&ulErrorCode))==MMC_FAILED)
         {
             LogError("DisableEpos (ID5)", lResult, ulErrorCode);
-        }
+        }*/
         else
         {
             motorEnableCheckStatus = MMC_FAILED;
@@ -194,7 +195,7 @@ namespace TabletennisRobot
             LogError("VCS_ActivateProfileVelocityMode j1", lResult, ulErrorCode);
             lResult = MMC_FAILED;
         }
-        long targetvelocity = -200;
+        long targetvelocity = -100;
         if(VCS_MoveWithVelocity(g_pKeyHandle, g_usNodeId1, targetvelocity, &ulErrorCode) == MMC_FAILED)
 		{
 			LogError("VCS_MoveWithVelocity j0", lResult, ulErrorCode);
@@ -211,79 +212,102 @@ namespace TabletennisRobot
         std::cout <<"move and wait for sensor...." <<std::endl;
         while (!lResult)
         {
-            homeArdu.read_dick(&homeArdu.readdata[0],3);
-            if(homeArdu.readdata[0]==0x31 && !is_joint0_zero){
-                std::cout <<"123456:" << homeArdu.readdata[0] <<":654321" <<std::endl;
-                if(VCS_HaltVelocityMovement(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
-                {
-                    LogError("VCS_HaltVelocityMovement", lResult, ulErrorCode);
-                    lResult = MMC_FAILED;
+            if(!EposCommunication::energency_stop){
+                ros::Duration(0.1).sleep();
+                homeArdu.read_dick(&homeArdu.readdata[0],3);
+                std::cout << "data[0]: " << homeArdu.readdata[0] << " data[1]: " << homeArdu.readdata[1] << std::endl;
+
+
+                if(homeArdu.readdata[0]==0x31 && !is_joint0_zero){
+                    std::cout <<"123456:" << homeArdu.readdata[0] <<":654321" <<std::endl;
+                    if(VCS_HaltVelocityMovement(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
+                    {
+                        LogError("VCS_HaltVelocityMovement", lResult, ulErrorCode);
+                        lResult = MMC_FAILED;
+                    }
+                    std::cout << "set j0 home mode" << std::endl;
+
+                    /*if(VCS_ActivateProfilePositionMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
+                    {
+                        LogError("VCS_ActivateProfilePositionMode", lResult, ulErrorCode);
+                        lResult = MMC_FAILED;
+                    }
+                    
+
+                    if(VCS_SetPositionProfile(g_pKeyHandle, g_usNodeId1, 1000, 200, 200, &ulErrorCode) == MMC_FAILED)
+                    {
+                        LogError("VCS_SetPositionProfile", lResult, ulErrorCode);
+                        lResult = MMC_FAILED;
+                    }
+
+                    if(VCS_MoveToPosition(g_pKeyHandle, g_usNodeId1, 42250, 0, 1, &ulErrorCode) == MMC_FAILED)
+                    {
+                        LogError("VCS_MoveToPosition", lResult, ulErrorCode);
+                        lResult = MMC_FAILED;
+                    } 
+
+                    sleep(10);*/
+
+                    if(VCS_ActivateHomingMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
+                    {
+                        LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
+                        lResult = MMC_FAILED;
+                    }
+
+                    if(VCS_FindHome(g_pKeyHandle, g_usNodeId1, HM_ACTUAL_POSITION, &ulErrorCode) == MMC_FAILED)
+                    {
+                        LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
+                        lResult = MMC_FAILED;
+                    }
+
+                    is_joint0_zero = true;
                 }
-                std::cout << "set j0 home mode" << std::endl;
+                if(homeArdu.readdata[1]==0x30 && !is_joint1_zero){
+                    std::cout <<"666666:" << homeArdu.readdata[1] <<":666666" <<std::endl;
+                    if(VCS_HaltVelocityMovement(subKeyHandle, g_usNodeId2, &ulErrorCode) == MMC_FAILED)
+                    {
+                        LogError("VCS_HaltVelocityMovement", lResult, ulErrorCode);
+                        lResult = MMC_FAILED;
+                    }
 
-                /*if(VCS_ActivateProfilePositionMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
-                {
-                    LogError("VCS_ActivateProfilePositionMode", lResult, ulErrorCode);
-                    lResult = MMC_FAILED;
+
+
+                    if(VCS_ActivateHomingMode(subKeyHandle, g_usNodeId2, &ulErrorCode) == MMC_FAILED)
+                    {
+                        LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
+                        lResult = MMC_FAILED;
+                    }
+
+                    if(VCS_FindHome(subKeyHandle, g_usNodeId2, HM_ACTUAL_POSITION, &ulErrorCode) == MMC_FAILED)
+                    {
+                        LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
+                        lResult = MMC_FAILED;
+                    }
+                    
+                    std::cout << "set j1 home mode" << std::endl;
+                    is_joint1_zero = true;
                 }
-                
-
-                if(VCS_SetPositionProfile(g_pKeyHandle, g_usNodeId1, 1000, 200, 200, &ulErrorCode) == MMC_FAILED)
-                {
-                    LogError("VCS_SetPositionProfile", lResult, ulErrorCode);
-                    lResult = MMC_FAILED;
+                if(is_joint0_zero && is_joint1_zero){
+                    lResult = MMC_SUCCESS;
+                    std::string ardu_msg("4 0 0");
+                    homeArdu.write_dick(ardu_msg);
                 }
-
-                if(VCS_MoveToPosition(g_pKeyHandle, g_usNodeId1, 42250, 0, 1, &ulErrorCode) == MMC_FAILED)
+            }else{
+                if(EposCommunication::motorEnableCheck())
                 {
-                    LogError("VCS_MoveToPosition", lResult, ulErrorCode);
-                    lResult = MMC_FAILED;
-                } 
-
-                sleep(10);*/
-
-                if(VCS_ActivateHomingMode(g_pKeyHandle, g_usNodeId1, &ulErrorCode) == MMC_FAILED)
-                {
-                    LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
-                    lResult = MMC_FAILED;
-                }
-
-                if(VCS_FindHome(g_pKeyHandle, g_usNodeId1, HM_ACTUAL_POSITION, &ulErrorCode) == MMC_FAILED)
-                {
-                    LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
-                    lResult = MMC_FAILED;
-                }
-
-                is_joint0_zero = true;
-            }
-            if(homeArdu.readdata[1]==0x30 && !is_joint1_zero){
-                std::cout <<"666666:" << homeArdu.readdata[1] <<":666666" <<std::endl;
-                if(VCS_HaltVelocityMovement(subKeyHandle, g_usNodeId2, &ulErrorCode) == MMC_FAILED)
-                {
-                    LogError("VCS_HaltVelocityMovement", lResult, ulErrorCode);
-                    lResult = MMC_FAILED;
+                    if(EposCommunication::disableMotor() == MMC_FAILED)
+                        ROS_ERROR("motor disable failed");
+                    else
+                        ROS_INFO("motor disable successed");
                 }
 
-
-
-                if(VCS_ActivateHomingMode(subKeyHandle, g_usNodeId2, &ulErrorCode) == MMC_FAILED)
+                if(EposCommunication::deviceOpenedCheck())
                 {
-                    LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
-                    lResult = MMC_FAILED;
+                    if(EposCommunication::closeDevice() == MMC_FAILED)
+                        ROS_ERROR("Device closing failed");
+                    else
+                        ROS_INFO("Device closing successed");
                 }
-
-                if(VCS_FindHome(subKeyHandle, g_usNodeId2, HM_ACTUAL_POSITION, &ulErrorCode) == MMC_FAILED)
-                {
-                    LogError("VCS_ActivateHomingMode", lResult, ulErrorCode);
-                    lResult = MMC_FAILED;
-                }
-                
-                std::cout << "set j1 home mode" << std::endl;
-                is_joint1_zero = true;
-            }
-            
-            if(is_joint0_zero && is_joint1_zero){
-                lResult = MMC_SUCCESS;
             }
         }
         
@@ -407,7 +431,12 @@ namespace TabletennisRobot
         return lResult;
     }
 
-    
+    int EposCommunication::setA116Position(int motor_mode, int motor_id, double motor_cmd){
+        int lResult = MMC_SUCCESS;
+        int int_motor_cmd = static_cast<int>(motor_cmd);
+        std::string ardu_msg(std::to_string(motor_mode)+" "+std::to_string(motor_id)+" "+std::to_string(int_motor_cmd));
+        homeArdu.write_dick(ardu_msg);
+    }
 
     ////////////////////////////
     ///// private function /////

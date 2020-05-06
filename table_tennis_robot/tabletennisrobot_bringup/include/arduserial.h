@@ -11,6 +11,7 @@ public:
   void read(uint8_t *data, size_t size);
   void write(uint8_t *data, size_t size);
   void read_dick(uint8_t *data, size_t size);
+  void write_dick(const std::string data);
 
 private:
 

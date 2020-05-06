@@ -3,7 +3,9 @@
     <node name="tabletennis_robot_bringup" pkg="tabletennisrobot_bringup"
         type="tabletennis_robot_bringup" respawn="false" output="screen" ns="/realTTbot" />
 
-    <node name="unified_joint_cmd" pkg="tabletennisrobot_bringup"
-        type="unified_joint_cmd" respawn="false" output="screen" />
+    <!--<node name="unified_joint_cmd" pkg="tabletennisrobot_bringup"
+        type="unified_joint_cmd" respawn="false" output="screen" />-->
+    <node name="to_real_cmd" pkg="tabletennisrobot_bringup"
+        type="to_real_cmd" respawn="false" output="screen" />
 
 </launch>

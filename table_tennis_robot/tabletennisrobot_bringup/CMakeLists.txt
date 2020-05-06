@@ -179,6 +179,10 @@ target_link_libraries(tabletennis_robot_bringup ${catkin_LIBRARIES} -lEposCmd)
 add_executable(unified_joint_cmd src/unified_joint_cmd.cpp)
 add_dependencies(unified_joint_cmd ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(unified_joint_cmd ${catkin_LIBRARIES})
+
+add_executable(to_real_cmd src/to_real_cmd.cpp)
+add_dependencies(to_real_cmd ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(to_real_cmd ${catkin_LIBRARIES})
 ##########################
 
 ########## test ##########

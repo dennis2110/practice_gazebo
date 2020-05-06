@@ -76,6 +76,9 @@ namespace TabletennisRobot
                     loop_count_++;
                     //std::cout << motor_cmd[0] << " " << motor_cmd[1] <<std::endl;
                     //ROS_INFO("in loop : %d", loop_count_);
+
+
+
                     if(last_motor_cmd[0] != motor_cmd[0])
                         epos_device_.setPosition(epos_device_.g_pKeyHandle, epos_device_.g_usNodeId1, motor_cmd[0]);
                     if(last_motor_cmd[1] != motor_cmd[1])
@@ -84,14 +87,22 @@ namespace TabletennisRobot
                         epos_device_.setPosition(epos_device_.subKeyHandle, epos_device_.g_usNodeId3, motor_cmd[2]);
                     if(last_motor_cmd[3] != motor_cmd[3])
                         epos_device_.setPosition(epos_device_.subKeyHandle, epos_device_.g_usNodeId4, motor_cmd[3]);
-                    if(last_motor_cmd[4] != motor_cmd[4])
-                        epos_device_.setPosition(epos_device_.subKeyHandle, epos_device_.g_usNodeId5, motor_cmd[4]);
-
+                    /*if(last_motor_cmd[4] != motor_cmd[4])
+                        epos_device_.setPosition(epos_device_.subKeyHandle, epos_device_.g_usNodeId5, motor_cmd[4]);*/
+                    if(last_motor_cmd[4] != motor_cmd[4]){
+                        epos_device_.setA116Position(1,16,motor_cmd[4]);
+                        ros::Duration(0.05).sleep();
+                    }
+                    if(last_motor_cmd[5] != motor_cmd[5]){
+                        epos_device_.setA116Position(1,1,motor_cmd[5]);
+                        ros::Duration(0.01).sleep();
+                    }
                     last_motor_cmd[0] = motor_cmd[0];
                     last_motor_cmd[1] = motor_cmd[1];
                     last_motor_cmd[2] = motor_cmd[2];
                     last_motor_cmd[3] = motor_cmd[3];
                     last_motor_cmd[4] = motor_cmd[4];
+                    last_motor_cmd[5] = motor_cmd[5];
 
                     
 
@@ -118,23 +129,25 @@ namespace TabletennisRobot
                      epos_device_.getPosition(epos_device_.g_usNodeId2,&motor_status_msg.position.at(1));
                      epos_device_.getPosition(epos_device_.g_usNodeId3,&motor_status_msg.position.at(2));
                      epos_device_.getPosition(epos_device_.g_usNodeId4,&motor_status_msg.position.at(3));
-                     epos_device_.getPosition(epos_device_.g_usNodeId5,&motor_status_msg.position.at(4));
+                     //epos_device_.getPosition(epos_device_.g_usNodeId5,&motor_status_msg.position.at(4));
                     
                      epos_device_.getVelocity(epos_device_.g_usNodeId1,&motor_status_msg.velocity.at(0));
                      epos_device_.getVelocity(epos_device_.g_usNodeId2,&motor_status_msg.velocity.at(1));
                      epos_device_.getVelocity(epos_device_.g_usNodeId3,&motor_status_msg.velocity.at(2));
                      epos_device_.getVelocity(epos_device_.g_usNodeId4,&motor_status_msg.velocity.at(3));
-                     epos_device_.getVelocity(epos_device_.g_usNodeId5,&motor_status_msg.velocity.at(4));
+                     //epos_device_.getVelocity(epos_device_.g_usNodeId5,&motor_status_msg.velocity.at(4));
 
                     motor_status_pub_.publish(motor_status_msg);
                 }
         //    }
         }
         ros::Duration time_dura = ros::Time::now() - start_update_time;
-        ROS_INFO("update duration: %4.3f s", time_dura.toSec());
+        //ROS_INFO("update duration: %4.3f s", time_dura.toSec());
     }
 
     void EPOS2::close_device(){
+        epos_device_.setA116Position(2,0,0.0);
+        epos_device_.energency_stop = true;
         if(epos_device_.motorEnableCheck()){
             if(epos_device_.disableMotor() == MMC_FAILED){
                 ROS_ERROR("motor disable failed");
@@ -181,7 +194,7 @@ namespace TabletennisRobot
                 ROS_ERROR("enable motor fail");
             }
         }
-
+        epos_device_.energency_stop = false;
         return true;
     }
 

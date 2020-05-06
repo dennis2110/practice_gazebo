@@ -42,6 +42,7 @@ namespace TabletennisRobot
         int	getPosition(unsigned short p_usNodeId, double* pPositionIs);
         int	getVelocity(unsigned short p_usNodeId, double* pVelocityIs);
         int getVelocityUnit();
+        int setA116Position(int motor_mode, int motor_id, double motor_cmd);
 
     
 
@@ -88,6 +89,7 @@ namespace TabletennisRobot
         void* g_pKeyHandle;
         // subdevice
         void* subKeyHandle;
+        bool energency_stop = false;
 
 
     private:

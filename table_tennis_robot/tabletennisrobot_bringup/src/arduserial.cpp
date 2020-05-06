@@ -13,7 +13,7 @@ ArduSerial::~ArduSerial()
 void ArduSerial::init()
 {
     _ser.setPort(_port);
-    _ser.setBaudrate(9600);
+    _ser.setBaudrate(57600);
     serial::Timeout to = serial::Timeout::simpleTimeout(1000);
     _ser.setTimeout(to);
     _ser.open();
@@ -80,7 +80,7 @@ void ArduSerial::read(uint8_t *data, size_t size)
             try
             {
                 _ser.setPort(_port);
-                _ser.setBaudrate(9600);
+                _ser.setBaudrate(57600);
                 serial::Timeout to = serial::Timeout::simpleTimeout(1000);
                 _ser.setTimeout(to);
                 _ser.open();
@@ -189,7 +189,7 @@ void ArduSerial::read_dick(uint8_t *data, size_t size)
             try
             {
                 _ser.setPort(_port);
-                _ser.setBaudrate(9600);
+                _ser.setBaudrate(57600);
                 serial::Timeout to = serial::Timeout::simpleTimeout(1000);
                 _ser.setTimeout(to);
                 _ser.open();
@@ -213,4 +213,15 @@ void ArduSerial::read_dick(uint8_t *data, size_t size)
     }
     //data[0] = 0x24; //$
     //data[1] = 0x25; //%
+}
+
+void ArduSerial::write_dick(const std::string data)
+{
+    
+    std::cout << "write data: " << data.c_str()  <<std::endl;
+    size_t size_write = _ser.write(data);
+        ///ROS_INFO("write data to arduino : %s",_ser.getPort().c_str());
+    std::cout << "write num: " << size_write  << "data"<<std::endl;
+    
+
 }
