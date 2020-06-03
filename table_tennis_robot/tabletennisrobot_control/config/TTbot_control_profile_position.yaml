@@ -24,8 +24,8 @@ TTbot:
   arm_joint4_position_controller:
     type: ttbot_velocity_controllers/JointProfilePositionController
     joint: joint_4
-    ppm_param: {vel: 0.73, acc: 4.85, dec: 1.62}
+    ppm_param: {vel: 7.3, acc: 4.85, dec: 1.62}
   arm_joint5_position_controller:
     type: ttbot_velocity_controllers/JointProfilePositionController
     joint: joint_5
-    ppm_param: {vel: 0.5, acc: 2.0, dec: 2.0}
+    ppm_param: {vel: 7.3, acc: 4.85, dec: 2.0}

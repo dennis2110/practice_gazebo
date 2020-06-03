@@ -9,9 +9,13 @@ namespace TabletennisRobot
             motor_status_msg.position.push_back(0.0);
             motor_status_msg.velocity.push_back(0.0);
         }
+        motor_cmd[4] = 512;
+        motor_cmd[5] = 512;
         motor_vel = 0.0;
         motor_pos = 0.0;
         loop_count_ = 0;
+        joint4_count = 0;
+        joint5_count = 0;
         stop_motor = true;
         motor_status_msg.name.push_back("real_joint_0");
         motor_status_msg.name.push_back("real_joint_1");
@@ -89,14 +93,24 @@ namespace TabletennisRobot
                         epos_device_.setPosition(epos_device_.subKeyHandle, epos_device_.g_usNodeId4, motor_cmd[3]);
                     /*if(last_motor_cmd[4] != motor_cmd[4])
                         epos_device_.setPosition(epos_device_.subKeyHandle, epos_device_.g_usNodeId5, motor_cmd[4]);*/
-                    if(last_motor_cmd[4] != motor_cmd[4]){
+                    if((last_motor_cmd[4] != motor_cmd[4]) || (joint4_count < 10)){
                         epos_device_.setA116Position(1,16,motor_cmd[4]);
                         ros::Duration(0.05).sleep();
+                        joint4_count ++;
                     }
-                    if(last_motor_cmd[5] != motor_cmd[5]){
+                    if (last_motor_cmd[4] != motor_cmd[4]){
+                        joint4_count = 0;
+                    }
+                    if((last_motor_cmd[5] != motor_cmd[5]) || (joint5_count < 10)){
                         epos_device_.setA116Position(1,1,motor_cmd[5]);
                         ros::Duration(0.01).sleep();
+                        joint5_count ++;
                     }
+                    if (last_motor_cmd[5] != motor_cmd[5]){
+                        joint5_count = 0;
+                    }
+
+                    
                     last_motor_cmd[0] = motor_cmd[0];
                     last_motor_cmd[1] = motor_cmd[1];
                     last_motor_cmd[2] = motor_cmd[2];
@@ -146,7 +160,7 @@ namespace TabletennisRobot
     }
 
     void EPOS2::close_device(){
-        epos_device_.setA116Position(2,0,0.0);
+        
         epos_device_.energency_stop = true;
         if(epos_device_.motorEnableCheck()){
             if(epos_device_.disableMotor() == MMC_FAILED){
@@ -165,6 +179,13 @@ namespace TabletennisRobot
                 ROS_INFO("Device closing successed");
             }
         }
+        for (int i= 0;i<10;i++){
+            epos_device_.setA116Position(2,0,0.0);
+            ros::Duration(0.01).sleep();
+        }
+        
+
+
     }
 
     void EPOS2::real_joint_Callback(const std_msgs::Float64MultiArrayConstPtr& command_msg){

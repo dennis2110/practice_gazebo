@@ -25,7 +25,8 @@ def RLinfo_callback(data):
     ep_number = data.episode_number
     ep_reward = data.episode_reward
     episode_durations.append(ep_reward)
-    print('episode {} reward is : {}').format(data.episode_number, data.episode_reward)
+    #print(ep_number, ep_reward)
+    print('episode {} reward is : {}'.format(ep_number, ep_reward))
     #print(episode_durations)
     plot_durations()
     
@@ -56,11 +57,11 @@ def plot_durations():
         display.clear_output(wait=True)
         display.display(plt.gcf())  
 
-def timer_callback(event):
-    global started
-    if (started):
-        #print(episode_durations)
-        print "Last message published"
+#def timer_callback(event):
+#    global started
+#    if (started):
+#        #print(episode_durations)
+#        print "Last message published"
 
 
 

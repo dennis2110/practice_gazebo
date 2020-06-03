@@ -55,6 +55,8 @@ class EPOS2
       float motor_vel;
       float motor_pos;
       bool stop_motor;
+      int joint4_count;
+      int joint5_count;
       
 
       //table_tennis_robot_msgsrv::motor_status motor_status_msg;

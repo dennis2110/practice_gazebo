@@ -5,7 +5,8 @@
 #include <tf/transform_datatypes.h>
 #include <vector>
 
-#include "std_msgs/Float64MultiArray.h"
+//#include "std_msgs/Float64MultiArray.h"
+#include "std_msgs/Float64.h"
 
 bool is_ball_right = false, is_ball_left = false;
 bool start = true;
@@ -15,7 +16,8 @@ bool changepos = false, changeside = false;
 double slide_cmd = 0.0;
 double J1_cmd = 0.0;
 double ball_x = 0.0, ball_y = 0.0, ball_z = 0.0;
-double L1 = 0.253, L2 = 0.216, L3 = 0.26;
+double L1 = 0.253, L2 = 0.1935; //0.216
+double L3 = 0.2; //0.26;
 double inv_x0, inv_z0;
 double inv_x1, inv_z1;
 double s_square, s;
@@ -29,21 +31,39 @@ int main(int argc, char **argv)
 
 	ros::ServiceClient getModelState_client =
 		n.serviceClient<gazebo_msgs::GetModelState>("gazebo/get_model_state");
-	ros::Publisher unified_cmd_pub =
-		n.advertise<std_msgs::Float64MultiArray>("/unified_joint_cmd", 10);
+	//ros::Publisher unified_cmd_pub =
+	//	n.advertise<std_msgs::Float64MultiArray>("/unified_joint_cmd", 10);
+	
+	ros::Publisher j0_cmd_pub_ = n.advertise<std_msgs::Float64>("/TTbot/slide_rail_joint_position_controller/command",10);
+  	ros::Publisher j1_cmd_pub_ = n.advertise<std_msgs::Float64>("/TTbot/arm_joint1_position_controller/command",10);
+  	ros::Publisher j2_cmd_pub_ = n.advertise<std_msgs::Float64>("/TTbot/arm_joint2_position_controller/command",10);
+  	ros::Publisher j3_cmd_pub_ = n.advertise<std_msgs::Float64>("/TTbot/arm_joint3_position_controller/command",10);
+  	ros::Publisher j4_cmd_pub_ = n.advertise<std_msgs::Float64>("/TTbot/arm_joint4_position_controller/command",10);
+  	ros::Publisher j5_cmd_pub_ = n.advertise<std_msgs::Float64>("/TTbot/arm_joint5_position_controller/command",10);
 
 	gazebo_msgs::GetModelState srv;
 	srv.request.model_name = "ball";
 
-	std_msgs::Float64MultiArray unified_cmd;
+	std_msgs::Float64 j0_msg;
+	std_msgs::Float64 j1_msg;
+	std_msgs::Float64 j2_msg;
+	std_msgs::Float64 j3_msg;
+	std_msgs::Float64 j4_msg;
+	std_msgs::Float64 j5_msg;
+	
+	j0_msg.data = 0.0;
+	j1_msg.data = 1.571;
+	j2_msg.data = 0.0;
+	j3_msg.data = 0.0;
+	j4_msg.data = 0.0;
+	j5_msg.data = 0.0;
 
-	unified_cmd.data.push_back(0.4735);
-	unified_cmd.data.push_back(1.57); //1.57);
-	unified_cmd.data.push_back(2.2);  // 2.2 //1.1
-	unified_cmd.data.push_back(2.9);  // 2.9 //4.2
-	unified_cmd.data.push_back(2.2);  // 2.2 //3.6
-	unified_cmd.data.push_back(0.0);
-	unified_cmd_pub.publish(unified_cmd);
+	j0_cmd_pub_.publish(j0_msg);
+	j1_cmd_pub_.publish(j1_msg);
+	j2_cmd_pub_.publish(j2_msg);
+	j3_cmd_pub_.publish(j3_msg);
+	j4_cmd_pub_.publish(j4_msg);
+	j5_cmd_pub_.publish(j5_msg);
 
 	ros::Rate loop_rate(50);
 	// ros::Time start_time = ros::Time::now();
@@ -61,7 +81,7 @@ int main(int argc, char **argv)
 
 		inv_x1 = ball_x - L3;
 		inv_z1 = ball_z;
-		inv_x0 = 0.4735 - unified_cmd.data.at(0);
+		inv_x0 = j0_msg.data;
 		inv_z0 = 0.94; // 0.937
 		s_square = pow(inv_x1 - inv_x0, 2) + pow(inv_z1 - inv_z0, 2);
 		s = sqrt(s_square);
@@ -91,12 +111,19 @@ int main(int argc, char **argv)
 			// ROS_INFO("J3: %4.3f", 2.9 + theta2);
 
 			ROS_INFO("\n\n");
-			unified_cmd.data.at(2) = 0.63 + theta1; // 2.2-1.57+theta1;
-			unified_cmd.data.at(3) = 2.9 - theta2;
-			unified_cmd.data.at(4) = 2.2 + theta3;
-		}
+			j2_msg.data = 1.57 - theta1;
+			j3_msg.data = theta2;
+			j4_msg.data = -theta3;
 
-		unified_cmd_pub.publish(unified_cmd);
+			
+		}
+		j0_cmd_pub_.publish(j0_msg);
+		j1_cmd_pub_.publish(j1_msg);
+		j2_cmd_pub_.publish(j2_msg);
+		j3_cmd_pub_.publish(j3_msg);
+		j4_cmd_pub_.publish(j4_msg);
+		j5_cmd_pub_.publish(j5_msg);
+		
 		start = false;
 		ros::spinOnce();
 		loop_rate.sleep();
